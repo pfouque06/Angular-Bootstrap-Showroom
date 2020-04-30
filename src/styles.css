@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+.nofocus:focus { outline: none;}
+.navbar-brand:focus { outline: none;}
+.nav-link:focus { outline: none; }
+
+.nohover:hover { outline: none;}
+.novisited:visited { outline: none;}
+
+button, button:hover, button:visited, button:focus, a, a:hover,a:visited, a:focus {
+  text-decoration:none;
+}

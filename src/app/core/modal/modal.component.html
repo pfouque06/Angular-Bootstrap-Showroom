@@ -1,0 +1,83 @@
+<!-- <p>modal works!</p> -->
+<div class="container">
+
+  <p>Welcome to Modal page !</p>
+
+  <ng-template #tipContent>
+    <span *ngIf="! closeResult">Nothing much to say</span>
+    <span *ngIf="closeResult">{{ closeResult }} !</span>
+  </ng-template>
+  <button class="btn btn-dark" (click)="open(content)" [ngbTooltip]="tipContent">Launch ng-bootstrap demo
+    modal</button>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Demo modal</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+
+      <form>
+        <div class="form-group">
+          <label for="inputNgbDate">Any date you like ! ...
+            <fa-icon *ngIf="! inputNgbDate" icon="spinner" [spin]="true"></fa-icon>
+            <fa-icon *ngIf="inputNgbDate" icon="check"></fa-icon>
+          </label>
+          <div class="input-group">
+            <input class="form-control" type='text' [(ngModel)]=inputNgbDate id="inputNgbDate" placeholder="yyyy-mm-dd"
+              name="dp" ngbDatepicker #dp="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" ngbAutofocus (click)="dp.toggle()" type="button">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- <p>the date you like is : {{inputNgbDate | json }} </p> -->
+
+      <hr>
+
+      <p><code>ng-bootstrat</code> seems to be installed and operational !!</p>
+      <p>Which is including <code>bootstrap</code> framework by the way ...</p>
+
+      <hr>
+
+      <p><code>Fontawesome</code> examples :</p>
+      <p>Default Library : <fa-icon icon="check-circle"></fa-icon>
+      </p>
+      <p>Solid Library : <fa-icon [icon]="['fas', 'check-circle']"></fa-icon>
+      </p>
+      <p>Regular Library : <fa-icon [icon]="['far', 'check-circle']"></fa-icon>
+      </p>
+      <p>Brand Library : <fa-icon [icon]="['fab', 'angular']"></fa-icon>, <fa-icon [icon]="['fab', 'bootstrap']">
+        </fa-icon>
+      </p>
+      <p>Icon with border: <fa-icon icon="check-circle" [border]="true"></fa-icon>
+      </p>
+      <p>Icon with pulse animation: <fa-icon icon="check-circle" [pulse]="true"></fa-icon>
+      </p>
+      <p>Icon with spin animation: <fa-icon icon="check-circle" [spin]="true"></fa-icon>
+      </p>
+      <p>Spinner with pulse animation: <fa-icon icon="spinner" [pulse]="true"></fa-icon>
+      </p>
+      <p>Spinner with spin animation: <fa-icon icon="spinner" [spin]="true"></fa-icon>
+      </p>
+      <p>Icon with fixed width: <fa-icon icon="check-circle" [fixedWidth]="true"></fa-icon>
+      </p>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+
+  <p>The date you like is : <fa-icon *ngIf="! yourDate" icon="spinner" [spin]="true"></fa-icon>
+    {{yourDate | date: "dd/MM/yyyy"}}</p>
+  <!-- <p>{{inputNgbDate  | json }} </p> -->
+
+</div>

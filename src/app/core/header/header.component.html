@@ -1,0 +1,46 @@
+<!-- <div class="container-fluid"> -->
+<div class="container border-bottom">
+  <!-- <nav class="navbar fixed-top navbar-expand-md navbar-light"> -->
+  <nav class="navbar sticky-top navbar-expand-md navbar-light">
+    <div class="navbar-header">
+      <!-- <a class="navbar-brand" href="#">Angular Bootstrap Sandbox</a> -->
+      <a class="navbar-brand" href="#">{{ title }}</a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#thisNavbar" (click)="isNavbarCollapsed = !isNavbarCollapsed"
+      aria-controls="thisNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- <p class="navbar-text">Some text</p> -->
+
+    <!-- collapse content -->
+    <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="thisNavbar">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a routerLink="home" class="nav-link" routerLinkActive="active"  (click)="isNavbarCollapsed = true">Home</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="sandbox" class="nav-link" routerLinkActive="active" (click)="isNavbarCollapsed = true">Sandbox</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="modal" class="nav-link" routerLinkActive="active" (click)="isNavbarCollapsed = true">Modal</a>
+        </li>
+        <li class="nav-item dropdown" ngbDropdown>
+          <a class="nav-link dropdown-toggle" ngbDropdownToggle id="personDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Persons
+        </a>
+        <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="personDropdown">
+          <a class="dropdown-item" routerLink="personneList" (click)="isNavbarCollapsed = true">List</a>
+          <a class="dropdown-item" routerLink="personneForm" (click)="isNavbarCollapsed = true">Form</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="yaForm">Yet another Form</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="http://philippe.fouque.free.fr" target="_blank" class="nav-link" routerLinkActive="active"  (click)="isNavbarCollapsed = true">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</div>

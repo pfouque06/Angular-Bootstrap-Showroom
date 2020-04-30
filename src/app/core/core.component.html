@@ -1,0 +1,61 @@
+<!-- <app-header></app-header> -->
+<!-- <app-header [title]="title"></app-header> -->
+<div class="container">
+
+  <p>Welcome to Core ..</p>
+
+  <!-- <h2>{{ title }}</h2> -->
+  <!-- <h4>Angular works just fine ! </h4>
+  <hr>
+
+  <ngb-alert type='info' [dismissible]="false">
+    <code>ng-bootstrat</code> seems to be installed and operational as well !!
+  </ngb-alert>
+  <hr>
+  <p><code>Fontawesome</code> works also !! <fa-icon icon="check"></fa-icon> ...<fa-icon icon="coffee"></fa-icon></p> -->
+
+  <ngb-accordion [closeOthers]="true" activeIds="static-4">
+
+    <ngb-panel id="static-1">
+      <ng-template ngbPanelTitle>
+        Angular
+      </ng-template>
+      <ng-template ngbPanelContent>
+        <code>Angular</code> works just fine !
+      </ng-template>
+    </ngb-panel>
+
+    <!-- <ngb-panel id="static-2">
+      <ng-template ngbPanelTitle>
+        ng-bootstrat
+      </ng-template>
+      <ng-template ngbPanelContent>
+        <ngb-alert type='info' [dismissible]="false">
+          <code>ng-bootstrat</code> seems to be installed and operational as well!!
+        </ngb-alert>
+      </ng-template>
+    </ngb-panel> -->
+
+    <!-- <ngb-panel id="static-3">
+      <ng-template ngbPanelTitle>
+        Fontawesome
+      </ng-template>
+      <ng-template ngbPanelContent>
+        <p><code>Fontawesome</code> works also ! <fa-icon icon="check"></fa-icon> ...<fa-icon icon="coffee"></fa-icon></p>
+      </ng-template>
+    </ngb-panel> -->
+
+    <ngb-panel id="static-4" title="Lorum">
+      <ng-template ngbPanelContent>
+        <p>ipsum ..</p>
+      </ng-template>
+    </ngb-panel>
+
+  </ngb-accordion>
+
+  <router-outlet></router-outlet>
+
+</div>
+
+<!-- <app-footer></app-footer> -->
+

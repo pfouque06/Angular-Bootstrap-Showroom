@@ -1,0 +1,131 @@
+<!-- <p>person-form works!</p> -->
+<div class="container">
+  <div class="card">
+    <h2 class="card-header">
+      <div class="row justify-content-between mx-2">
+        Person Form
+        <!-- <fa-icon class="text-dark" icon="plus"></fa-icon> -->
+      </div>
+    </h2>
+    <div *ngIf="!submitted">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          Model Driven Form with Validation, spy, diagnostic features and erase option
+        </li>
+      </ul>
+      <div class="card-body">
+
+        <form #personForm=ngForm>
+
+          <div class="form-group">
+            <label for="nom">Firstname </label>
+            <input id="nom" class="form-control" type=text name="prenom" [(ngModel)]="person.prenom" required #alert_prenom="ngModel" #spy_prenom>
+            <div [hidden]="alert_prenom.valid || alert_prenom.pristine" class="alert alert-danger">Le champ Prénom est requis</div>
+          </div>
+
+          <div class="form-group">
+            <label for="nom">Lastname </label>
+            <input id="nom" class="form-control" type=text name="nom" [(ngModel)]="person.nom" required #alert_nom="ngModel" #spy_nom>
+            <div [hidden]="alert_nom.valid || alert_nom.pristine" class="alert alert-danger">Le champ Nom est requis</div>
+          </div>
+
+          <div class="form-group">
+            <label for="type">Type</label>
+            <select id="type"class="form-control" name="power" [(ngModel)]="person.type"  #spy_type>
+              <option *ngFor="let type of personTypes" [value]="type">{{type}}</option>
+            </select>
+          </div>
+
+          <div class="row mx-1 justify-content-between">
+            <div><button class="btn text-dark" (click)="update()" type=submit [disabled]=!personForm.valid [title]="personId ? 'Update a Person' : 'Add a Person'">
+              <!-- {{ personId ? 'Update' : 'Add' }} -->
+              <fa-icon [icon]="personId ? 'sign-in-alt' : 'plus'" rotate="90" size="2x"></fa-icon>
+            </button></div>
+            <div>
+              <a class="btn text-muted" (click)="reset(); personForm.reset()" title="Clean Form"><fa-icon icon="eraser" size="lg"></fa-icon></a>&nbsp;&nbsp;
+              <a class="btn text-dark" [routerLink]="['/personneList']"title="Person List"><fa-icon icon="list" size="2x"></fa-icon></a>
+            </div>
+          </div>
+        </form>
+        <br>
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title font-weight-bold">Form Dev Tools</h5>
+            <p class="card-text"></p>
+          </div>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <!-- <p>person :  {{person | json}}</p> -->
+              <span class="font-weight-bold">monitoring :</span> {{diagnostic}}
+            </li>
+
+            <li class="list-group-item">
+              <div>
+                <span class="font-weight-bold">spy :</span>
+              </div>
+              <div>
+                <span class="ml-2 font-weight-bold">Firstname</span> : {{spy_prenom.className}}
+              </div>
+              <div>
+                <span class="ml-2 font-weight-bold">Lastname</span> : {{spy_nom.className}}
+              </div>
+              <div>
+                <span class="ml-2 font-weight-bold">Type</span> : {{spy_type.className}}
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="submitted">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          The {{ personId ? 'updated' : 'new added' }}  person is :
+        </li>
+      </ul>
+      <div class="card-body">
+
+        <!-- The {{ personId ? 'updated' : 'new added' }}  person is : -->
+
+        <table class="table table-sm">
+          <thead class="">
+            <tr>
+              <th scope="col"><fa-icon icon="id-card" size="lg"></fa-icon></th>
+              <!-- <th scope="col">Id</th> -->
+              <th scope="col">Firstname</th>
+              <th scope="col">Lastname</th>
+              <th scope="col">Type</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <!-- <tbody class="border "> -->
+            <tbody class=" ">
+              <!-- <tr *ngFor="let person of personPages; index as i"> -->
+              <tr>
+                <!-- <th scope="row">{{ i + 1 }}</th> -->
+                <!-- <td>{{ person.id | number }}</td> -->
+                <td class="align-middle pl-2 text-left font-weight-bold">{{ person.id | number }}</td>
+                <td class="align-middle text-capitalize">{{ person.prenom }}</td>
+                <td class="align-middle text-capitalize">{{ person.nom }}</td>
+                <td class="align-middle text-capitalize">{{ person.type }}</td>
+                <td class="align-middle "></td>
+              </tr>
+            </tbody>
+          </table>
+
+        <br>
+        <div class="row justify-content-between mx-2">
+          <a class="btn text-dark" (click)="new()" title="Add a  new Person"><fa-icon icon="plus" size="lg"></fa-icon></a>
+          <!-- <button class="btn btn-warning text-light"  (click)="reset()">Reset</button> -->
+          <a class="btn text-dark" [routerLink]="['/personneList']"title="Person List"><fa-icon icon="list" size="2x"></fa-icon></a>
+        </div>
+        <!-- <button class="btn btn-primary" (click)="new()">Nouveau formulaire</button> -->
+        <br>
+
+      </div>
+    </div>
+  </div>
+</div>

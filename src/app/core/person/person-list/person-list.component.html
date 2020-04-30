@@ -1,0 +1,175 @@
+<!-- <p>person-list works!</p> -->
+<div class="container">
+  <div class="card">
+    <h2 class="card-header">
+      <div class="row justify-content-between mx-2">
+        Person List
+        <!-- <fa-icon class="text-dark" icon="list-ul"></fa-icon> -->
+      </div>
+    </h2>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <!-- <p>Local instance only - no BackEnd and none persisted data</p> -->
+        Local instance only - no BackEnd and none persisted data
+      </li>
+    </ul>
+    <div class="card-body">
+
+      <!-- <ul>
+        <li *ngFor="let person of personnes">
+          {{ person.id }} {{ person.nom }} {{ person.prenom }}
+        </li>
+      </ul> -->
+
+      <!-- <hr>
+        <div class="row order-first">
+          <div class="col-12">
+
+          <div class="row">
+            <div class="col-2 font-weight-bold">ID</div>
+            <div class="col-4 font-weight-bold ">Firstname</div>
+            <div class="col-4 font-weight-bold ">Lastname</div>
+            <div class="col-2 font-weight-bold "></div>
+          </div>
+
+          <div class="row  align-items-center" *ngFor="let person of persons">
+            <div class="col-2">{{ person.id }}</div>
+            <div class="col-4 text-capitalize">{{ person.prenom }}</div>
+            <div class="col-4 text-capitalize">{{ person.nom }}</div>
+            <div class="col-2">
+              <a class="txt-alert" (click)="delPerson( person.id )">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr> -->
+
+      <!-- <div class="row justify-content-end p-2"> -->
+        <!-- <div class="d-flex p-2"> -->
+      <div class="d-flex p-2">
+        <div class="p-2">
+          <ngb-pagination [collectionSize]="filteredPersons.length" [(page)]="page" [pageSize]="pageSize">
+          </ngb-pagination>
+        </div>
+
+        <div class="p-2">
+          <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+            <option [ngValue]="5">5 items per page</option>
+            <option [ngValue]="10">10 items per page</option>
+            <option [ngValue]="50">50 items per page</option>
+            <option [ngValue]="100">100 items per page</option>
+          </select>
+        </div>
+
+        <div class="form-group form-inline ml-auto p-2">
+          <!-- <input class="form-control ml-2" type="text" /> -->
+          <label for="filter"><fa-icon icon="filter" size="lg"></fa-icon></label>&nbsp;&nbsp;
+          <input id="filter" class="form-control" type="text" [formControl]="filter" #spy_filter>
+        </div>
+      </div>
+
+      <table class="table table-sm">
+        <thead class="">
+          <tr>
+            <th scope="col"><fa-icon icon="id-card" size="lg"></fa-icon></th>
+            <!-- <th scope="col">Id</th> -->
+            <th scope="col">Firstname</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">Type</th>
+            <th scope="col">Operations</th>
+          </tr>
+        </thead>
+        <!-- <tbody class="border "> -->
+        <tbody class=" ">
+          <!-- <tr *ngFor="let person of personPages; index as i"> -->
+          <tr *ngFor="let person of filteredPersonPages; index as i">
+            <!-- <th scope="row">{{ i + 1 }}</th> -->
+            <!-- <td>{{ person.id | number }}</td> -->
+            <td class="align-middle pl-2 text-left font-weight-bold">{{ person.id | number }}</td>
+            <td class="align-middle text-capitalize">{{ person.prenom }}</td>
+            <td class="align-middle text-capitalize">{{ person.nom }}</td>
+            <td class="align-middle text-capitalize">{{ person.type }}</td>
+            <td class="align-middle ">
+              <!-- <a class="btn text-muted" (click)="editPerson( person.id )" title="Edit"><fa-icon icon="pen" size="lg"></fa-icon></a> -->
+              <a class="btn text-muted" (click)="editPerson( person.id )" title="Edit"><fa-icon icon="pen"[fixedWidth]="true" ></fa-icon></a>
+              <!-- &nbsp; -->
+              <!-- <a class="btn text-danger" (click)="openDeletePersonModal(deletePersonModal, person.id)" title="Delete"><fa-icon icon="times" size="2x"></fa-icon></a> -->
+              <a class="btn text-danger" (click)="openDeletePersonModal(deletePersonModal, person.id)" title="Delete"><fa-icon icon="times" size="lg"></fa-icon></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row justify-content-between mx-2 mb-3">
+        <a class="btn text-dark"  [routerLink]="['/personneForm']" title="Add a  new Person"><fa-icon icon="plus" size="lg"></fa-icon></a>
+        <a class="btn btn-danger text-light"  (click)="openResetListModal(resetListModal)" title="Reset Person List"><fa-icon icon="power-off" size="lg"></fa-icon></a>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">Form Dev Tools</h5>
+          <p class="card-text"></p>
+        </div>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <!-- <p>person :  {{person | json}}</p> -->
+            <div>
+              <span class="font-weight-bold">monitoring :</span>
+            </div>
+            <div>
+              <span class="ml-2 font-weight-bold">Filter</span> :
+            </div>
+            <div>
+              <span class="ml-4 font-weight-bold">value</span> : {{filter.value}}
+            </div>
+            <div>
+              <span class="ml-4 font-weight-bold">status</span> : {{filter.status}}
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div>
+              <span class="font-weight-bold">spy :</span>
+            </div>
+            <div>
+              <span class="ml-2 font-weight-bold">Filter</span> : {{spy_filter.className}}
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <ng-template #deletePersonModal let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Delete Person</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('deletePerson')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Please confirm Delete Request.
+        </div>
+        <div class="modal-footer">
+          <a class="btn text-danger" ngbAutofocus (click)="modal.close()" title="Confirm Deletion"><fa-icon icon="times" size="2x"></fa-icon></a>
+        </div>
+      </ng-template>
+
+      <ng-template #resetListModal let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Reset Person List</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('deletePerson')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Please confirm Reset Request.
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-danger text-light" ngbAutofocus (click)="modal.close()" title="Confirm Reset Person List"><fa-icon icon="power-off" size="lg"></fa-icon></a>
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+</div>
+

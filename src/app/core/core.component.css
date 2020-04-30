@@ -1,0 +1,4 @@
+/* following not herited to child components, unfortunately */
+/* button, button:hover, button:visited, button:focus, a, a:hover,a:visited, a:focus {
+  text-decoration:none;
+} */
