@@ -9,8 +9,6 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 })
 export class CoreComponent implements OnInit {
 
-  public title: string = 'Angular Bootstrap Sandbox';
-
   constructor() { }
 
   ngOnInit(): void {

@@ -38,7 +38,7 @@
 
           <div class="row justify-content-between mx-2 mb-3">
             <div>
-              <button class="btn text-success" (click)="update()" type=submit [disabled]=!personForm.valid [title]="personId ? 'Update a Person' : 'Add a Person'">
+              <button [class]="personForm.valid ? 'btn text-success' : 'btn text-muted'" (click)="update()" type=submit [disabled]=!personForm.valid [title]="personId ? 'Update a Person' : 'Add a Person'">
                 <fa-icon [icon]="personId ? 'sign-in-alt' : 'plus'" rotate="90" size="2x"></fa-icon>
               </button>
               <a class="btn text-muted" (click)="monitoringHeadsUp = !monitoringHeadsUp" title="Form Dev Tools"
