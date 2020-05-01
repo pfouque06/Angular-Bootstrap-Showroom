@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public title: string = 'Angular Bootstrap Sandbox';
+  public title: string = 'Angular Bootstrap Showroom';
 }
