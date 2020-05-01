@@ -25,6 +25,9 @@ export class PersonFormComponent implements OnInit {
   public type: string;
   public submitted: boolean = false;
 
+  // dev monitoring
+  public monitoringHeadsUp = false;
+
   constructor(private personService: PersonService,  private route: ActivatedRoute) {
     this.personTypes = Person.types;
   }

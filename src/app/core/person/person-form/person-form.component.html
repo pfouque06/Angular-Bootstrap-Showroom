@@ -36,11 +36,16 @@
             </select>
           </div>
 
-          <div class="row mx-1 justify-content-between">
-            <div><button class="btn text-dark" (click)="update()" type=submit [disabled]=!personForm.valid [title]="personId ? 'Update a Person' : 'Add a Person'">
-              <!-- {{ personId ? 'Update' : 'Add' }} -->
-              <fa-icon [icon]="personId ? 'sign-in-alt' : 'plus'" rotate="90" size="2x"></fa-icon>
-            </button></div>
+          <div class="row justify-content-between mx-2 mb-3">
+            <div>
+              <button class="btn text-success" (click)="update()" type=submit [disabled]=!personForm.valid [title]="personId ? 'Update a Person' : 'Add a Person'">
+                <fa-icon [icon]="personId ? 'sign-in-alt' : 'plus'" rotate="90" size="2x"></fa-icon>
+              </button>
+              <a class="btn text-muted" (click)="monitoringHeadsUp = !monitoringHeadsUp" title="Form Dev Tools"
+                [attr.aria-expanded]="monitoringHeadsUp" aria-controls="monitorCard">
+                <fa-icon [icon]="monitoringHeadsUp ? 'eye-slash' : 'eye'" size="lg"></fa-icon>
+              </a>
+            </div>
             <div>
               <a class="btn text-muted" (click)="reset(); personForm.reset()" title="Clean Form"><fa-icon icon="eraser" size="lg"></fa-icon></a>&nbsp;&nbsp;
               <a class="btn text-dark" [routerLink]="['/personneList']"title="Person List"><fa-icon icon="list" size="2x"></fa-icon></a>
@@ -49,34 +54,38 @@
         </form>
         <br>
 
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title font-weight-bold">Form Dev Tools</h5>
-            <p class="card-text"></p>
+        <div id="monitorCard" [ngbCollapse]="!monitoringHeadsUp">
+          <div class="card">
+            <!-- <div class="card-body">
+              <h5 class="card-title font-weight-bold">Form Dev Tools</h5>
+              <p class="card-text"></p>
+            </div> -->
+
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <!-- <p>person :  {{person | json}}</p> -->
+                <span class="font-weight-bold">monitoring :</span> {{diagnostic}}
+              </li>
+
+              <li class="list-group-item">
+                <div>
+                  <span class="font-weight-bold">spy :</span>
+                </div>
+                <div>
+                  <span class="ml-2 font-weight-bold">Firstname</span> : {{spy_prenom.className}}
+                </div>
+                <div>
+                  <span class="ml-2 font-weight-bold">Lastname</span> : {{spy_nom.className}}
+                </div>
+                <div>
+                  <span class="ml-2 font-weight-bold">Type</span> : {{spy_type.className}}
+                </div>
+              </li>
+            </ul>
           </div>
-
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <!-- <p>person :  {{person | json}}</p> -->
-              <span class="font-weight-bold">monitoring :</span> {{diagnostic}}
-            </li>
-
-            <li class="list-group-item">
-              <div>
-                <span class="font-weight-bold">spy :</span>
-              </div>
-              <div>
-                <span class="ml-2 font-weight-bold">Firstname</span> : {{spy_prenom.className}}
-              </div>
-              <div>
-                <span class="ml-2 font-weight-bold">Lastname</span> : {{spy_nom.className}}
-              </div>
-              <div>
-                <span class="ml-2 font-weight-bold">Type</span> : {{spy_type.className}}
-              </div>
-            </li>
-          </ul>
         </div>
+
+
       </div>
     </div>
 
@@ -92,26 +101,26 @@
 
         <table class="table table-sm">
           <thead class="">
-            <tr>
-              <th scope="col"><fa-icon icon="id-card" size="lg"></fa-icon></th>
+            <tr class="d-flex">
+              <th class="col-1" scope="col"><fa-icon icon="id-card" size="lg"></fa-icon></th>
               <!-- <th scope="col">Id</th> -->
-              <th scope="col">Firstname</th>
-              <th scope="col">Lastname</th>
-              <th scope="col">Type</th>
-              <th scope="col"></th>
+              <th class="col-3" scope="col">Firstname</th>
+              <th class="col-3" scope="col">Lastname</th>
+              <th class="col-3" scope="col">Type</th>
+              <th class="col-2" scope="col"></th>
             </tr>
           </thead>
           <!-- <tbody class="border "> -->
             <tbody class=" ">
               <!-- <tr *ngFor="let person of personPages; index as i"> -->
-              <tr>
+              <tr class="d-flex">
                 <!-- <th scope="row">{{ i + 1 }}</th> -->
                 <!-- <td>{{ person.id | number }}</td> -->
-                <td class="align-middle pl-2 text-left font-weight-bold">{{ person.id | number }}</td>
-                <td class="align-middle text-capitalize">{{ person.prenom }}</td>
-                <td class="align-middle text-capitalize">{{ person.nom }}</td>
-                <td class="align-middle text-capitalize">{{ person.type }}</td>
-                <td class="align-middle "></td>
+                <td class="col-1 align-middle pl-2 text-left font-weight-bold">{{ person.id | number }}</td>
+                <td class="col-3 align-middle text-capitalize">{{ person.prenom }}</td>
+                <td class="col-3 align-middle text-capitalize">{{ person.nom }}</td>
+                <td class="col-3 align-middle text-capitalize">{{ person.type }}</td>
+                <td class="col-2 align-middle "></td>
               </tr>
             </tbody>
           </table>
