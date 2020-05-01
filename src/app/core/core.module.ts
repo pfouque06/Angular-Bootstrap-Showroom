@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { SandboxComponent } from './sandbox/sandbox.component';
 import { ModalComponent } from './modal/modal.component';
 import { YaFormComponent } from './ya-form/ya-form.component';
-import { PersonListComponent } from './person/person-list/person-list.component';
+import { PersonListComponent, SortableHeader } from './person/person-list/person-list.component';
 import { PersonFormComponent } from './person/person-form/person-form.component';
 
 
@@ -22,7 +22,8 @@ import { PersonFormComponent } from './person/person-form/person-form.component'
     ModalComponent,
     YaFormComponent,
     PersonListComponent,
-    PersonFormComponent
+    PersonFormComponent,
+    SortableHeader,
   ],
   imports: [
     CommonModule,
@@ -32,6 +33,8 @@ import { PersonFormComponent } from './person/person-form/person-form.component'
     FormsModule,
     ReactiveFormsModule,
   ],
+  exports: [SortableHeader],
   providers: [DecimalPipe],
+  bootstrap: [SortableHeader]
 })
 export class CoreModule { }

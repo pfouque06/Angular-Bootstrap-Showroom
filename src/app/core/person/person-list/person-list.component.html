@@ -47,12 +47,12 @@
       <!-- <div class="row justify-content-end p-2"> -->
         <!-- <div class="d-flex p-2"> -->
       <div class="d-flex p-2">
-        <div class="p-2">
+        <div class="p-2  align-middle">
           <ngb-pagination [collectionSize]="filteredPersons.length" [(page)]="page" [pageSize]="pageSize">
           </ngb-pagination>
         </div>
 
-        <div class="p-2">
+        <div class="p-2  align-middle">
           <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
             <option [ngValue]="5">5 items per page</option>
             <option [ngValue]="10">10 items per page</option>
@@ -61,35 +61,45 @@
           </select>
         </div>
 
-        <div class="form-group form-inline ml-auto p-2">
+        <div class="p-2  align-middle">
+          showing {{ filteredPersons.length == 0 ?  0 : 1 + (page -1) * pageSize }}
+          to {{ page * pageSize > filteredPersons.length ? filteredPersons.length : page * pageSize }} items
+          of {{filteredPersons.length }}
+        </div>
+
+        <div class="align-middle form-group form-inline ml-auto p-2">
           <!-- <input class="form-control ml-2" type="text" /> -->
           <label for="filter"><fa-icon icon="filter" size="lg"></fa-icon></label>&nbsp;&nbsp;
           <input id="filter" class="form-control" type="text" [formControl]="filter" #spy_filter>
         </div>
       </div>
 
-      <table class="table table-sm">
+      <table class="table table-sm table-hover">
         <thead class="">
-          <tr>
-            <th scope="col"><fa-icon icon="id-card" size="lg"></fa-icon></th>
-            <!-- <th scope="col">Id</th> -->
-            <th scope="col">Firstname</th>
-            <th scope="col">Lastname</th>
-            <th scope="col">Type</th>
-            <th scope="col">Operations</th>
+          <tr class="d-flex">
+            <th class="col-1" scope="col align-middle"><fa-icon icon="id-card" size="lg"></fa-icon></th>
+            <th class="col-3" scope="col align-middle" sortable="prenom" (sort)="onSort($event)">
+              Firstname<fa-icon [icon]="headerIcons.get('prenom')" [fixedWidth]="true" ></fa-icon>
+            </th>
+            <th class="col-3" scope="col align-middle" sortable="nom" (sort)="onSort($event)">
+              Lastname<fa-icon [icon]="headerIcons.get('nom')" [fixedWidth]="true" ></fa-icon>
+            </th>
+            <th class="col-3" scope="col align-middle" sortable="type" (sort)="onSort($event)">
+              Type<fa-icon [icon]="headerIcons.get('type')" [fixedWidth]="true" ></fa-icon>
+            </th>
+            <th class="col-2" scope="col">Operations</th>
           </tr>
         </thead>
         <!-- <tbody class="border "> -->
         <tbody class=" ">
           <!-- <tr *ngFor="let person of personPages; index as i"> -->
-          <tr *ngFor="let person of filteredPersonPages; index as i">
+          <tr class="d-flex" *ngFor="let person of filteredPersonPages; index as i">
             <!-- <th scope="row">{{ i + 1 }}</th> -->
-            <!-- <td>{{ person.id | number }}</td> -->
-            <td class="align-middle pl-2 text-left font-weight-bold">{{ person.id | number }}</td>
-            <td class="align-middle text-capitalize">{{ person.prenom }}</td>
-            <td class="align-middle text-capitalize">{{ person.nom }}</td>
-            <td class="align-middle text-capitalize">{{ person.type }}</td>
-            <td class="align-middle ">
+            <td class="col-1 align-middle pl-2 text-left font-weight-bold">{{ person.id | number }}</td>
+            <td class="col-3 align-middle text-capitalize">{{ person.prenom }}</td>
+            <td class="col-3 align-middle text-capitalize">{{ person.nom }}</td>
+            <td class="col-3 align-middle text-capitalize">{{ person.type }}</td>
+            <td class="col-2 align-middle ">
               <!-- <a class="btn text-muted" (click)="editPerson( person.id )" title="Edit"><fa-icon icon="pen" size="lg"></fa-icon></a> -->
               <a class="btn text-muted" (click)="editPerson( person.id )" title="Edit"><fa-icon icon="pen"[fixedWidth]="true" ></fa-icon></a>
               <!-- &nbsp; -->
@@ -101,42 +111,52 @@
       </table>
 
       <div class="row justify-content-between mx-2 mb-3">
-        <a class="btn text-dark"  [routerLink]="['/personneForm']" title="Add a  new Person"><fa-icon icon="plus" size="lg"></fa-icon></a>
-        <a class="btn btn-danger text-light"  (click)="openResetListModal(resetListModal)" title="Reset Person List"><fa-icon icon="power-off" size="lg"></fa-icon></a>
+        <div>
+          <a class="btn text-dark"  [routerLink]="['/personneForm']" title="Add a  new Person"><fa-icon icon="plus" size="2x"></fa-icon></a>
+          <a class="btn text-muted" (click)="monitoringHeadsUp = !monitoringHeadsUp" title="Form Dev Tools"
+            [attr.aria-expanded]="monitoringHeadsUp" aria-controls="monitorCard">
+            <fa-icon [icon]="monitoringHeadsUp ? 'eye-slash' : 'eye'" size="lg"></fa-icon>
+          </a>
+        </div>
+        <div class="div">
+          <a class="btn btn-danger text-light"  (click)="openResetListModal(resetListModal)" title="Reset Person List"><fa-icon icon="power-off" size="lg"></fa-icon></a>
+        </div>
       </div>
 
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title font-weight-bold">Form Dev Tools</h5>
-          <p class="card-text"></p>
+      <div id="monitorCard" [ngbCollapse]="!monitoringHeadsUp">
+        <div class="card">
+          <!-- <div class="card-body">
+            <h5 class="card-title font-weight-bold">Form Dev Tools</h5>
+            <p class="card-text"></p>
+          </div> -->
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <!-- <p>person :  {{person | json}}</p> -->
+              <div>
+                <span class="font-weight-bold">monitoring :</span>
+              </div>
+              <div>
+                <span class="ml-2 font-weight-bold">Filter</span> :
+              </div>
+              <div>
+                <span class="ml-4 font-weight-bold">value</span> : {{filter.value}}
+              </div>
+              <div>
+                <span class="ml-4 font-weight-bold">status</span> : {{filter.status}}
+              </div>
+            </li>
+
+            <li class="list-group-item">
+              <div>
+                <span class="font-weight-bold">spy :</span>
+              </div>
+              <div>
+                <span class="ml-2 font-weight-bold">Filter</span> : {{spy_filter.className}}
+              </div>
+            </li>
+          </ul>
         </div>
-
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <!-- <p>person :  {{person | json}}</p> -->
-            <div>
-              <span class="font-weight-bold">monitoring :</span>
-            </div>
-            <div>
-              <span class="ml-2 font-weight-bold">Filter</span> :
-            </div>
-            <div>
-              <span class="ml-4 font-weight-bold">value</span> : {{filter.value}}
-            </div>
-            <div>
-              <span class="ml-4 font-weight-bold">status</span> : {{filter.status}}
-            </div>
-          </li>
-
-          <li class="list-group-item">
-            <div>
-              <span class="font-weight-bold">spy :</span>
-            </div>
-            <div>
-              <span class="ml-2 font-weight-bold">Filter</span> : {{spy_filter.className}}
-            </div>
-          </li>
-        </ul>
       </div>
 
       <ng-template #deletePersonModal let-modal>
