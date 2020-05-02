@@ -31,8 +31,9 @@
 
           <div class="form-group">
             <label for="type">Type</label>
-            <select id="type"class="form-control" name="power" [(ngModel)]="person.type"  #spy_type>
+            <select id="type"class="form-control" name="type" [(ngModel)]="person.type" required #alert_type="ngModel" #spy_type>
               <option *ngFor="let type of personTypes" [value]="type">{{type}}</option>
+              <div [hidden]="alert_type.valid || alert_type.pristine" class="alert alert-danger">La sélection Type est requise</div>
             </select>
           </div>
 
