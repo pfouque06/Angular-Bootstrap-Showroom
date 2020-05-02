@@ -44,15 +44,14 @@
       </div>
       <hr> -->
 
-      <!-- <div class="row justify-content-end p-2"> -->
-        <!-- <div class="d-flex p-2"> -->
-      <div class="d-flex p-2">
-        <div class="p-2  align-middle">
-          <ngb-pagination [collectionSize]="filteredPersons.length" [(page)]="page" [pageSize]="pageSize">
-          </ngb-pagination>
+      <div class="d-flex">
+        <div class="align-middle pr-2">
+          <ngb-pagination [collectionSize]="filteredPersons.length"
+            [(page)]="page" [pageSize]="pageSize"
+            [maxSize]="4" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
         </div>
 
-        <div class="p-2  align-middle">
+        <div class="align-middle">
           <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
             <option [ngValue]="5">5 items per page</option>
             <option [ngValue]="10">10 items per page</option>
@@ -61,10 +60,9 @@
           </select>
         </div>
 
-        <div class="align-middle form-group form-inline ml-auto p-2">
-          <!-- <input class="form-control ml-2" type="text" /> -->
-          <label for="filter"><fa-icon icon="filter" size="lg"></fa-icon></label>&nbsp;&nbsp;
-          <input id="filter" class="form-control" type="text" [formControl]="filter" #spy_filter>
+        <div class="align-middle ml-md-auto form-group form-inline">
+          <label for="filter"><fa-icon icon="filter" size="lg"></fa-icon></label>
+          <input id="filter" class="form-control ml-2" type="text" [formControl]="filter" #spy_filter>
         </div>
       </div>
 
@@ -89,16 +87,16 @@
           <!-- <tr *ngFor="let person of personPages; index as i"> -->
           <tr class="d-flex" *ngFor="let person of filteredPersonPages; index as i">
             <!-- <th scope="row">{{ i + 1 }}</th> -->
-            <td class="col-1 align-middle pl-2 text-left font-weight-bold">{{ person.id | number }}</td>
-            <td class="col-3 align-middle text-capitalize">{{ person.prenom }}</td>
-            <td class="col-3 align-middle text-capitalize">{{ person.nom }}</td>
-            <td class="col-3 align-middle text-capitalize">{{ person.type }}</td>
-            <td class="col-2 align-middle text-right">
+            <td class="col-1 align-middle pt-2 pl-2 text-left font-weight-bold">{{ person.id | number }}</td>
+            <td class="col-3 align-middle pt-2 text-capitalize">{{ person.prenom }}</td>
+            <td class="col-3 align-middle pt-2 text-capitalize">{{ person.nom }}</td>
+            <td class="col-3 align-middle pt-2 text-capitalize">{{ person.type }}</td>
+            <td class="col-2 align-top text-right">
               <!-- <a class="btn text-muted" (click)="editPerson( person.id )" title="Edit"><fa-icon icon="pen" size="lg"></fa-icon></a> -->
-              <a class="btn text-muted" (click)="editPerson( person.id )" title="Edit"><fa-icon icon="pen"[fixedWidth]="true" ></fa-icon></a>
+              <a class="btn btn-sm text-muted" (click)="editPerson( person.id )" title="Edit"><fa-icon icon="pen"[fixedWidth]="true" ></fa-icon></a>
               <!-- &nbsp; -->
               <!-- <a class="btn text-danger" (click)="openDeletePersonModal(deletePersonModal, person.id)" title="Delete"><fa-icon icon="times" size="2x"></fa-icon></a> -->
-              <a class="btn text-danger" (click)="openDeletePersonModal(deletePersonModal, person.id)" title="Delete"><fa-icon icon="times" size="lg"></fa-icon></a>
+              <a class="btn btn-sm text-danger" (click)="openDeletePersonModal(deletePersonModal, person.id)" title="Delete"><fa-icon icon="times" size="lg"></fa-icon></a>
             </td>
           </tr>
         </tbody>
