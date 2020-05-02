@@ -61,12 +61,6 @@
           </select>
         </div>
 
-        <div class="p-2  align-middle">
-          showing {{ filteredPersons.length == 0 ?  0 : 1 + (page -1) * pageSize }}
-          to {{ page * pageSize > filteredPersons.length ? filteredPersons.length : page * pageSize }} items
-          of {{filteredPersons.length }}
-        </div>
-
         <div class="align-middle form-group form-inline ml-auto p-2">
           <!-- <input class="form-control ml-2" type="text" /> -->
           <label for="filter"><fa-icon icon="filter" size="lg"></fa-icon></label>&nbsp;&nbsp;
@@ -87,7 +81,7 @@
             <th class="col-3" scope="col align-middle" sortable="type" (sort)="onSort($event)">
               Type<fa-icon [icon]="headerIcons.get('type')" [fixedWidth]="true" ></fa-icon>
             </th>
-            <th class="col-2" scope="col">Operations</th>
+            <th class="col-2 align-middle text-right" scope="col">Operations</th>
           </tr>
         </thead>
         <!-- <tbody class="border "> -->
@@ -99,7 +93,7 @@
             <td class="col-3 align-middle text-capitalize">{{ person.prenom }}</td>
             <td class="col-3 align-middle text-capitalize">{{ person.nom }}</td>
             <td class="col-3 align-middle text-capitalize">{{ person.type }}</td>
-            <td class="col-2 align-middle ">
+            <td class="col-2 align-middle text-right">
               <!-- <a class="btn text-muted" (click)="editPerson( person.id )" title="Edit"><fa-icon icon="pen" size="lg"></fa-icon></a> -->
               <a class="btn text-muted" (click)="editPerson( person.id )" title="Edit"><fa-icon icon="pen"[fixedWidth]="true" ></fa-icon></a>
               <!-- &nbsp; -->
@@ -111,15 +105,18 @@
       </table>
 
       <div class="row justify-content-between mx-2 mb-3">
-        <div>
-          <a class="btn text-dark"  [routerLink]="['/personneForm']" title="Add a  new Person"><fa-icon icon="plus" size="2x"></fa-icon></a>
-          <a class="btn text-muted" (click)="monitoringHeadsUp = !monitoringHeadsUp" title="Form Dev Tools"
-            [attr.aria-expanded]="monitoringHeadsUp" aria-controls="monitorCard">
-            <fa-icon [icon]="monitoringHeadsUp ? 'eye-slash' : 'eye'" size="lg"></fa-icon>
-          </a>
+        <div class="align-middle p-2 text-muted">
+          showing {{ filteredPersons.length == 0 ?  0 : 1 + (page -1) * pageSize }}
+          to {{ page * pageSize > filteredPersons.length ? filteredPersons.length : page * pageSize }} items
+          of {{filteredPersons.length }}
         </div>
-        <div class="div">
-          <a class="btn btn-danger text-light"  (click)="openResetListModal(resetListModal)" title="Reset Person List"><fa-icon icon="power-off" size="lg"></fa-icon></a>
+        <div class="align-middle">
+          <a class="btn text-muted" (click)="monitoringHeadsUp = !monitoringHeadsUp" title="Form Dev Tools"
+          [attr.aria-expanded]="monitoringHeadsUp" aria-controls="monitorCard">
+          <fa-icon [icon]="monitoringHeadsUp ? 'eye-slash' : 'eye'" size="lg"></fa-icon>
+          </a>
+          <a class="btn text-dark"  [routerLink]="['/personneForm']" title="Add a  new Person"><fa-icon icon="plus" size="2x"></fa-icon></a>
+          <a class="btn btn-sm btn-danger text-light"  (click)="openResetListModal(resetListModal)" title="Reset Person List"><fa-icon icon="power-off" size="lg"></fa-icon></a>
         </div>
       </div>
 

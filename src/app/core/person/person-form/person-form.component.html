@@ -42,14 +42,14 @@
               <button [class]="personForm.valid ? 'btn text-success' : 'btn text-muted'" (click)="update()" type=submit [disabled]=!personForm.valid [title]="personId ? 'Update a Person' : 'Add a Person'">
                 <fa-icon [icon]="personId ? 'sign-in-alt' : 'plus'" rotate="90" size="2x"></fa-icon>
               </button>
+            </div>
+            <div>
               <a class="btn text-muted" (click)="monitoringHeadsUp = !monitoringHeadsUp" title="Form Dev Tools"
                 [attr.aria-expanded]="monitoringHeadsUp" aria-controls="monitorCard">
                 <fa-icon [icon]="monitoringHeadsUp ? 'eye-slash' : 'eye'" size="lg"></fa-icon>
               </a>
-            </div>
-            <div>
-              <a class="btn text-muted" (click)="reset(); personForm.reset()" title="Clean Form"><fa-icon icon="eraser" size="lg"></fa-icon></a>&nbsp;&nbsp;
               <a class="btn text-dark" [routerLink]="['/personneList']"title="Person List"><fa-icon icon="list" size="2x"></fa-icon></a>
+              <a class="btn text-danger" (click)="reset(); personForm.reset()" title="Clean Form"><fa-icon icon="eraser" size="lg"></fa-icon></a>&nbsp;&nbsp;
             </div>
           </div>
         </form>
