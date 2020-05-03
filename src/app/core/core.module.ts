@@ -10,6 +10,7 @@ import { ModalComponent } from './modal/modal.component';
 import { YaFormComponent } from './ya-form/ya-form.component';
 import { PersonListComponent, SortableHeader } from './person/person-list/person-list.component';
 import { PersonFormComponent } from './person/person-form/person-form.component';
+import { HowToComponent } from './how-to/how-to.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { PersonFormComponent } from './person/person-form/person-form.component'
     PersonListComponent,
     PersonFormComponent,
     SortableHeader,
+    HowToComponent,
   ],
   imports: [
     CommonModule,
