@@ -2,6 +2,7 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Person } from 'src/app/shared/class/person';
 import { PersonService } from 'src/app/shared/service/personne.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-person-form',
@@ -28,7 +29,7 @@ export class PersonFormComponent implements OnInit {
   // dev monitoring
   public monitoringHeadsUp = false;
 
-  constructor(private personService: PersonService,  private route: ActivatedRoute) {
+  constructor(private personService: PersonService,  private route: ActivatedRoute, private modalService: NgbModal) {
     this.personTypes = Person.types;
   }
 
@@ -51,7 +52,7 @@ export class PersonFormComponent implements OnInit {
     });
   }
 
-  // natural mehtod called on submit type button click action
+  // natural method called on submit type button click action
   // onSubmit() { this.submitted = true; }
 
   update(): void {
@@ -90,4 +91,25 @@ export class PersonFormComponent implements OnInit {
     return JSON.stringify(this.person);
   }
 
+  /////////////////////////////////////////////////////
+  // ADD PERSON Modal Operations
+  /////////////////////////////////////////////////////
+
+  openAddPersonModal(addPersonModal, person: Person) {
+
+    console.log("addPersonModal(person: " + Person.toString + ")");
+    this.modalService
+    .open(addPersonModal, { size: 'lg', centered: true, keyboard: true, scrollable: true , ariaLabelledBy: "modal-basic-title" })
+    .result.then(
+      (result) => {
+        // console.log("modal result: " + result)
+        console.log("addPersonModal confirmed.");
+        // add/update Person
+        this.update();
+      },
+      (reason) => {
+        console.log("addPersonModal aborted.");
+      }
+    );
+  }
 }

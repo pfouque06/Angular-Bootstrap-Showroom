@@ -39,17 +39,20 @@
 
           <div class="row justify-content-between mx-2 mb-3">
             <div>
-              <button [class]="personForm.valid ? 'btn text-success' : 'btn text-muted'" (click)="update()" type=submit [disabled]=!personForm.valid [title]="personId ? 'Update a Person' : 'Add a Person'">
+              <!-- <button [class]="personForm.valid ? 'btn text-success' : 'btn text-muted'" (click)="update()" type=submit [disabled]=!personForm.valid [title]="personId ? 'Update a Person' : 'Add a Person'">
+                <fa-icon [icon]="personId ? 'sign-in-alt' : 'plus'" rotate="90" size="2x"></fa-icon>
+              </button> -->
+              <button [class]="personForm.valid ? 'btn text-success' : 'btn text-muted'" (click)="openAddPersonModal(addPersonModal, person)" type=submit [disabled]=!personForm.valid [title]="personId ? 'Update a Person' : 'Add a Person'">
                 <fa-icon [icon]="personId ? 'sign-in-alt' : 'plus'" rotate="90" size="2x"></fa-icon>
               </button>
             </div>
             <div>
-              <a class="btn text-muted" (click)="monitoringHeadsUp = !monitoringHeadsUp" title="Form Dev Tools"
+              <a class="btn text-muted" (click)="monitoringHeadsUp = !monitoringHeadsUp" title="Form Monitoring & Spy Tools"
                 [attr.aria-expanded]="monitoringHeadsUp" aria-controls="monitorCard">
                 <fa-icon [icon]="monitoringHeadsUp ? 'eye-slash' : 'eye'" size="lg"></fa-icon>
               </a>
               <a class="btn text-dark" [routerLink]="['/personneList']"title="Person List"><fa-icon icon="list" size="2x"></fa-icon></a>
-              <a class="btn text-danger" (click)="reset(); personForm.reset()" title="Clean Form"><fa-icon icon="eraser" size="lg"></fa-icon></a>&nbsp;&nbsp;
+              <a class="btn text-danger" (click)="reset(); personForm.reset()" title="Clean Form"><fa-icon icon="eraser" size="lg"></fa-icon></a>
             </div>
           </div>
         </form>
@@ -57,29 +60,29 @@
 
         <div id="monitorCard" [ngbCollapse]="!monitoringHeadsUp">
           <div class="card">
-            <!-- <div class="card-body">
-              <h5 class="card-title font-weight-bold">Form Dev Tools</h5>
-              <p class="card-text"></p>
-            </div> -->
 
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
                 <!-- <p>person :  {{person | json}}</p> -->
-                <span class="font-weight-bold">monitoring :</span> {{diagnostic}}
+                <div class="row justify-content-left">
+                  <div class="col-2"><span class="font-weight-bold">Monitoring :</span></div>
+                  <div class="col-auto"> {{diagnostic}}</div>
+                </div>
               </li>
 
               <li class="list-group-item">
-                <div>
-                  <span class="font-weight-bold">spy :</span>
+                <div><span class="font-weight-bold">Spy :</span></div>
+                <div class="row justify-content-left">
+                  <div class="col-2"><span class="ml-2 font-weight-bold">Firstname</span></div>
+                  <div class="col-auto">{{spy_prenom.className}}</div>
                 </div>
-                <div>
-                  <span class="ml-2 font-weight-bold">Firstname</span> : {{spy_prenom.className}}
+                <div class="row justify-content-left">
+                  <div class="col-2"><span class="ml-2 font-weight-bold">Lastname</span></div>
+                  <div class="col-auto">{{spy_nom.className}}</div>
                 </div>
-                <div>
-                  <span class="ml-2 font-weight-bold">Lastname</span> : {{spy_nom.className}}
-                </div>
-                <div>
-                  <span class="ml-2 font-weight-bold">Type</span> : {{spy_type.className}}
+                <div class="row justify-content-left">
+                  <div class="col-2"><span class="ml-2 font-weight-bold">Type</span></div>
+                  <div class="col-auto">{{spy_type.className}}</div>
                 </div>
               </li>
             </ul>
@@ -98,44 +101,67 @@
       </ul>
       <div class="card-body">
 
-        <!-- The {{ personId ? 'updated' : 'new added' }}  person is : -->
-
-        <table class="table table-sm">
-          <thead class="">
-            <tr class="d-flex">
-              <th class="col-1" scope="col"><fa-icon icon="id-card" size="lg"></fa-icon></th>
-              <!-- <th scope="col">Id</th> -->
-              <th class="col-3" scope="col">Firstname</th>
-              <th class="col-3" scope="col">Lastname</th>
-              <th class="col-3" scope="col">Type</th>
-              <th class="col-2" scope="col"></th>
-            </tr>
-          </thead>
-          <!-- <tbody class="border "> -->
-            <tbody class=" ">
-              <!-- <tr *ngFor="let person of personPages; index as i"> -->
-              <tr class="d-flex">
-                <!-- <th scope="row">{{ i + 1 }}</th> -->
-                <!-- <td>{{ person.id | number }}</td> -->
-                <td class="col-1 align-middle pl-2 text-left font-weight-bold">{{ person.id | number }}</td>
-                <td class="col-3 align-middle text-capitalize">{{ person.prenom }}</td>
-                <td class="col-3 align-middle text-capitalize">{{ person.nom }}</td>
-                <td class="col-3 align-middle text-capitalize">{{ person.type }}</td>
-                <td class="col-2 align-middle "></td>
-              </tr>
-            </tbody>
-          </table>
+        <ng-container *ngTemplateOutlet="ngPersonTable;context: {$implicit: person}"></ng-container>
 
         <br>
         <div class="row justify-content-between mx-2">
           <a class="btn text-dark" (click)="new()" title="Add a  new Person"><fa-icon icon="plus" size="lg"></fa-icon></a>
-          <!-- <button class="btn btn-warning text-light"  (click)="reset()">Reset</button> -->
           <a class="btn text-dark" [routerLink]="['/personneList']"title="Person List"><fa-icon icon="list" size="2x"></fa-icon></a>
         </div>
-        <!-- <button class="btn btn-primary" (click)="new()">Nouveau formulaire</button> -->
         <br>
 
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #addPersonModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ personId ? 'Update' : 'Add' }} Person</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('addPerson')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>
+      The {{ personId ? 'updated' : 'new' }}  person is :
+    </p>
+
+    <ng-container *ngTemplateOutlet="ngPersonTable;context: {$implicit: person}"></ng-container>
+
+    <p>
+      Please confirm above Add Request.
+    </p>
+
+  </div>
+  <div class="modal-footer">
+    <a class="btn text-success" ngbAutofocus (click)="modal.close()" title="Confirm {{ personId ? 'Update' : 'Add' }} Request">
+      <fa-icon [icon]="personId ? 'sign-in-alt' : 'plus'" rotate="90" size="2x"></fa-icon>
+    </a>
+  </div>
+</ng-template>
+
+<ng-template #ngPersonTable let-ngPerson>
+  <table class="table table-sm">
+    <thead class="">
+      <tr class="d-flex">
+        <th class="col-1" scope="col"><fa-icon icon="id-card" size="lg"></fa-icon></th>
+        <th class="col-3" scope="col">Firstname</th>
+        <th class="col-3" scope="col">Lastname</th>
+        <th class="col-3" scope="col">Type</th>
+        <th class="col-2" scope="col"></th>
+      </tr>
+    </thead>
+    <tbody class=" ">
+      <!-- <tr class="d-flex" *ngFor="let person of ngPersons; index as i"></tr> -->
+        <!-- <th scope="row">{{ i + 1 }}</th> -->
+      <tr class="d-flex">
+        <td class="col-1 align-middle pl-2 text-left font-weight-bold">{{ ngPerson.id | number }}</td>
+        <td class="col-3 align-middle text-capitalize">{{ ngPerson.prenom }}</td>
+        <td class="col-3 align-middle text-capitalize">{{ ngPerson.nom }}</td>
+        <td class="col-3 align-middle text-capitalize">{{ ngPerson.type }}</td>
+        <td class="col-2 align-middle "></td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>

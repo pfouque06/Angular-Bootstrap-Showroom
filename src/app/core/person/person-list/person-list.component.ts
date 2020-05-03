@@ -52,21 +52,6 @@ export class SortableHeader {
     console.log("sortableHeader.rotate() => "+this.toPrint());
   }
 
-  getFaIcon() {
-    var FaIcon = '';
-    switch (this.direction) {
-      case 'asc' : {
-        FaIcon = 'sort-up';
-        break;
-      }
-      case 'desc' : {
-        FaIcon = 'sort-down';
-        break;
-      }
-    }
-    return FaIcon;
-  }
-
   toPrint() : string {
     var result = "["+this.sortable+", "+ ( this.direction ? this.direction : "none" ) +", "+this.faIcon+"]";
     return result;
@@ -106,13 +91,11 @@ export class PersonListComponent implements OnInit {
     console.log("PersonListComponent()");
     this.loadData()
     this.loadFilteredData(pipe);
-    // console.log(this.filteredPersons);
 
     // init sorting headerIcons
     let paArray: SortColumn[] = ['prenom', 'nom', 'type'];
     paArray.forEach(key => this.headerIcons.set(key, "sort"));
     this.headerIcons.forEach(function(value, key) { console.log("- [" + key + ", " + value + "]") });
-
     // let pAArray: SortColumn[] = GET A WAY TO USE KEYOF PERSON !!!
     // pAArray.forEach(key => this.headerIcons.set(key, "sort"));
     // this.headerIcons.forEach(function(value, key) { console.log("- [" + key + ", " + value + "]") });
@@ -189,27 +172,39 @@ export class PersonListComponent implements OnInit {
 
     // resetting other headers
     this.headers.forEach(header => {
-      if (header.sortable !== column) {
-        header.reset();
-      }
+      if (header.sortable !== column) { header.reset(); }
     });
 
-    // sorting countries
+    // sorting column
     if (direction === '' || column === '') {
+      // no sort directives provided => clean data table
       this.flushFilteredData();
     } else {
+      // sort process
       this.filteredPersons = this.filteredPersons.sort((a, b) => {
         const res = compare(`${a[column]}`, `${b[column]}`);
         return direction === 'asc' ? res : -res;
       });
     }
 
-    // update header icons types and display
+    // update header icons types
     this.headers.forEach(header => {
       this.headerIcons.set(header.sortable, header.faIcon);
       console.log("- " + header.toPrint());
     })
 
+  }
+
+    /////////////////////////////////////////////////////
+  // EDIT PERSON Operations
+  /////////////////////////////////////////////////////
+
+  editPerson(id: number) {
+    console.log("editPerson(id: " + id +")");
+    // navigate to simulation-start component to effectively launch the submitted goal
+    this.router.navigate(["/personneForm"], {
+      queryParams: { personId: id },
+    });
   }
 
   /////////////////////////////////////////////////////
@@ -237,18 +232,6 @@ export class PersonListComponent implements OnInit {
     console.log("delPerson(id: " + id +")");
     this.personService.delPerson(id);
     this.flushFilteredData();
-  }
-
-  /////////////////////////////////////////////////////
-  // EDIT PERSON Operations
-  /////////////////////////////////////////////////////
-
-  editPerson(id: number) {
-    console.log("editPerson(id: " + id +")");
-    // navigate to simulation-start component to effectively launch the submitted goal
-    this.router.navigate(["/personneForm"], {
-      queryParams: { personId: id },
-    });
   }
 
   /////////////////////////////////////////////////////

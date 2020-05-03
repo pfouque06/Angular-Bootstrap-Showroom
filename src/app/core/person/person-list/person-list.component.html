@@ -21,38 +21,14 @@
         </li>
       </ul> -->
 
-      <!-- <hr>
-        <div class="row order-first">
-          <div class="col-12">
-
-          <div class="row">
-            <div class="col-2 font-weight-bold">ID</div>
-            <div class="col-4 font-weight-bold ">Firstname</div>
-            <div class="col-4 font-weight-bold ">Lastname</div>
-            <div class="col-2 font-weight-bold "></div>
-          </div>
-
-          <div class="row  align-items-center" *ngFor="let person of persons">
-            <div class="col-2">{{ person.id }}</div>
-            <div class="col-4 text-capitalize">{{ person.prenom }}</div>
-            <div class="col-4 text-capitalize">{{ person.nom }}</div>
-            <div class="col-2">
-              <a class="txt-alert" (click)="delPerson( person.id )">Delete</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr> -->
-
-      <!-- <div class="row justify-content-end p-2"> -->
-        <!-- <div class="d-flex p-2"> -->
-      <div class="d-flex p-2">
-        <div class="p-2  align-middle">
-          <ngb-pagination [collectionSize]="filteredPersons.length" [(page)]="page" [pageSize]="pageSize">
-          </ngb-pagination>
+      <div class="d-flex">
+        <div class="align-middle pr-2">
+          <ngb-pagination [collectionSize]="filteredPersons.length"
+            [(page)]="page" [pageSize]="pageSize"
+            [maxSize]="4" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
         </div>
 
-        <div class="p-2  align-middle">
+        <div class="align-middle">
           <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
             <option [ngValue]="5">5 items per page</option>
             <option [ngValue]="10">10 items per page</option>
@@ -61,10 +37,9 @@
           </select>
         </div>
 
-        <div class="align-middle form-group form-inline ml-auto p-2">
-          <!-- <input class="form-control ml-2" type="text" /> -->
-          <label for="filter"><fa-icon icon="filter" size="lg"></fa-icon></label>&nbsp;&nbsp;
-          <input id="filter" class="form-control" type="text" [formControl]="filter" #spy_filter>
+        <div class="align-middle ml-md-auto form-group form-inline">
+          <label for="filter"><fa-icon icon="filter" size="lg"></fa-icon></label>
+          <input id="filter" class="form-control ml-2" type="text" [formControl]="filter" #spy_filter>
         </div>
       </div>
 
@@ -84,21 +59,16 @@
             <th class="col-2 align-middle text-right" scope="col">Operations</th>
           </tr>
         </thead>
-        <!-- <tbody class="border "> -->
         <tbody class=" ">
-          <!-- <tr *ngFor="let person of personPages; index as i"> -->
           <tr class="d-flex" *ngFor="let person of filteredPersonPages; index as i">
             <!-- <th scope="row">{{ i + 1 }}</th> -->
-            <td class="col-1 align-middle pl-2 text-left font-weight-bold">{{ person.id | number }}</td>
-            <td class="col-3 align-middle text-capitalize">{{ person.prenom }}</td>
-            <td class="col-3 align-middle text-capitalize">{{ person.nom }}</td>
-            <td class="col-3 align-middle text-capitalize">{{ person.type }}</td>
-            <td class="col-2 align-middle text-right">
-              <!-- <a class="btn text-muted" (click)="editPerson( person.id )" title="Edit"><fa-icon icon="pen" size="lg"></fa-icon></a> -->
-              <a class="btn text-muted" (click)="editPerson( person.id )" title="Edit"><fa-icon icon="pen"[fixedWidth]="true" ></fa-icon></a>
-              <!-- &nbsp; -->
-              <!-- <a class="btn text-danger" (click)="openDeletePersonModal(deletePersonModal, person.id)" title="Delete"><fa-icon icon="times" size="2x"></fa-icon></a> -->
-              <a class="btn text-danger" (click)="openDeletePersonModal(deletePersonModal, person.id)" title="Delete"><fa-icon icon="times" size="lg"></fa-icon></a>
+            <td class="col-1 align-middle pt-2 pl-2 text-left font-weight-bold">{{ person.id | number }}</td>
+            <td class="col-3 align-middle pt-2 text-capitalize">{{ person.prenom }}</td>
+            <td class="col-3 align-middle pt-2 text-capitalize">{{ person.nom }}</td>
+            <td class="col-3 align-middle pt-2 text-capitalize">{{ person.type }}</td>
+            <td class="col-2 align-top text-right">
+              <a class="btn btn-sm text-muted" (click)="editPerson( person.id )" title="Edit"><fa-icon icon="pen"[fixedWidth]="true" ></fa-icon></a>
+              <a class="btn btn-sm text-danger" (click)="openDeletePersonModal(deletePersonModal, person.id)" title="Delete"><fa-icon icon="times" size="lg"></fa-icon></a>
             </td>
           </tr>
         </tbody>
@@ -111,7 +81,7 @@
           of {{filteredPersons.length }}
         </div>
         <div class="align-middle">
-          <a class="btn text-muted" (click)="monitoringHeadsUp = !monitoringHeadsUp" title="Form Dev Tools"
+          <a class="btn text-muted" (click)="monitoringHeadsUp = !monitoringHeadsUp" title="Form Monitoring & Spy Tools"
           [attr.aria-expanded]="monitoringHeadsUp" aria-controls="monitorCard">
           <fa-icon [icon]="monitoringHeadsUp ? 'eye-slash' : 'eye'" size="lg"></fa-icon>
           </a>
@@ -130,26 +100,27 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <!-- <p>person :  {{person | json}}</p> -->
-              <div>
-                <span class="font-weight-bold">monitoring :</span>
+
+              <div class="row justify-content-left">
+                <div class="col-2"><span class="font-weight-bold">Monitoring :</span></div>
+                <div class="col-auto"></div>
               </div>
-              <div>
-                <span class="ml-2 font-weight-bold">Filter</span> :
+              <div><span class="ml-2 font-weight-bold">Filter</span></div>
+              <div class="row justify-content-left">
+                <div class="col-2"><span class="ml-4 font-weight-bold">value</span></div>
+                <div class="col-auto">{{filter.value}}</div>
               </div>
-              <div>
-                <span class="ml-4 font-weight-bold">value</span> : {{filter.value}}
-              </div>
-              <div>
-                <span class="ml-4 font-weight-bold">status</span> : {{filter.status}}
+              <div class="row justify-content-left">
+                <div class="col-2"><span class="ml-4 font-weight-bold">status</span></div>
+                <div class="col-auto">{{filter.status}}</div>
               </div>
             </li>
 
             <li class="list-group-item">
-              <div>
-                <span class="font-weight-bold">spy :</span>
-              </div>
-              <div>
-                <span class="ml-2 font-weight-bold">Filter</span> : {{spy_filter.className}}
+              <div><span class="font-weight-bold">Spy :</span></div>
+              <div class="row justify-content-left">
+                <div class="col-2"><span class="ml-2 font-weight-bold">Filter</span></div>
+                <div class="col-auto">{{spy_filter.className}}</div>
               </div>
             </li>
           </ul>
