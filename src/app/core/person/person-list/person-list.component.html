@@ -82,9 +82,7 @@
             <th class="col-2 align-middle text-right" scope="col">Operations</th>
           </tr>
         </thead>
-        <!-- <tbody class="border "> -->
         <tbody class=" ">
-          <!-- <tr *ngFor="let person of personPages; index as i"> -->
           <tr class="d-flex" *ngFor="let person of filteredPersonPages; index as i">
             <!-- <th scope="row">{{ i + 1 }}</th> -->
             <td class="col-1 align-middle pt-2 pl-2 text-left font-weight-bold">{{ person.id | number }}</td>
@@ -92,10 +90,7 @@
             <td class="col-3 align-middle pt-2 text-capitalize">{{ person.nom }}</td>
             <td class="col-3 align-middle pt-2 text-capitalize">{{ person.type }}</td>
             <td class="col-2 align-top text-right">
-              <!-- <a class="btn text-muted" (click)="editPerson( person.id )" title="Edit"><fa-icon icon="pen" size="lg"></fa-icon></a> -->
               <a class="btn btn-sm text-muted" (click)="editPerson( person.id )" title="Edit"><fa-icon icon="pen"[fixedWidth]="true" ></fa-icon></a>
-              <!-- &nbsp; -->
-              <!-- <a class="btn text-danger" (click)="openDeletePersonModal(deletePersonModal, person.id)" title="Delete"><fa-icon icon="times" size="2x"></fa-icon></a> -->
               <a class="btn btn-sm text-danger" (click)="openDeletePersonModal(deletePersonModal, person.id)" title="Delete"><fa-icon icon="times" size="lg"></fa-icon></a>
             </td>
           </tr>
@@ -109,7 +104,7 @@
           of {{filteredPersons.length }}
         </div>
         <div class="align-middle">
-          <a class="btn text-muted" (click)="monitoringHeadsUp = !monitoringHeadsUp" title="Form Dev Tools"
+          <a class="btn text-muted" (click)="monitoringHeadsUp = !monitoringHeadsUp" title="Form Monitoring & Spy Tools"
           [attr.aria-expanded]="monitoringHeadsUp" aria-controls="monitorCard">
           <fa-icon [icon]="monitoringHeadsUp ? 'eye-slash' : 'eye'" size="lg"></fa-icon>
           </a>
