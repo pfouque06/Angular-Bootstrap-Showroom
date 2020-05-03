@@ -1,0 +1,324 @@
+<div class="container">
+
+  <h3>HowTo</h3>
+  <h3>Building an Angular startup project boarding ng-nbootstrap and Fontawesome.</h3>
+
+  <h4>Prerequisites : nodejs, npm and angular/cli must already be installed on your OS. However, find hereafter quick steps for Debian.</h4>
+  <pre>
+    sudo apt install npm nodejs
+    npm -v
+    nodejs -v
+    npm install g @angular/cli
+    ng version
+  </pre>
+
+  <div>
+    <!-- -------------------------------------------- -->
+    <!-- CREATE PROJECT -->
+    <!-- -------------------------------------------- -->
+    <h4>Create new angular project</h4>
+    Use following CLI commands to startup the project :
+    <pre>
+      cd source_directory
+      ng new -S project_name
+      cd project_name
+    </pre>
+    If not needed, remove .git structure except .gitignore in case later use
+    <pre>
+      rm -rf .git
+    </pre>
+
+    Fix title in src/index.html file
+    <pre>
+      &lt;title>your title&lt;/title>
+    </pre>
+
+    Run and test Angular:
+    <pre>
+      ng serve [--port xxxx] [--open]
+    </pre>
+    If issue : check npm cache before clearing it and last flush npm install
+    <pre>
+      npm cache verify
+      npm cache clear
+      npm install
+    </pre>
+
+    Create foundation structures
+    <pre>
+      ng g m shared --module=app
+      ng g module core --module=app --routing --route="**"
+    </pre>
+
+    Check runtime !
+
+    <!-- -------------------------------------------- -->
+    <!-- IMPORT ng-bootstratp and fontawesome -->
+    <!-- -------------------------------------------- -->
+    <h4>ng-bootstratp and fontawesome modules</h4>
+    import bootstratp and fontawesome as follow :
+    <pre>
+      ng add @ng-bootstrap/ng-bootstrap
+      ng add @fortawesome/angular-fontawesome
+    </pre>
+
+    Update app.module.ts file :
+    <pre>
+      (..)
+      import {{ '{' }} FormsModule } from '@angular/forms';
+      import {{ '{' }} NgbModule } from '@ng-bootstrap/ng-bootstrap';
+      import {{ '{' }} FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+      import {{ '{' }} fas } from '@fortawesome/free-solid-svg-icons';
+      import {{ '{' }} far } from '@fortawesome/free-regular-svg-icons';
+      import {{ '{' }} fab } from '@fortawesome/free-brands-svg-icons';
+
+      @NgModule({{ '{' }}
+        (..)
+        imports: [
+        (..)
+        FormsModule,
+        NgbModule,
+        FontAwesomeModule,
+        (..)
+      export class AppModule {{ '{' }}
+        constructor(library: FaIconLibrary) {{ '{' }}
+          library.addIconPacks(fas, far, fab);
+      }
+      (..)
+    </pre>
+
+    Inject in app.component.ts
+    <pre>
+      export class AppComponent {{ '{' }}
+        public title: string = 'Angular Bootstrap Showroom';
+      }
+    </pre>
+
+    Update app.component.html file to test ng-bootstrat and Fontawesome:
+    <pre>
+      &lt;div class="container my-5">
+        &lt;hr>
+        &lt;h2>{{ '{' }}{{ '{' }} title }}&lt;/h2>
+        &lt;h4>Angular works ! &lt;/h4>
+        &lt;hr>
+        &lt;ngb-alert type='info' [dismissible]="false">
+          &lt;code>ng-bootstrat&lt;/code> seems to be installed and operational as well !!
+        &lt;/ngb-alert>
+        &lt;hr>
+        &lt;p>&lt;code>Fontawesome&lt;/code> works also !! &lt;fa-icon icon="check">&lt;/fa-icon> ...&lt;fa-icon icon="coffee">&lt;/fa-icon>&lt;/p>
+        &lt;hr>
+        &lt;router-outlet>&lt;/router-outlet>
+      &lt;/div>
+
+    </pre>
+
+    <!-- -------------------------------------------- -->
+    <!-- BUILD SHARED MODULE with TIERCE API -->
+    <!-- -------------------------------------------- -->
+    <h4>Move Tierce Modules to shared module</h4>
+
+    Update shared.module.ts file :
+    <pre>
+      import {{ '{' }} NgModule } from '@angular/core';
+      import {{ '{' }} CommonModule } from '@angular/common';
+      import {{ '{' }} FormsModule, ReactiveFormsModule } from '@angular/forms';
+      import {{ '{' }} NgbModule } from '@ng-bootstrap/ng-bootstrap';
+      import {{ '{' }} FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+      import {{ '{' }} fas } from '@fortawesome/free-solid-svg-icons';
+      import {{ '{' }} far } from '@fortawesome/free-regular-svg-icons';
+      import {{ '{' }} fab } from '@fortawesome/free-brands-svg-icons';
+
+      const SHARED_ENTITIES = []
+
+      const SHARED_MODULES = [
+        FormsModule,
+        ReactiveFormsModule,
+        NgbModule,
+        FontAwesomeModule,
+      ]
+
+      @NgModule({{ '{' }}
+        declarations: [
+          ...SHARED_ENTITIES
+        ],
+        imports: [
+          CommonModule,
+          ...SHARED_MODULES
+        ],
+        exports: [
+          ...SHARED_MODULES
+        ]
+      })
+      // export class SharedModule {{ '{' }} }
+      export class SharedModule {{ '{' }}
+        constructor(library: FaIconLibrary) {{ '{' }}
+          library.addIconPacks(fas, far, fab);
+        }
+      }
+    </pre>
+
+    Update app.module.ts : remove NgbModule, FontAwesomeModule imports and clean class AppModule section:
+    <pre>
+      export class AppModule {{ '{' }} }
+    </pre>
+
+    Update Core.module.ts : add sharemodule as import :
+    <pre>
+      import {{ '{' }} NgModule } from '@angular/core';
+      import {{ '{' }} CommonModule, DecimalPipe } from '@angular/common';
+      import {{ '{' }} SharedModule } from '../shared/shared.module';
+
+      import {{ '{' }} CoreRoutingModule } from './core-routing.module';
+
+      (..)
+
+        imports: [
+          CommonModule,
+          SharedModule,
+          CoreRoutingModule,
+        ],
+    </pre>
+
+    <!-- -------------------------------------------- -->
+    <!-- CREATE HEADER, FOOTER & HOME COMPONENTS-->
+    <!-- -------------------------------------------- -->
+    <h4>Create header, footer & home components</h4>
+    Add header & footer components :
+    <pre>
+      ng g c core/header --module=app --skipTests=true
+      ng g c core/footer --module=app --skipTests=true
+    </pre>
+
+    Create home component
+    <pre>
+      ng g c core/home --module=core --skipTests=true
+    </pre>
+
+    Update app.component.html:
+    <pre>
+      &lt;!-- &lt;app-header>&lt;/app-header> -->
+      &lt;app-header [title]="title">&lt;/app-header>
+      &lt;p>core works!&lt;/p>
+      &lt;router-outlet>&lt;/router-outlet>
+      &lt;app-footer>&lt;/app-footer>
+    </pre>
+
+    Inject in header.component.ts :
+    <pre>
+      @Input() public title: string;
+      public isNavbarCollapsed: boolean =true;
+    </pre>
+
+    Inject in header.component.css :
+    <pre>
+      /* .nofocus:focus {{ '{' }} outline: none;} */
+      .navbar-brand:focus {{ '{' }} outline: none;}
+      .nav-link:focus {{ '{' }} outline: none; }
+    </pre>
+
+    Inject in header.component.html :
+    <pre>
+      &lt;div class="container border-bottom">
+        &lt;nav class="navbar sticky-top navbar-expand-md navbar-light">
+          &lt;div class="navbar-header">
+            &lt;a class="navbar-brand" href="#">'{{ '{' }}'{{ '{' }} title }}&lt;/a>
+          &lt;/div>
+          &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#thisNavbar" '('click)="isNavbarCollapsed = !isNavbarCollapsed"
+            aria-controls="thisNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            &lt;span class="navbar-toggler-icon">&lt;/span>
+          &lt;/button>
+
+          &lt;!-- &lt;p class="navbar-text">Some text&lt;/p> -->
+
+          &lt;!-- collapse content -->
+          &lt;div '['ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="thisNavbar">
+            &lt;ul class="navbar-nav ml-auto">
+              &lt;li class="nav-item">
+                &lt;a routerLink="home" class="nav-link" routerLinkActive="active"  '('click)="isNavbarCollapsed = true">Home&lt;/a>
+              &lt;/li>
+              &lt;li class="nav-item">
+                &lt;a href="#" target="_blank" class="nav-link" routerLinkActive="active"  '('click)="isNavbarCollapsed = true">Contact&lt;/a>
+              &lt;/li>
+            &lt;/ul>
+          &lt;/div>
+        &lt;/nav>
+      &lt;/div>
+    </pre>
+
+    Update app-routing.module.ts
+    <pre>
+      const routes: Routes = [
+        {{ '{' }} path: '', component: HomeComponent },
+      ];
+    </pre>
+
+    Update core-routing.module.ts:
+    <pre>
+      const routes: Routes = [
+        {{ '{' }} path: '', redirectTo: 'home', pathMatch: 'full' },
+        {{ '{' }} path: 'home', component: HomeComponent },
+        {{ '{' }} path: '**', component: HomeComponent },
+      ];
+    </pre>
+
+    Check runtime !
+
+    <h4>Create other project components</h4>
+    <pre>
+      ng g c core/sandbox --module=core --skipTests=true
+      ng g c core/yaForm --module=core --skipTests=true
+      ng g c core/person/personForm --module=core --skipTests=true
+      ng g c core/person/personList --module=core --skipTests=true
+    </pre>
+
+    Update core-routing.module.ts:
+    <pre>
+      const routes: Routes = [
+        {{ '{' }} path: '', redirectTo: 'home', pathMatch: 'full' },
+        {{ '{' }} path: 'home', component: HomeComponent },
+        {{ '{' }} path: 'sandbox', component: SandboxComponent },
+        {{ '{' }} path: 'modal', component: ModalComponent },
+        {{ '{' }} path: 'yaForm', component: YaFormComponent },
+        {{ '{' }} path: 'personneList', component: PersonListComponent },
+        {{ '{' }} path: 'personneForm', component: PersonFormComponent },
+        {{ '{' }} path: '**', component: HomeComponent },
+        ];
+    </pre>
+
+      Update core/header :
+    <pre>
+      &lt;li class="nav-item">
+        &lt;a routerLink="sandbox" class="nav-link" routerLinkActive="active" '('click)="isNavbarCollapsed = true">Sandbox&lt;/a>
+      &lt;/li>
+      &lt;li class="nav-item dropdown" ngbDropdown>
+        &lt;a class="nav-link dropdown-toggle" ngbDropdownToggle id="personDropdown" role="button"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Persons
+        &lt;/a>
+        &lt;div class="dropdown-menu" ngbDropdownMenu aria-labelledby="personDropdown">
+          &lt;a class="dropdown-item" routerLink="personneList" '('click)="isNavbarCollapsed = true">List&lt;/a>
+          &lt;a class="dropdown-item" routerLink="personneForm" '('click)="isNavbarCollapsed = true">Form&lt;/a>
+          &lt;div class="dropdown-divider">&lt;/div>
+          &lt;a class="dropdown-item" routerLink="yaForm">Yet another Form&lt;/a>
+        &lt;/div>
+      &lt;/li>
+      &lt;li class="nav-item">
+        &lt;a routerLink="howTo" class="nav-link" routerLinkActive="active"  '('click)="isNavbarCollapsed = true">HowTo&lt;/a>
+      &lt;/li>
+    </pre>
+
+    <h4>Create needed shared entities</h4>
+    <pre>
+      ng g class shared/class/person
+      ng g interface shared/interface/person
+      ng g service shared/service/personne --skipTests=true
+    </pre>
+
+    Update shared module accordingly, code your application components...
+
+    And finallly check runtime !
+
+  </div>
+
+  <!-- <p>Please contact me if any questions.</p> -->
+</div>

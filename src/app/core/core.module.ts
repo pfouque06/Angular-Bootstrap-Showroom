@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 import { CoreRoutingModule } from './core-routing.module';
 import { CoreComponent } from './core.component';
@@ -12,6 +10,7 @@ import { ModalComponent } from './modal/modal.component';
 import { YaFormComponent } from './ya-form/ya-form.component';
 import { PersonListComponent, SortableHeader } from './person/person-list/person-list.component';
 import { PersonFormComponent } from './person/person-form/person-form.component';
+import { HowToComponent } from './how-to/how-to.component';
 
 
 @NgModule({
@@ -24,14 +23,12 @@ import { PersonFormComponent } from './person/person-form/person-form.component'
     PersonListComponent,
     PersonFormComponent,
     SortableHeader,
+    HowToComponent,
   ],
   imports: [
     CommonModule,
-    NgbModule,
-    FontAwesomeModule,
+    SharedModule,
     CoreRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
   ],
   exports: [SortableHeader],
   providers: [DecimalPipe],

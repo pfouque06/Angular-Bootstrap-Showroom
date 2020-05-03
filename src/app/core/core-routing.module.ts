@@ -7,6 +7,7 @@ import { ModalComponent } from './modal/modal.component';
 import { YaFormComponent } from './ya-form/ya-form.component';
 import { PersonListComponent } from './person/person-list/person-list.component';
 import { PersonFormComponent } from './person/person-form/person-form.component';
+import { HowToComponent } from './how-to/how-to.component';
 
 const routes: Routes = [
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'yaForm', component: YaFormComponent },
   { path: 'personneList', component: PersonListComponent },
   { path: 'personneForm', component: PersonFormComponent },
+  { path: 'howTo', component: HowToComponent },
   { path: '**', component: HomeComponent },
 
   // { path: 'core', component: CoreComponent,

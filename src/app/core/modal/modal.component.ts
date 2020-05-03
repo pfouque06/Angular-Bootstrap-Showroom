@@ -27,6 +27,7 @@ export class ModalComponent implements OnInit {
           this.closeResult = `Closed with: ${result}`;
         },
         (reason) => {
+          this.inputNgbDate = null;
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }
       );

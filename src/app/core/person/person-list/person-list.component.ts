@@ -93,10 +93,45 @@ export class PersonListComponent implements OnInit {
     this.loadFilteredData(pipe);
 
     // init sorting headerIcons
-    let paArray: SortColumn[] = ['prenom', 'nom', 'type'];
-    paArray.forEach(key => this.headerIcons.set(key, "sort"));
+    let sortedHeaders: SortColumn[] = ['prenom', 'nom', 'type'];
+    sortedHeaders.forEach(key => {
+      this.headerIcons.set(key, "sort");
+      // console.log("headerIcons[" + key + ", " + this.headerIcons.get(key) + "]")
+    });
     this.headerIcons.forEach(function(value, key) { console.log("- [" + key + ", " + value + "]") });
+
     // let pAArray: SortColumn[] = GET A WAY TO USE KEYOF PERSON !!!
+    // for (var property in Person) {
+    //   if (Person.hasOwnProperty(property)) { console.log("PersonOwn: " + property, ' ', Person[property]); }
+    //   else { console.log("Person: " + property, ' ', Person[property]); }
+    // };
+    // Object.entries(Person).forEach(property => {
+    //   console.log("Object.entries(Person): " + property);
+    // });
+    // Object.keys(Person).forEach(property => {
+    //   console.log("Object.keys(Person): " + property, ' ', Person[property]);
+    // });
+
+    // Object.getOwnPropertyNames(Person).forEach(property => {
+    //   if (property == "prototype") {
+    //     console.log("Object.getOwnPropertyNames(Person): " + property, ' ', Person[property]);
+    //     for (var prop in Person["prototype"]) {
+    //       console.log("Person[\"prototype\"]: " + prop.toString());
+    //     }
+    //     console.log("Person.constructor :"+ Person[property].constructor);
+    //     console.log("Person.constructor.tostring :"+ Person[property].constructor.toString);
+    //     // console.log("Person.constructor.length :"+ Person[property].constructor.length);
+    //     console.log("Person.constructor.name :"+ Person[property].constructor.name);
+    //     console.log("Person.constructor.prototype :"+ Person[property].constructor.prototype);
+    //     console.log("Person.constructor.prototype.toString :"+ Person[property].constructor.prototype.toString);
+    //     // console.log("Person.constructor.prototype[] :"+ Person[property].constructor.prototype.join('\n'));
+    //     for (var prop in Person[property].constructor.prototype) {
+    //       console.log("Person.constructor.prototype[] :"+ prop);
+    //     }
+    //   }
+    // });
+    // console.log();
+
     // pAArray.forEach(key => this.headerIcons.set(key, "sort"));
     // this.headerIcons.forEach(function(value, key) { console.log("- [" + key + ", " + value + "]") });
   }
