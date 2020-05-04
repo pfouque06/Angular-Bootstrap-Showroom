@@ -1,8 +1,10 @@
 <div class="container">
 
   <h3>HowTo</h3>
-  <h3>Building an Angular startup project boarding ng-nbootstrap and Fontawesome.</h3>
+  <br>
+  <h3>Building an Angular startup project boarding ng-Bootstrap and Fontawesome.</h3>
 
+  <br>
   <h4>Prerequisites : nodejs, npm and angular/cli must already be installed on your OS. However, find hereafter quick steps for Debian.</h4>
   <pre>
     sudo apt install npm nodejs
@@ -33,12 +35,12 @@
 
     Update title in src/index.html file (for windows/tab name and in src/app/app.component.ts (for applicatio usage)
     <pre>
-      &lt;title>your title&lt;/title>
+      &lt;title>«Your title»&lt;/title>
     </pre>
 
     <pre>
       export class AppComponent {{ '{' }}
-        public title: string = 'Angular Bootstrap Showroom';
+        public title: string = '«Your title»';
       }
     </pre>
 
@@ -57,10 +59,10 @@
     <p class="font-weight-bold">Check runtime !</p>
 
     <!-- -------------------------------------------- -->
-    <!-- IMPORT ng-bootstratp and fontawesome -->
+    <!-- IMPORT ng-Bootstratp and Fontawesome -->
     <!-- -------------------------------------------- -->
-    <h4>ng-bootstratp and fontawesome modules</h4>
-    import bootstratp and fontawesome as follow :
+    <h4>ng-Bootstratp and Fontawesome modules</h4>
+    import ng-Bootstratp and Fontawesome as follow :
     <pre>
       # stop ng runtime !!
       ng add @ng-bootstrap/ng-bootstrap
@@ -139,9 +141,9 @@
     <!-- -------------------------------------------- -->
     <!-- CREATE FOUNDATIONS : CORE & SHARED MODULES  -->
     <!-- -------------------------------------------- -->
-    <h4>Create foundation structures : Shared and Core modules</h4>
+    <h4>Create foundation structures : Shared & Core modules</h4>
 
-    Create foundation structures
+    Generate foundation structures
     <pre>
       ng g module shared --module=app
       ng g module core --module=app --routing --route="**"
@@ -225,13 +227,13 @@
     <!-- CREATE HEADER, FOOTER & HOME COMPONENTS-->
     <!-- -------------------------------------------- -->
     <h4>Create header, footer & home components</h4>
-    Add header & footer components :
+    Generate header & footer components :
     <pre>
       ng g c core/header --module=app --skipTests=true
       ng g c core/footer --module=app --skipTests=true
     </pre>
 
-    Create home component
+    Generate home component
     <pre>
       ng g c core/home --module=core --skipTests=true
     </pre>
@@ -265,15 +267,6 @@
         @Input() public title: string;
         public isNavbarCollapsed: boolean =true;
       (..)
-    </pre>
-
-    <p class="font-weight-bold">Check runtime ! You should get something like : </p>
-    <pre>
-      header works !
-
-      core works!
-
-      footer works!
     </pre>
 
     Inject in core/header/header.component.css :
@@ -393,13 +386,15 @@
     <p class="font-weight-bold">Check your new fancy navbar !</p>
 
     <h4>Create needed shared entities</h4>
+
+    Generate your needed classes, interfaces, services, etc... :
     <pre>
       ng g class shared/class/person
       ng g interface shared/interface/person
       ng g service shared/service/personne --skipTests=true
     </pre>
 
-    Update shared module accordingly, code your application components...
+    Update Shared module accordingly; code your application components...
 
     <p class="font-weight-bold">And finally check runtime !</p>
 
