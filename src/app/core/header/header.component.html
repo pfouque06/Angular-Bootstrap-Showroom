@@ -1,7 +1,6 @@
-<!-- <div class="container-fluid"> -->
-<div class="container border-bottom">
-  <!-- <nav class="navbar fixed-top navbar-expand-md navbar-light"> -->
-  <nav class="navbar sticky-top navbar-expand-md navbar-light">
+<nav class="navbar fixed-top navbar-expand-md navbar-light bg-white">
+
+  <div class="container border-bottom">
     <div class="navbar-header">
       <!-- <a class="navbar-brand" href="#">Angular Bootstrap Sandbox</a> -->
       <a class="navbar-brand" href="#">{{ title }}</a>
@@ -29,21 +28,22 @@
           <a class="nav-link dropdown-toggle" ngbDropdownToggle id="personDropdown" role="button"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Persons
-        </a>
-        <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="personDropdown">
-          <a class="dropdown-item" routerLink="personneList" (click)="isNavbarCollapsed = true">List</a>
-          <a class="dropdown-item" routerLink="personneForm" (click)="isNavbarCollapsed = true">Form</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="yaForm">Yet another Form</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a routerLink="howTo" class="nav-link" routerLinkActive="active"  (click)="isNavbarCollapsed = true">HowTo</a>
-      </li>
-      <li class="nav-item">
-        <a href="http://philippe.fouque.free.fr" target="_blank" class="nav-link" routerLinkActive="active"  (click)="isNavbarCollapsed = true">Contact</a>
-      </li>
-    </ul>
+          </a>
+          <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="personDropdown">
+            <a class="dropdown-item" routerLink="personneList" (click)="isNavbarCollapsed = true">List</a>
+            <a class="dropdown-item" routerLink="personneForm" (click)="isNavbarCollapsed = true">Form</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="yaForm">Yet another Form</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a routerLink="howTo" class="nav-link" routerLinkActive="active"  (click)="isNavbarCollapsed = true">HowTo</a>
+        </li>
+        <li class="nav-item">
+          <a href="http://philippe.fouque.free.fr" target="_blank" class="nav-link" routerLinkActive="active"  (click)="isNavbarCollapsed = true">Contact</a>
+        </li>
+      </ul>
+    </div>
   </div>
+
 </nav>
-</div>

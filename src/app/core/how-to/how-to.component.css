@@ -1,0 +1,10 @@
+.nav#navPills01 ::ng-deep > a {
+  /* background-color: red !important; */
+  color: grey !important;
+}
+.nav#navPills01 ::ng-deep > a:hover, a:visited, a:focus {
+  /* background-color: gray !important; */
+  /* border-color: gray !important; */
+  color:darkslategrey !important;
+  font-weight: bolder;
+}
