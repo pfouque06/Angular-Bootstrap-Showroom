@@ -26,7 +26,7 @@
 </div>
 
 <!-- <div class="fixed-bottom container ml-auto mb-3"> -->
-<div class="container fixed-bottom d-flex justify-content-end  mb-3">
+<div class="container fixed-bottom d-flex justify-content-end  mb-5">
   <a class="btn btn-sm btn-secondary text-light shadow-sm" (click)="navigateToFragment('/howTo','')"  title="Scroll up">
     <!-- <fa-icon icon="chevron-up" size="lg"></fa-icon> -->
     <fa-icon icon="angle-double-up" size="2x"></fa-icon>
@@ -39,10 +39,10 @@
   <h3>Build an Angular startup project boarding ng-Bootstrap and Fontawesome.</h3>
   <br>
 
-  <div class="row">
+  <div class="row pt-3">
     <!-- NAV -->
-    <div class="col-md-2">
-      <nav id="navPills01"  ngbNav #nav="ngbNav" class="nav-pills" orientation="vertical">
+    <div class="col-md-2 pt-5">
+      <nav id="navPills01"  ngbNav #nav="ngbNav" class="nav-pills sticky-top" orientation="vertical">
         <ng-container ngbNavItem>
           <!-- <a href="/howTo#page-install">Installation</a> -->
           <a (click)="navigateToFragment('/howTo','page-install')">Installation</a>
