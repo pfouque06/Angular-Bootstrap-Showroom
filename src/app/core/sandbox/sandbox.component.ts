@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal, ModalDismissReasons, NgbDate, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-sandbox',
@@ -8,37 +7,12 @@ import { NgbModal, ModalDismissReasons, NgbDate, NgbDateParserFormatter } from '
 })
 export class SandboxComponent implements OnInit {
 
-  public inputNgbDate: NgbDate;
-  public yourDate: Date;
-  public closeResult: string = "";
+  public basicNavActive: number = 1;
+  public PillsNavActive: string;
+  public rowNavActive: string = 'middle';
 
-  constructor(private modalService: NgbModal, private ngbDateParserFormatter: NgbDateParserFormatter) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-
-  open(content) {
-    this.modalService
-      .open(content, { scrollable: true , ariaLabelledBy: "modal-basic-title" })
-      .result.then(
-        (result) => {
-          this.yourDate = new Date(this.ngbDateParserFormatter.format(this.inputNgbDate));
-          this.closeResult = `Closed with: ${result}`;
-        },
-        (reason) => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
-    } else {
-      return `with: ${reason}`;
-    }
   }
 }
