@@ -8,3 +8,9 @@
   color:darkslategrey !important;
   font-weight: bolder;
 }
+
+.scrollbox {
+  position: relative;
+  /* height: 600px; */
+  overflow: auto;
+}

@@ -1,0 +1,136 @@
+<div class="container">
+
+  <p>Some nav box ...</p>
+
+  <div class="mb-3">
+    <ngb-accordion [closeOthers]="true" type="light" activeIds="static-4">
+      <ngb-panel id="nav-1">
+        <ng-template ngbPanelHeader let-opened="opened">
+          <div class="d-flex align-items-center justify-content-start">
+            <button ngbPanelToggle class="btn btn-link container-fluid text-left text-dark pl-0">
+              <h5 class="m-0">
+                <fa-icon [icon]="opened ? 'caret-down' : 'caret-right'" [fixedWidth]="true"></fa-icon>
+                <span [class]="opened ? 'text-dark' : 'text-muted'">Nav : NgbNav way ..</span>
+              </h5>
+            </button>
+          </div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <!-- test -->
+          <!-- <ng-container *ngTemplateOutlet="ngTestTemplate"></ng-container> -->
+          <ng-container *ngTemplateOutlet="ngNavSandbox"></ng-container>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+</div>
+
+
+<ng-template #ngNavSandbox>
+  <!-- ngNavSandbox -->
+  <!-- <ul class="list-group list-group-flush"> -->
+  <ul class="card-header">
+    <li class="list-group-item">
+      ng-Bootstrap Nav includes <code>NgbNav</code>, <code>NgbNavItem</code>, <code>NgbNavLink</code>, <code>NgbNavContent</code>
+      directives and the <code>NgbNavOutlet</code> component.
+    </li>
+  </ul>
+
+  <div class="card-body">
+    <div class="card p-3 mb-3">
+      <ul ngbNav id="nav01" #nav01="ngbNav" class="nav-tabs">
+        <li ngbNavItem>
+          <a ngbNavLink>First</a>
+          <ng-template ngbNavContent>First content</ng-template>
+        </li>
+        <li ngbNavItem>
+          <a ngbNavLink>Second</a>
+          <ng-template ngbNavContent>Second content</ng-template>
+        </li>
+      </ul>
+      <div [ngbNavOutlet]="nav01"></div>
+    </div>
+
+    <div class="card p-3 mb-3">
+      <nav ngbNav #nav02="ngbNav" class="nav-tabs">
+        <ng-container ngbNavItem>
+          <a ngbNavLink>Alpha</a>
+          <ng-template ngbNavContent>Alpha content</ng-template>
+        </ng-container>
+        <ng-container ngbNavItem>
+          <a ngbNavLink>Beta</a>
+          <ng-template ngbNavContent>Beta content</ng-template>
+        </ng-container>
+      </nav>
+      <div [ngbNavOutlet]="nav02"></div>
+    </div>
+
+    <div class="card p-3 mb-3">
+      <nav ngbNav #nav03="ngbNav" class="nav-tabs" [(activeId)]="basicNavActive">
+        <ng-container [ngbNavItem]="1">
+          <a ngbNavLink>One</a>
+          <ng-template ngbNavContent><p>1: Lorum ipsum.</p></ng-template>
+        </ng-container>
+        <ng-container [ngbNavItem]="2">
+          <a ngbNavLink>Two</a>
+          <ng-template ngbNavContent><p>2: Lorum ipsum.</p></ng-template>
+        </ng-container>
+        <ng-container [ngbNavItem]="3">
+          <a ngbNavLink>Three</a>
+          <ng-template ngbNavContent><p>3: Lorum ipsum.</p></ng-template>
+        </ng-container>
+      </nav>
+      <div [ngbNavOutlet]="nav03"></div>
+      <pre>Active: {{ basicNavActive }}</pre>
+    </div>
+
+    <div class="card p-3 mb-3">
+      <nav ngbNav #nav04="ngbNav" class="nav-pills" [(activeId)]="PillsNavActive">
+        <ng-container ngbNavItem domId="PilledNav1.domid">
+          <a ngbNavLink>One</a>
+          <ng-template ngbNavContent><p>One: Lorum ipsum.</p></ng-template>
+        </ng-container>
+        <ng-container ngbNavItem="PilledNav2.item">
+          <a ngbNavLink>Two</a>
+          <ng-template ngbNavContent><p>Three: Lorum ipsum.</p></ng-template>
+        </ng-container>
+        <ng-container ngbNavItem="PilledNav3.item" domId="PilledNav3.domid">
+          <a ngbNavLink>Three</a>
+          <ng-template ngbNavContent><p>Two: Lorum ipsum.</p></ng-template>
+        </ng-container>
+        <ng-container ngbNavItem>
+          <a ngbNavLink>Four</a>
+          <ng-template ngbNavContent><p>Four: Lorum ipsum.</p></ng-template>
+        </ng-container>
+      </nav>
+      <div [ngbNavOutlet]="nav04" class="mt-2"></div>
+      <pre>Active: {{ PillsNavActive }}</pre>
+    </div>
+
+    <div class="card p-3 mb-3">
+      <div class="row">
+        <div class="col-auto">
+          <nav ngbNav #nav05="ngbNav" [(activeId)]="rowNavActive" class="nav-tabs" orientation="vertical">
+            <ng-container ngbNavItem="top">
+              <a ngbNavLink>Top</a>
+              <ng-template ngbNavContent><p>Top: Lorum ipsum.</p></ng-template>
+            </ng-container>
+            <ng-container ngbNavItem="middle">
+              <a ngbNavLink>Middle</a>
+              <ng-template ngbNavContent><p>Middle: Lorum ipsum.</p></ng-template>
+            </ng-container>
+            <ng-container ngbNavItem="bottom">
+              <a ngbNavLink>Bottom</a>
+              <ng-template ngbNavContent><p>Bottom: Lorum ipsum.</p></ng-template>
+            </ng-container>
+          </nav>
+        </div>
+        <div class="col">
+          <div [ngbNavOutlet]="nav05" class="ml-4"></div>
+        </div>
+      </div>
+      <pre>Active: {{ rowNavActive }}</pre>
+    </div>
+  </div>
+
+</ng-template>

@@ -19,21 +19,26 @@
       <a ngbNavLink>...</a>
       <ng-template ngbNavContent><p>Or not be ...</p></ng-template>
     </ng-container>
+    <ng-container ngbNavItem>
+      <a ngbNavLink>... More</a>
+      <ng-template ngbNavContent><p>... to come ...</p></ng-template>
+    </ng-container>
   </nav>
   <div class="my-4">
     <div [ngbNavOutlet]="nav" class="mt-2"></div>
   </div>
 </div>
 
-<!-- <div class="fixed-bottom container ml-auto mb-3"> -->
-<div class="container fixed-bottom d-flex justify-content-end  mb-3">
-  <a class="btn btn-sm btn-secondary text-light shadow-sm" (click)="navigateToFragment('/howTo','')"  title="Scroll up">
+<!-- SCROLL UP BOTTOM BUTTON -->
+<div class="container fixed-bottom d-flex justify-content-end  mb-5">
+  <a class="btn btn-sm btn-secondary text-light shadow-lg" (click)="navigateToFragment('/howTo','')"  title="Scroll up">
     <!-- <fa-icon icon="chevron-up" size="lg"></fa-icon> -->
     <fa-icon icon="angle-double-up" size="2x"></fa-icon>
     <!-- <fa-icon icon="sign-in-alt" rotate="270" size="lg"></fa-icon> -->
   </a>
 </div>
 
+<!-- FOUNDATION BUILDER HOWTO -->
 <ng-template #ngFoundation>
 
   <h3>Build an Angular startup project boarding ng-Bootstrap and Fontawesome.</h3>
@@ -41,35 +46,43 @@
 
   <div class="row">
     <!-- NAV -->
-    <div class="col-md-2">
-      <nav id="navPills01"  ngbNav #nav="ngbNav" class="nav-pills" orientation="vertical">
-        <ng-container ngbNavItem>
-          <!-- <a href="/howTo#page-install">Installation</a> -->
-          <a (click)="navigateToFragment('/howTo','page-install')">Installation</a>
-        </ng-container>
-        <ng-container ngbNavItem>
-          <!-- <a href="/howTo#page-imports">Imports</a> -->
-          <a (click)="navigateToFragment('/howTo','page-imports')">Imports</a>
-        </ng-container>
-        <ng-container ngbNavItem>
-          <!-- <a href="/howTo#page-foundations">Foundations</a> -->
-          <a (click)="navigateToFragment('/howTo','page-foundations')">Foundations</a>
-        </ng-container>
-        <ng-container ngbNavItem>
-          <!-- <a href="/howTo#page-starters">Starters</a> -->
-          <a (click)="navigateToFragment('/howTo','page-starters')">Starters</a>
-        </ng-container>
-        <ng-container ngbNavItem>
-          <!-- <a href="/howTo#page-custom">Custom</a> -->
-          <a (click)="navigateToFragment('/howTo','page-custom')">Custom</a>
-        </ng-container>
+    <div class="col-md-2 pt-3">
+      <!-- <a href="/howTo#page-install">Installation</a> -->
+      <!-- <a href="/howTo#page-imports">Imports</a> -->
+      <!-- <a href="/howTo#page-foundations">Foundations</a> -->
+      <!-- <a href="/howTo#page-starters">Starters</a> -->
+      <!-- <a href="/howTo#page-custom">Custom</a> -->
+      <nav id="navPills01"  class="navbar sticky-top navbar-light bg-white">
+        <nav ngbNav #nav="ngbNav" class="navbar-nav nav-pills" orientation="vertical">
+          <ng-container ngbNavItem>
+            <a class="nav-link"  (click)="navigateToFragment('/howTo','page-install')">Installation</a>
+          </ng-container>
+          <ng-container ngbNavItem>
+            <a class="nav-link" (click)="navigateToFragment('/howTo','page-imports')">Imports</a>
+          </ng-container>
+          <ng-container ngbNavItem>
+            <a class="nav-link" (click)="navigateToFragment('/howTo','page-foundations')">Foundations</a>
+          </ng-container>
+          <ng-container ngbNavItem>
+            <a class="nav-link" (click)="navigateToFragment('/howTo','page-starters')">Starters</a>
+          </ng-container>
+          <ng-container ngbNavItem>
+            <a class="nav-link" (click)="navigateToFragment('/howTo','page-custom')">Custom</a>
+          </ng-container>
+        </nav>
       </nav>
     </div>
 
     <!-- SECTIONS -->
-    <div class="col-md-10">
+    <!-- <div class="col-md-10" > -->
+    <!-- <div class="col-md-10 data-spy="scroll" data-target="#navPills01" data-offset="0"> -->
+    <!-- <div class="col-md-10 position-relative overflow-auto vh-50 pt-3"> -->
+    <div class="col-md-10 scrollbox pt-3" style="height: 600px;">
       <!-- INSTALLATION -->
-      <div id="page-install" class= "my-2 p-2">
+      <div id="page-install" class= "my-2 p-4">
+        <ngb-alert type='secondary' [dismissible]="false">
+          <h4>Installation</h4>
+        </ngb-alert>
         <!-- -------------------------------------------- -->
         <!-- PREREQUISITES -->
         <!-- -------------------------------------------- -->
@@ -101,7 +114,7 @@
           rm -rf .git
         </pre>
 
-        Update title in src/index.html file (for windows/tab name and in src/app/app.component.ts (for applicatio usage)
+        Update title in src/index.html file (for windows/tab name) and in src/app/app.component.ts (for application usage)
         <pre>
           &lt;title>«Your title»&lt;/title>
         </pre>
@@ -127,11 +140,15 @@
         <p class="font-weight-bold">Check runtime !</p>
       </div>
 
+      <hr>
       <!-- IMPORTS -->
-      <div id="page-imports" class= "my-2 p-2 pt-5">
+      <div id="page-imports" class= "my-2 p-2 pt-4">
         <!-- -------------------------------------------- -->
         <!-- IMPORT ng-Bootstratp and Fontawesome -->
         <!-- -------------------------------------------- -->
+        <ngb-alert type='secondary' [dismissible]="false">
+          <h4>Imports</h4>
+        </ngb-alert>
         <h4>ng-Bootstratp and Fontawesome modules</h4>
         import ng-Bootstratp and Fontawesome as follow :
         <pre>
@@ -210,11 +227,15 @@
         </div>
       </div>
 
+      <hr>
       <!-- FOUNDATIONS -->
-      <div id="page-foundations" class= "my-2 p-2 pt-5">
+      <div id="page-foundations" class= "my-2 p-2 pt-4">
         <!-- -------------------------------------------- -->
         <!-- CREATE FOUNDATIONS : CORE & SHARED MODULES  -->
         <!-- -------------------------------------------- -->
+        <ngb-alert type='secondary' [dismissible]="false">
+          <h4>Foundations</h4>
+        </ngb-alert>
         <h4>Create foundation structures : Shared & Core modules</h4>
 
         Generate foundation structures
@@ -298,8 +319,12 @@
         <p class="font-weight-bold">Check runtime !</p>
       </div>
 
+      <hr>
       <!-- STARTERS -->
-      <div id="page-starters" class= "my-2 p-2 pt-5">
+      <div id="page-starters" class= "my-2 p-2 pt-4">
+        <ngb-alert type='secondary' [dismissible]="false">
+          <h4>Starters</h4>
+        </ngb-alert>
         <!-- -------------------------------------------- -->
         <!-- CREATE HEADER, FOOTER & HOME STARTER COMPONENTS-->
         <!-- -------------------------------------------- -->
@@ -463,8 +488,12 @@
         <p class="font-weight-bold">Check your new fancy navbar !</p>
       </div>
 
+      <hr>
       <!-- CUSTOMs COMPONENTS -->
-      <div id="page-custom" class= "my-2 p-2 pt-5">
+      <div id="page-custom" class= "my-2 p-2 pt-4">
+        <ngb-alert type='secondary' [dismissible]="false">
+          <h4>Customs</h4>
+        </ngb-alert>
         <h4>Create needed shared entities</h4>
 
         Generate your needed classes, interfaces, services, etc... :

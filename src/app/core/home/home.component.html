@@ -5,4 +5,64 @@
   <p>The purpose of this Showroom is to demo some design works and under test features of Angular with ng-Bootstrap and Fontawesome add-ons.
     Don't hesitate to have a look around and keep in mind that this site is dynamic and adapted according to daily needs of his owner.</p>
   <p>Please contact me if any questions.</p>
+  <br>
+
+  <div class="mb-3">
+    <ngb-accordion [closeOthers]="true" type="light" activeIds="static-4">
+
+      <ngb-panel id="static-1">
+        <ng-template ngbPanelHeader let-opened="opened">
+          <div class="d-flex align-items-center justify-content-start">
+            <button ngbPanelToggle class="btn btn-link container-fluid text-left text-dark pl-0">
+              <h5 class="m-0">
+                <!-- <fa-icon *ngIf="opened" icon="caret-down"></fa-icon> -->
+                <!-- <fa-icon *ngIf="! opened" icon="caret-right"></fa-icon> -->
+                <fa-icon [icon]="opened ? 'caret-down' : 'caret-right'" [fixedWidth]="true"></fa-icon>
+                <span [class]="opened ? 'text-dark' : 'text-muted'">Angular</span>
+              </h5>
+            </button>
+          </div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <code>Angular</code> works just fine !
+        </ng-template>
+      </ngb-panel>
+
+      <ngb-panel id="static-2">
+        <ng-template ngbPanelHeader let-opened="opened">
+          <div class="d-flex align-items-center justify-content-start">
+            <button ngbPanelToggle class="btn btn-link container-fluid text-left text-dark pl-0">
+              <h5 class="m-0">
+                <fa-icon [icon]="opened ? 'caret-down' : 'caret-right'" [fixedWidth]="true"></fa-icon>
+                <span [class]="opened ? 'text-dark' : 'text-muted'">ng-Bootstrat</span>
+              </h5>
+            </button>
+          </div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <ngb-alert type='dark' [dismissible]="false">
+            <code>ng-bootstrat</code> seems to be installed and operational as well!!
+          </ngb-alert>
+        </ng-template>
+      </ngb-panel>
+
+      <ngb-panel id="static-3">
+        <ng-template ngbPanelHeader let-opened="opened">
+          <div class="d-flex align-items-center justify-content-start">
+            <button ngbPanelToggle class="btn btn-link container-fluid text-left text-dark pl-0">
+              <h5 class="m-0">
+                <fa-icon [icon]="opened ? 'caret-down' : 'caret-right'" [fixedWidth]="true"></fa-icon>
+                <span [class]="opened ? 'text-dark' : 'text-muted'">Fontawesome</span>
+              </h5>
+            </button>
+          </div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <code>Fontawesome</code> works also ! <fa-icon icon="check"></fa-icon> ...<fa-icon icon="coffee"></fa-icon>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+
+  </div>
+
 </div>

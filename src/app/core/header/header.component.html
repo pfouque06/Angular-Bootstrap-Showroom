@@ -1,3 +1,4 @@
+<!-- <nav class="navbar sticky-top navbar-expand-md navbar-light bg-white"> -->
 <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white">
 
   <div class="container border-bottom">
@@ -21,8 +22,16 @@
         <li class="nav-item">
           <a routerLink="sandbox" class="nav-link" routerLinkActive="active" (click)="isNavbarCollapsed = true">Sandbox</a>
         </li>
-        <li class="nav-item">
-          <a routerLink="modal" class="nav-link" routerLinkActive="active" (click)="isNavbarCollapsed = true">Modal</a>
+        <li class="nav-item dropdown" ngbDropdown>
+          <a class="nav-link dropdown-toggle" ngbDropdownToggle id="techThemeDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Themes
+          </a>
+          <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="techThemeDropdown">
+            <a class="dropdown-item" routerLink="layout" (click)="isNavbarCollapsed = true">Layout</a>
+            <a class="dropdown-item" routerLink="nav" (click)="isNavbarCollapsed = true">Nav</a>
+            <a class="dropdown-item" routerLink="modal" (click)="isNavbarCollapsed = true">Modal</a>
+          </div>
         </li>
         <li class="nav-item dropdown" ngbDropdown>
           <a class="nav-link dropdown-toggle" ngbDropdownToggle id="personDropdown" role="button"

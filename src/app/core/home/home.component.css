@@ -1,3 +1,7 @@
+/* remove underline decoration for accordeons selectors */
 button, button:hover, button:visited, button:focus, a, a:hover,a:visited, a:focus {
   text-decoration:none;
+}
+button:hover, button:visited, button:focus, a:hover,a:visited, a:focus {
+  font-weight: 900 !important;
 }
