@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SandboxComponent implements OnInit {
 
-  public basicNavActive: number = 1;
-  public PillsNavActive: string;
-  public rowNavActive: string = 'middle';
+  // public basicNavActive: number = 1;
+  // public PillsNavActive: string;
+  // public rowNavActive: string = 'middle';
 
   constructor() { }
 

@@ -1,0 +1,252 @@
+<div class="container">
+
+  <p>Some layout samples ...</p>
+
+  <div class="mb-3">
+    <ngb-accordion [closeOthers]="true" type="light" activeIds="layout-1">
+      <ngb-panel id="layout-1">
+        <ng-template ngbPanelHeader let-opened="opened">
+          <div class="d-flex align-items-center justify-content-start">
+            <button ngbPanelToggle class="btn btn-link container-fluid text-left text-dark pl-0">
+              <h5 class="m-0">
+                <fa-icon [icon]="opened ? 'caret-down' : 'caret-right'" [fixedWidth]="true"></fa-icon>
+                <span [class]="opened ? 'text-dark' : 'text-muted'">Layout: .. bootstrap way ...</span>
+              </h5>
+            </button>
+          </div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <!-- test -->
+          <!-- <ng-container *ngTemplateOutlet="ngTestTemplate"></ng-container> -->
+          <ng-container *ngTemplateOutlet="ngLayoutSamples"></ng-container>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+</div>
+
+
+<ng-template #ngLayoutSamples>
+
+  <div class="container mb-5">
+    <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>basic responsive sizing
+
+    <div class="border border-success row m-1 p-1">
+      <div class="border border-warning col">col</div>
+      <div class="border border-warning col">col</div>
+      <div class="border border-warning col">col</div>
+    </div>
+
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light col-sm">col-sm</div>
+      <div class="border border-dark bg-light col-sm">col-sm</div>
+      <div class="border border-dark bg-light col-sm">col-sm</div>
+    </div>
+
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light col-md">col-md</div>
+      <div class="border border-dark bg-light col-md">col-md</div>
+      <div class="border border-dark bg-light col-md">col-md</div>
+    </div>
+
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light col-lg">col-lg</div>
+      <div class="border border-dark bg-light col-lg">col-lg</div>
+      <div class="border border-dark bg-light col-lg">col-lg</div>
+    </div>
+
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light col-xl">col-xl</div>
+      <div class="border border-dark bg-light col-xl">col-xl</div>
+      <div class="border border-dark bg-light col-xl">col-xl</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Some defined minimum 'size' per column [ over 12 columns per row by default set by bootstrap]
+
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light col-6">col-6</div>
+      <div class="border border-dark bg-light col">col</div>
+    </div>
+
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light col-4">col-4</div>
+      <div class="border border-dark bg-light col-7">col-7</div>
+      <div class="border border-dark bg-light col">col</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Some defined responsive minimum 'size' per column
+
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light col-md-6">col-md-6</div>
+      <div class="border border-dark bg-light col">col</div>
+    </div>
+
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light col-md-4">col-md-4</div>
+      <div class="border border-dark bg-light col-md-6">col-md-6</div>
+      <div class="border border-dark bg-light col">col</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Some 'multi' defined responsive minimum 'size' per column
+
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light col col-lg-2">col col-lg-2</div>
+      <div class="border border-dark bg-light col-md-auto">col-md-auto</div>
+      <div class="border border-dark bg-light col">col</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon> Mix and match responsive size in order to statically define grid according to media size
+
+    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light col-md-8">col-md-8</div>
+      <div class="border border-dark bg-light col-6 col-md-4">col-6 col-md-4</div>
+    </div>
+
+    <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light col-6 col-md-4">col-6 col-md-4</div>
+      <div class="border border-dark bg-light col-6 col-md-4">col-6 col-md-4</div>
+      <div class="border border-dark bg-light col-6 col-md-4">col-6 col-md-4</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon><p>row class based semantics to define responsive column number</p>
+
+    row row-cols-2
+    <div class="bg-secondary row m-1 p-1 row-cols-2">
+      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light col">col</div>
+    </div>
+
+    row row-cols-3
+    <div class="bg-secondary row m-1 p-1 row-cols-3">
+      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light col">col</div>
+    </div>
+
+    row row-cols-1 row-cols-sm-2 row-cols-md-4
+    <div class="bg-secondary row m-1 p-1 row-cols-1 row-cols-sm-2 row-cols-md-4">
+      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light col">col</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Vertical Alignment by row : align-items-[start,center, end] instruction set
+
+    <div class="row">
+      <div class="col">
+        <div class="bg-secondary row m-1 p-1 align-items-start" style="height: 90px;">
+          <div class="border border-dark bg-light col">col</div>
+          <div class="border border-dark bg-light col">col</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="bg-secondary row m-1 p-1 align-items-center" style="height: 90px;">
+          <div class="border border-dark bg-light col">col</div>
+          <div class="border border-dark bg-light col">col</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="bg-secondary row m-1 p-1 align-items-end" style="height: 90px;">
+          <div class="border border-dark bg-light col">col</div>
+          <div class="border border-dark bg-light col">col</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Vertical Alignment by column : align-self-[start,center, end] instruction set
+
+    <div class="bg-secondary row m-1 p-1" style="height: 90px;">
+      <div class="border border-dark bg-light col align-self-start">col align-self-start</div>
+      <div class="border border-dark bg-light col align-self-center">col align-self-center</div>
+      <div class="border border-dark bg-light col align-self-end">col align-self-end</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Horizontal alignment by column : justify-content-[start,center, end, around, between] instruction set
+
+    <div class="bg-secondary row m-1 p-1 justify-content-start">
+      <div class="border border-dark bg-light col-4">col-4</div>
+      <div class="border border-dark bg-light col-4">col-4</div>
+    </div>
+    <div class="bg-secondary row m-1 p-1 justify-content-center">
+      <div class="border border-dark bg-light col-4">col-4</div>
+      <div class="border border-dark bg-light col-4">col-4</div>
+    </div>
+    <div class="bg-secondary row m-1 p-1 justify-content-end">
+      <div class="border border-dark bg-light col-4">col-4</div>
+      <div class="border border-dark bg-light col-4">col-4</div>
+    </div>
+    <div class="bg-secondary row m-1 p-1 justify-content-around">
+      <div class="border border-dark bg-light col-4">col-4</div>
+      <div class="border border-dark bg-light col-4">col-4</div>
+    </div>
+    <div class="bg-secondary row m-1 p-1 justify-content-between">
+      <div class="border border-dark bg-light col-4">col-4</div>
+      <div class="border border-dark bg-light col-4">col-4</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Reordering : order instruction set
+
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light col">col without order, <b>no order</b> applied</div>
+      <div class="border border-dark bg-light col order-12">col order-12 but <b>second</b> in DOM</div>
+      <div class="border border-dark bg-light col order-1">col order-1 but <b>third</b> in DOM</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Shifting : offset instruction set
+
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light col-4 col-lg-4">col-4 col-lg-4</div>
+      <div class="border border-dark bg-light col-6 col-lg-4 offset-lg-4">col-6 col-lg-4 offset-lg-4</div>
+    </div>
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light col col-lg-3 offset-lg-3">col col-lg-3 offset-lg-3</div>
+      <div class="border border-dark bg-light col col-lg-3 offset-lg-3">col col-lg-3 offset-lg-3</div>
+    </div>
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light col-lg-6 offset-lg-3">.col-lg-6 .offset-lg-3</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon><p>Customizing the grid</p>
+    <div class="mr-3">
+      <p>The number of grid columns can be modified via Sass variables</p>
+      <code>$grid-columns</code> is used to generate the widths (in percent) of each individual colum while
+      <code>$grid-gutter-width</code> sets the width for the column gutters :
+      <pre><code>
+        $grid-columns: 12 !default;
+        $grid-gutter-width: 30px !default;
+      </code></pre>
+    </div>
+
+  </div>
+
+</ng-template>
