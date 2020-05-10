@@ -12,7 +12,7 @@ export class NavComponent implements OnInit {
   public PillsNavActive: string;
   public rowNavActive: string = 'middle';
 
-  constructor(public router: Router, public activeRoute: ActivatedRoute) { }
+  constructor(public router: Router, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }

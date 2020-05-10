@@ -21,25 +21,31 @@
         </li>
       </ul> -->
 
-      <div class="d-flex">
-        <div class="align-middle pr-2">
-          <ngb-pagination [collectionSize]="filteredPersons.length"
-            [(page)]="page" [pageSize]="pageSize"
-            [maxSize]="4" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+      <div class="row no-gutters align-items-start row-cols-1 row-cols-lg-2">
+
+        <div class="col">
+          <div class="d-flex flex-column flex-sm-row justify-content-start">
+            <ngb-pagination class="mr-2" [collectionSize]="filteredPersons.length"
+              [(page)]="page" [pageSize]="pageSize"
+              [maxSize]="4" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+
+              <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+              <option [ngValue]="5">5 items per page</option>
+              <option [ngValue]="10">10 items per page</option>
+              <option [ngValue]="50">50 items per page</option>
+              <option [ngValue]="100">100 items per page</option>
+            </select>
+          </div>
         </div>
 
-        <div class="align-middle">
-          <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
-            <option [ngValue]="5">5 items per page</option>
-            <option [ngValue]="10">10 items per page</option>
-            <option [ngValue]="50">50 items per page</option>
-            <option [ngValue]="100">100 items per page</option>
-          </select>
-        </div>
-
-        <div class="align-middle ml-md-auto form-group form-inline">
-          <label for="filter"><fa-icon icon="filter" size="lg"></fa-icon></label>
-          <input id="filter" class="form-control ml-2" type="text" [formControl]="filter" #spy_filter>
+        <div class="col">
+          <div class="d-flex flex-row justify-content-end align-items-center">
+            <div class="form-group form-inline">
+              <!-- <label for="filter" class="border border-info"><fa-icon icon="filter" size="lg"></fa-icon></label> -->
+              <label for="filter" class="d-none d-sm-block"><fa-icon icon="filter" size="lg"></fa-icon></label>
+              <input id="filter" class="form-control ml-2" type="text" [formControl]="filter" placeholder="type filter" #spy_filter>
+            </div>
+          </div>
         </div>
       </div>
 
