@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* remove outline border on focused and active nav link */
 .nofocus:focus { outline: none;}
 .navbar-brand:focus { outline: none;}
 .nav-link:focus { outline: none; }
@@ -6,11 +8,26 @@
 .nohover:hover { outline: none;}
 .novisited:visited { outline: none;}
 
+/* remove underline decoration for accordeons selectors */
 button, button:hover, button:visited, button:focus, a, a:hover,a:visited, a:focus {
-  text-decoration:none;
+  text-decoration:none !important;
+}
+/* ugly bold :-> removed*/
+/* button:hover, button:visited, button:focus, a:hover,a:visited, a:focus {
+  font-weight: 900 !important;
+} */
+
+/* global colormakr validator for form-groups */
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
 }
 
-/* highlith theme */
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+
+/* highligth theme */
 /* instead of "node_modules/highlight.js/styles/atom-one-light.css", in angular.json (style section) : FAILING*/
 /* @import '../node_modules/highlight.js/styles/dracula.css'; */
 /* @import '../node_modules/highlight.js/styles/github.css'; */

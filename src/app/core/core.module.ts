@@ -15,6 +15,7 @@ import { PersonFormComponent } from './person/person-form/person-form.component'
 import { YaFormComponent } from './person/ya-form/ya-form.component';
 import { HowToComponent } from './how-to/how-to.component';
 import { HighlightPlusModule } from 'ngx-highlightjs/plus';
+import { CodeRendererComponent } from './themes/code-renderer/code-renderer.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { HighlightPlusModule } from 'ngx-highlightjs/plus';
     HowToComponent,
     LayoutComponent,
     NavComponent,
+    CodeRendererComponent,
   ],
   imports: [
     CommonModule,

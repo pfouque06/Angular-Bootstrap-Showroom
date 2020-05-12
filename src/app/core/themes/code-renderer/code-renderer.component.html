@@ -1,0 +1,102 @@
+<!-- <p>code-renderer works!</p> -->
+<div class="container">
+
+  <p>Welcome to code renderer Theme ..</p>
+
+  <div class="mb-3">
+    <ngb-accordion [closeOthers]="true" type="light" activeIds="renderer-01">
+      <ngb-panel id="renderer-01">
+        <ng-template ngbPanelHeader let-opened="opened">
+          <div class="d-flex align-items-center justify-content-start">
+            <button ngbPanelToggle class="btn btn-link container-fluid text-left text-dark pl-0">
+              <h5 class="m-0">
+                <fa-icon [icon]="opened ? 'caret-down' : 'caret-right'" [fixedWidth]="true"></fa-icon>
+                <span [class]="opened ? 'text-dark' : 'text-muted'">ngx-highlightjs tool</span>
+              </h5>
+            </button>
+          </div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <!-- test -->
+          <!-- <ng-container *ngTemplateOutlet="ngTestTemplate"></ng-container> -->
+          <ng-container *ngTemplateOutlet="ngNgxHighlightjsTemplate"></ng-container>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+
+</div>
+
+<ng-template #ngNgxHighlightjsTemplate>
+    <!-- ################################################### -->
+  <h2><span class="badge badge-secondary">Highlight code format rendering</span></h2>
+  <pre class="border"><code [highlight]="codeSample" (highlighted)="onHighlight($event)" [lineNumbers]="true"></code></pre>
+  <h4>Highlight response</h4>
+  <pre>{{ codeDiag | json }}</pre>
+
+  <!-- ################################################### -->
+  <h2><span class="badge badge-secondary">Some piece of code from array</span></h2>
+  <div *ngFor="let someCode of pieceOfCode; index as i">
+    <pre class="border"><code [highlight]="someCode" [lineNumbers]="true"></code></pre>
+  </div>
+
+
+  <!-- ################################################### -->
+  <h2><span class="badge badge-secondary">Some piece of code from json file</span></h2>
+  <div *ngFor="let someCode of nextPieceOfCode; index as i">
+    name : {{someCode.name}}
+    <pre class="border"><code [highlight]="someCode.code" [lineNumbers]="true"></code></pre>
+  </div>
+
+
+  <!-- ################################################### -->
+  <h2><span class="badge badge-secondary">Other pieces of code imported from a .ts file converted in a Map(key,value)</span></h2>
+  <div *ngFor="let someKey of anotherPieceOfCodeKeys; index as i">
+    <p>key : {{someKey}}</p>
+    <p>value :</p>
+    <pre class="border"><code [highlight]="anotherPieceOfCode.get(someKey)" [lineNumbers]="true"></code></pre>
+  </div>
+
+
+  <!-- ################################################### -->
+  <h2><span class="badge badge-secondary">Some piece of code samples from raw url</span></h2>
+  example :
+  <p>https://raw.githubusercontent.com/angular/angularfire2/master/src/database/database.ts</p>
+  <p>https://raw.githubusercontent.com/twbs/bootstrap/v4.1.1/scss/_alert.scss</p>
+  <p>https://raw.githubusercontent.com/symfony/symfony/master/src/Symfony/Component/Asset/Context/ContextInterface.php</p>
+  <div class="form-group form-inline">
+    <label for="url">url </label>
+    <input id="url" class="form-control" type=text name="prenom" [(ngModel)]="codeUrlForm" required #alert_url="ngModel" >
+    <div [hidden]="alert_url.valid || alert_url.pristine" class="alert alert-danger">Une url est requise</div>
+  </div>
+  <div class="col-3">
+    <button class="btn btn-primary" (click)="loadRawUrl()">Load</button>
+  </div>
+  <p>url : {{ codeUrl }} </p>
+  <pre *ngIf="codeUrl" class="border"><code [highlight]="codeUrl | codeFromUrl | async"  [lineNumbers]="true"></code></pre>
+
+
+  <!-- ################################################### -->
+  <h2><span class="badge badge-secondary">Some piece of code samples from raw file</span></h2>
+  <div class="form-group form-inline">
+    <label for="pathName">pathName </label>
+    <input id="pathName" class="form-control" type=text name="pathName" [(ngModel)]="pathName" >
+    <label for="fileName">fileName </label>
+    <input id="fileName" class="form-control" type=text name="fileName" [(ngModel)]="fileName" required #alert_fileName="ngModel" >
+    <!-- <div [hidden]="alert_fileName.valid || alert_fileName.pristine" class="alert alert-danger">Un fileName est requis.</div> -->
+  </div>
+  <p>filePath : {{ ( pathName ? pathName+'/' : "") +fileName }} </p>
+
+  <ngb-alert type='danger' [dismissible]="false">
+    <strong>Local file system interaction is <code>forbidden</code> with Angular</strong> ... topic aborted ...
+  </ngb-alert>
+
+</ng-template>
+
+<!-- SCROLL UP BOTTOM BUTTON -->
+<!-- <a class="btn btn-sm btn-secondary text-light shadow-lg" routerLink="."  fragment="" title="Scroll up"> -->
+  <div class="container fixed-bottom d-flex justify-content-end  mb-5">
+    <a class="btn btn-sm btn-secondary text-light shadow-lg" (click)="navigateToFragment('/sandbox','')"  title="Scroll up">
+    <fa-icon icon="angle-double-up" size="2x"></fa-icon>
+  </a>
+</div>

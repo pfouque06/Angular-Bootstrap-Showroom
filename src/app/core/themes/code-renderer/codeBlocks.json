@@ -8,7 +8,7 @@
     "code": ".wrapper { flex: 1; display: flex; flex-direction: column;}"
   },
   {
-    "name": "B",
-    "code": ".wrapper { flex: 1; display: flex; flex-direction: column;}"
+    "name": "C",
+    "code": "npm install g @angular/cli"
 }
 ]
