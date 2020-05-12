@@ -6,6 +6,8 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions} from 'ngx-highlightjs';
+import { HighlightPlusModule } from 'ngx-highlightjs/plus';
 
 const SHARED_ENTITIES = []
 
@@ -14,6 +16,8 @@ const SHARED_MODULES = [
   ReactiveFormsModule,
   NgbModule,
   FontAwesomeModule,
+  HighlightModule,
+  HighlightPlusModule,
 ]
 
 @NgModule({
@@ -26,6 +30,14 @@ const SHARED_MODULES = [
   ],
   exports: [
     ...SHARED_MODULES
+  ],
+  providers: [
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: <HighlightOptions>{
+        lineNumbers: true
+      }
+    }
   ]
 })
 // export class SharedModule { }

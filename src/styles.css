@@ -9,3 +9,9 @@
 button, button:hover, button:visited, button:focus, a, a:hover,a:visited, a:focus {
   text-decoration:none;
 }
+
+/* highlith theme */
+/* instead of "node_modules/highlight.js/styles/atom-one-light.css", in angular.json (style section) : FAILING*/
+/* @import '../node_modules/highlight.js/styles/dracula.css'; */
+/* @import '../node_modules/highlight.js/styles/github.css'; */
+/* @import '~node_modules/highlight.js/styles/atom-one-light.css'; */
