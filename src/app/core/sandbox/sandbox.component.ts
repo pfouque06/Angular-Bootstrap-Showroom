@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HighlightResult } from 'ngx-highlightjs';
 import codes from './codeBlocks.json';
 import { IDisplayData, displaysList } from './codeBlocks';
+import { Router, ActivatedRoute } from '@angular/router';
 // import fs  from 'fs';
 
 @Component({
@@ -46,7 +47,7 @@ export class SandboxComponent implements OnInit {
 
   fileCodecontent: string = "";
 
-  constructor() {
+  constructor(public router: Router, public route: ActivatedRoute) {
 
     // ## import json files :
     // ## in ts onfig.json add in compilerOptions section :
@@ -98,6 +99,13 @@ export class SandboxComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  public navigateToFragment(route: string, fragment: string) {
+    console.log("navigateToFragment("+route+"#"+fragment+")");
+    this.router.navigate([route]).then(()=>{
+      window.location.hash=fragment;
+    });
   }
 
   onHighlight(e) {
