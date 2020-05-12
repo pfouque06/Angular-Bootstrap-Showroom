@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
+import { HighlightModule } from 'ngx-highlightjs';
 
 import { CoreRoutingModule } from './core-routing.module';
 import { CoreComponent } from './core.component';
@@ -13,6 +14,8 @@ import { PersonListComponent, SortableHeader } from './person/person-list/person
 import { PersonFormComponent } from './person/person-form/person-form.component';
 import { YaFormComponent } from './person/ya-form/ya-form.component';
 import { HowToComponent } from './how-to/how-to.component';
+import { HighlightPlusModule } from 'ngx-highlightjs/plus';
+import { CodeRendererComponent } from './themes/code-renderer/code-renderer.component';
 
 
 @NgModule({
@@ -28,11 +31,14 @@ import { HowToComponent } from './how-to/how-to.component';
     HowToComponent,
     LayoutComponent,
     NavComponent,
+    CodeRendererComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     CoreRoutingModule,
+    HighlightModule,
+    HighlightPlusModule,
   ],
   exports: [SortableHeader],
   providers: [DecimalPipe],

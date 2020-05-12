@@ -32,9 +32,7 @@
 <!-- SCROLL UP BOTTOM BUTTON -->
 <div class="container fixed-bottom d-flex justify-content-end  mb-5">
   <a class="btn btn-sm btn-secondary text-light shadow-lg" (click)="navigateToFragment('/howTo','')"  title="Scroll up">
-    <!-- <fa-icon icon="chevron-up" size="lg"></fa-icon> -->
     <fa-icon icon="angle-double-up" size="2x"></fa-icon>
-    <!-- <fa-icon icon="sign-in-alt" rotate="270" size="lg"></fa-icon> -->
   </a>
 </div>
 
@@ -88,54 +86,27 @@
         <!-- -------------------------------------------- -->
         <h4>Prerequisites</h4>
         nodejs, npm and angular/cli must be already installed on your OS. However, find hereafter quick steps for Debian.
-        <pre>
-          sudo apt install npm nodejs
-          npm -v
-          nodejs -v
-          npm install g @angular/cli
-          ng version
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('install_codebloc_01')" [lineNumbers]="true"></code></pre>
 
         <!-- -------------------------------------------- -->
         <!-- CREATE PROJECT -->
         <!-- -------------------------------------------- -->
         <h4>Create new angular project</h4>
         Use following CLI commands to startup the project :
-        <pre>
-          cd source_directory
-          ng new project_name --skipTests=true --routing=true --style=css
-          # without routing and style options, please select when prompted :
-          # routing: y
-          # stylesheet format: CSS
-          cd project_name
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('install_codebloc_02')" [lineNumbers]="true"></code></pre>
         If not needed, remove .git structure except .gitignore in case later use
-        <pre>
-          rm -rf .git
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('install_codebloc_03')" [lineNumbers]="true"></code></pre>
 
         Update title in src/index.html file (for windows/tab name) and in src/app/app.component.ts (for application usage)
-        <pre>
-          &lt;title>«Your title»&lt;/title>
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('install_codebloc_04')" [lineNumbers]="true"></code></pre>
 
-        <pre>
-          export class AppComponent {{ '{' }}
-            public title: string = '«Your title»';
-          }
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('install_codebloc_05')" [lineNumbers]="true"></code></pre>
 
         Run and test Angular:
-        <pre>
-          ng serve [--port xxxx] [--open]
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('install_codebloc_06')" [lineNumbers]="true"></code></pre>
 
         If issue : check npm cache before clearing it and last flush npm install
-        <pre>
-          npm cache verify
-          npm cache clear
-          npm install
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('install_codebloc_07')" [lineNumbers]="true"></code></pre>
 
         <p class="font-weight-bold">Check runtime !</p>
       </div>
@@ -151,60 +122,13 @@
         </ngb-alert>
         <h4>ng-Bootstratp and Fontawesome modules</h4>
         import ng-Bootstratp and Fontawesome as follow :
-        <pre>
-          # stop ng runtime !!
-          ng add @ng-bootstrap/ng-bootstrap
-          ng add @fortawesome/angular-fontawesome
-          # When prompted, as required :
-          # Free Solid Icons
-          # Free Regular Icons
-          # Free Brands Icons
-
-          # restart Angular
-          ng serve [--port xxxx] [--open]
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('imports_codebloc_01')" [lineNumbers]="true"></code></pre>
 
         Update app/app.module.ts file :
-        <pre>
-          (..)
-          import {{ '{' }} NgbModule } from '@ng-bootstrap/ng-bootstrap';
-          import {{ '{' }} FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-          import {{ '{' }} fas } from '@fortawesome/free-solid-svg-icons';
-          import {{ '{' }} far } from '@fortawesome/free-regular-svg-icons';
-          import {{ '{' }} fab } from '@fortawesome/free-brands-svg-icons';
-
-          @NgModule({{ '{' }}
-            (..)
-            imports: [
-            (..)
-            NgbModule,
-            FontAwesomeModule,
-            (..)
-          export class AppModule {{ '{' }}
-            constructor(library: FaIconLibrary) {{ '{' }}
-              library.addIconPacks(fas, far, fab);
-            }
-          }
-          (..)
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('imports_codebloc_02')" [lineNumbers]="true"></code></pre>
 
         Update app/app.component.html file to test ng-bootstrat and Fontawesome:
-        <pre>
-          &lt;div class="container my-5">
-            &lt;hr>
-            &lt;h2>{{ '{' }}{{ '{' }} title }}&lt;/h2>
-            &lt;h4>Angular works ! &lt;/h4>
-            &lt;hr>
-            &lt;ngb-alert type='info' [dismissible]="false">
-              &lt;code>ng-bootstrat&lt;/code> seems to be installed and operational as well !!
-            &lt;/ngb-alert>
-            &lt;hr>
-            &lt;p>&lt;code>Fontawesome&lt;/code> works also !! &lt;fa-icon icon="check">&lt;/fa-icon> ...&lt;fa-icon icon="coffee">&lt;/fa-icon>&lt;/p>
-            &lt;hr>
-            &lt;router-outlet>&lt;/router-outlet>
-          &lt;/div>
-
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('imports_codebloc_03')" [lineNumbers]="true"></code></pre>
 
         <p class="font-weight-bold">Check runtime !</p>
 
@@ -239,82 +163,20 @@
         <h4>Create foundation structures : Shared & Core modules</h4>
 
         Generate foundation structures
-        <pre>
-          ng g module shared --module=app
-          ng g module core --module=app --routing --route="**"
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('foundations_codebloc_01')" [lineNumbers]="true"></code></pre>
 
         <p>Please note that «core works!» mention appears at the bottom of the display.
           This is due to &lt;router-outlet&gt;&lt;/router-outlet&gt; instruction which injects core component.
         </p>
         <br>
         Move Tierce Modules to shared module : Update app/shared/shared.module.ts file :
-        <pre>
-          import {{ '{' }} NgModule } from '@angular/core';
-          import {{ '{' }} CommonModule } from '@angular/common';
-          import {{ '{' }} NgbModule } from '@ng-bootstrap/ng-bootstrap';
-          import {{ '{' }} FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-          import {{ '{' }} fas } from '@fortawesome/free-solid-svg-icons';
-          import {{ '{' }} far } from '@fortawesome/free-regular-svg-icons';
-          import {{ '{' }} fab } from '@fortawesome/free-brands-svg-icons';
-
-          const SHARED_ENTITIES = []
-
-          const SHARED_MODULES = [
-            NgbModule,
-            FontAwesomeModule,
-          ]
-
-          @NgModule({{ '{' }}
-            declarations: [
-              ...SHARED_ENTITIES
-            ],
-            imports: [
-              CommonModule,
-              ...SHARED_MODULES
-            ],
-            exports: [
-              ...SHARED_MODULES
-            ]
-          })
-          // export class SharedModule {{ '{' }} }
-          export class SharedModule {{ '{' }}
-            constructor(library: FaIconLibrary) {{ '{' }}
-              library.addIconPacks(fas, far, fab);
-            }
-          }
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('foundations_codebloc_02')" [lineNumbers]="true"></code></pre>
 
         Update app/app.module.ts : add CoreModule, remove NgbModule, FontAwesomeModule imports and clean class AppModule section:
-        <pre>
-          (..)
-          import {{ '{' }} CoreModule } from './core.module';
-          (..)
-
-            imports: [
-              CommonModule,
-              SharedModule,
-              CoreModule,
-            ],
-          export class AppModule {{ '{' }} }
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('foundations_codebloc_03')" [lineNumbers]="true"></code></pre>
 
         Update Core.module.ts : add sharemodule as import :
-        <pre>
-          import {{ '{' }} NgModule } from '@angular/core';
-          import {{ '{' }} CommonModule, DecimalPipe } from '@angular/common';
-          import {{ '{' }} SharedModule } from '../shared/shared.module';
-
-          import {{ '{' }} CoreRoutingModule } from './core-routing.module';
-
-          (..)
-
-            imports: [
-              CommonModule,
-              SharedModule,
-              CoreRoutingModule,
-            ],
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('foundations_codebloc_04')" [lineNumbers]="true"></code></pre>
 
         <p class="font-weight-bold">Check runtime !</p>
       </div>
@@ -330,23 +192,13 @@
         <!-- -------------------------------------------- -->
         <h4>Create header, footer & home components</h4>
         Generate header & footer components :
-        <pre>
-          ng g c core/header --module=app --skipTests=true
-          ng g c core/footer --module=app --skipTests=true
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('starters_codebloc_01')" [lineNumbers]="true"></code></pre>
 
         Generate home component
-        <pre>
-          ng g c core/home --module=core --skipTests=true
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('starters_codebloc_02')" [lineNumbers]="true"></code></pre>
 
         Update app.component.html:
-        <pre>
-          &lt;!-- &lt;app-header>&lt;/app-header> -->
-          &lt;app-header [title]="title">&lt;/app-header>
-          &lt;router-outlet>&lt;/router-outlet>
-          &lt;app-footer>&lt;/app-footer>
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('starters_codebloc_03')" [lineNumbers]="true"></code></pre>
 
         <p class="font-weight-bold">Check runtime !</p>
 
@@ -361,129 +213,34 @@
         </div>
 
         Inject in core/header/header.component.ts :
-        <pre>
-          import {{ '{' }} Component, OnInit, Input } from "@angular/core";
-          (..)
-          export class HeaderComponent implements OnInit {{ '{' }}
-
-            @Input() public title: string;
-            public isNavbarCollapsed: boolean =true;
-          (..)
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('starters_codebloc_04')" [lineNumbers]="true"></code></pre>
 
         Inject in core/header/header.component.css :
-        <pre>
-          /* .nofocus:focus {{ '{' }} outline: none;} */
-          .navbar-brand:focus {{ '{' }} outline: none;}
-          .nav-link:focus {{ '{' }} outline: none; }
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('starters_codebloc_05')" [lineNumbers]="true"></code></pre>
 
         Inject in /core/header/header.component.html :
-        <pre>
-          &lt;nav class="navbar fixed-top navbar-expand-md navbar-light bg-white">
-            &lt;div class="container border-bottom">
-              &lt;div class="navbar-header">
-                &lt;a class="navbar-brand" href="#">{{ '{' }}{{ '{' }} title }}&lt;/a>
-              &lt;/div>
-              &lt;button class="navbar-toggler" type="button"
-                data-toggle="collapse" data-target="#thisNavbar" (click)="isNavbarCollapsed = !isNavbarCollapsed"
-                aria-controls="thisNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                &lt;span class="navbar-toggler-icon">&lt;/span>
-              &lt;/button>
-
-              &lt;!-- &lt;p class="navbar-text">Some text&lt;/p> -->
-
-              &lt;!-- collapse content -->
-              &lt;div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="thisNavbar">
-                &lt;ul class="navbar-nav ml-auto">
-                  &lt;li class="nav-item">
-                    &lt;a routerLink="home" class="nav-link" routerLinkActive="active"  (click)="isNavbarCollapsed = true">Home&lt;/a>
-                  &lt;/li>
-                  &lt;li class="nav-item">
-                    &lt;a href="#" class="nav-link" routerLinkActive="active"  (click)="isNavbarCollapsed = true">Contact&lt;/a>
-                  &lt;/li>
-                &lt;/ul>
-              &lt;/div>
-            &lt;/div>
-          &lt;/nav>
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('starters_codebloc_06')" [lineNumbers]="true"></code></pre>
 
         Inject in core/footer/footer.component.html :
-        <pre>
-          &lt;div class="container">
-            &lt;footer class="footer border-top text-center ">
-              &lt;div class="row">
-                &lt;div class="col-md-12">
-                  Your footer
-                &lt;/div>
-              &lt;/div>
-            &lt;/footer>
-          &lt;/div>
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('starters_codebloc_07')" [lineNumbers]="true"></code></pre>
 
         Update app-routing.module.ts
-        <pre>
-          import {{ '{' }} HomeComponent } from './core/home/home.component';
-          (..)
-          const routes: Routes = [
-            {{ '{' }} path: '', component: HomeComponent },
-          ];
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('starters_codebloc_08')" [lineNumbers]="true"></code></pre>
 
         Update core/core-routing.module.ts:
-        <pre>
-          import {{ '{' }} HomeComponent } from './core/home/home.component';
-          (..)
-          const routes: Routes = [
-            {{ '{' }} path: '', redirectTo: 'home', pathMatch: 'full' },
-            {{ '{' }} path: 'home', component: HomeComponent },
-            {{ '{' }} path: '**', component: HomeComponent },
-          ];
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('starters_codebloc_09')" [lineNumbers]="true"></code></pre>
 
         <p class="font-weight-bold">Check runtime ! Some magic should appear somewhere ... top and bottom of the display....</p>
 
         <h4>Create other project components</h4>
         According to your needs along your application design, those are just some instances to demo the prupose :
-        <pre>
-          ng g c core/sandbox --module=core --skipTests=true
-          ng g c core/yaForm --module=core --skipTests=true
-          ng g c core/person/personForm --module=core --skipTests=true
-          ng g c core/person/personList --module=core --skipTests=true
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('starters_codebloc_10')" [lineNumbers]="true"></code></pre>
 
         Update core/core-routing.module.ts:
-        <pre>
-          (.. import missing components according to above routes ..)
-          const routes: Routes = [
-          {{ '{' }} path: '', redirectTo: 'home', pathMatch: 'full' },
-          {{ '{' }} path: 'home', component: HomeComponent },
-          {{ '{' }} path: 'sandbox', component: SandboxComponent },
-          {{ '{' }} path: 'yaForm', component: YaFormComponent },
-          {{ '{' }} path: 'personneList', component: PersonListComponent },
-          {{ '{' }} path: 'personneForm', component: PersonFormComponent },
-          {{ '{' }} path: '**', component: HomeComponent },
-          ];
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('starters_codebloc_11')" [lineNumbers]="true"></code></pre>
 
           Update core/header/header.component.html :
-        <pre>
-          &lt;li class="nav-item">
-            &lt;a routerLink="sandbox" class="nav-link" routerLinkActive="active" (click)="isNavbarCollapsed = true">Sandbox&lt;/a>
-          &lt;/li>
-          &lt;li class="nav-item dropdown" ngbDropdown>
-            &lt;a class="nav-link dropdown-toggle" ngbDropdownToggle id="personDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Persons
-            &lt;/a>
-            &lt;div class="dropdown-menu" ngbDropdownMenu aria-labelledby="personDropdown">
-              &lt;a class="dropdown-item" routerLink="personneList" (click)="isNavbarCollapsed = true">List&lt;/a>
-              &lt;a class="dropdown-item" routerLink="personneForm" (click)="isNavbarCollapsed = true">Form&lt;/a>
-              &lt;div class="dropdown-divider">&lt;/div>
-              &lt;a class="dropdown-item" routerLink="yaForm">Yet another Form&lt;/a>
-            &lt;/div>
-          &lt;/li>
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('starters_codebloc_12')" [lineNumbers]="true"></code></pre>
 
         <p class="font-weight-bold">Check your new fancy navbar !</p>
       </div>
@@ -497,11 +254,7 @@
         <h4>Create needed shared entities</h4>
 
         Generate your needed classes, interfaces, services, etc... :
-        <pre>
-          ng g class shared/class/person
-          ng g interface shared/interface/person
-          ng g service shared/service/personne --skipTests=true
-        </pre>
+        <pre class="border"><code [highlight]="codeMap.get('customs_codebloc_01')" [lineNumbers]="true"></code></pre>
 
         Update Shared module accordingly; code your application components...
 

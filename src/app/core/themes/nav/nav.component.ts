@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -11,9 +12,15 @@ export class NavComponent implements OnInit {
   public PillsNavActive: string;
   public rowNavActive: string = 'middle';
 
-  constructor() { }
+  constructor(public router: Router, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
 
+  public navigateToFragment(route: string, fragment: string) {
+    console.log("navigateToFragment("+route+"#"+fragment+")");
+    this.router.navigate([route]).then(()=>{
+      window.location.hash=fragment;
+    });
+  }
 }

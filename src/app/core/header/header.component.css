@@ -1,5 +1,0 @@
-/* .navbar > a:focus { outline: none;} */
-/* .navbar > .navbar-brand > a { outline: none;} */
-.nofocus:focus { outline: none;}
-.navbar-brand:focus { outline: none;}
-.nav-link:focus { outline: none; }

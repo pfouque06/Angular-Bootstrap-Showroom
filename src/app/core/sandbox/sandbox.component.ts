@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sandbox',
@@ -7,12 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SandboxComponent implements OnInit {
 
-  // public basicNavActive: number = 1;
-  // public PillsNavActive: string;
-  // public rowNavActive: string = 'middle';
-
-  constructor() { }
+  constructor(public router: Router, public route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
+  }
+
+  public navigateToFragment(route: string, fragment: string) {
+    console.log("navigateToFragment("+route+"#"+fragment+")");
+    this.router.navigate([route]).then(()=>{
+      window.location.hash=fragment;
+    });
   }
 }

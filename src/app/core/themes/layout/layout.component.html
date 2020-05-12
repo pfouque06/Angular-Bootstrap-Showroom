@@ -2,31 +2,45 @@
 
   <p>Some layout samples ...</p>
 
+  <!-- main accordeon -->
   <div class="mb-3">
-    <ngb-accordion [closeOthers]="true" type="light" activeIds="layout-1">
+    <ngb-accordion [closeOthers]="true" type="light" activeIds="layout-0">
       <ngb-panel id="layout-1">
         <ng-template ngbPanelHeader let-opened="opened">
           <div class="d-flex align-items-center justify-content-start">
             <button ngbPanelToggle class="btn btn-link container-fluid text-left text-dark pl-0">
               <h5 class="m-0">
                 <fa-icon [icon]="opened ? 'caret-down' : 'caret-right'" [fixedWidth]="true"></fa-icon>
-                <span [class]="opened ? 'text-dark' : 'text-muted'">Layout: .. bootstrap way ...</span>
+                <span [class]="opened ? 'text-dark' : 'text-muted'">Grid Layout</span>
               </h5>
             </button>
           </div>
         </ng-template>
         <ng-template ngbPanelContent>
-          <!-- test -->
-          <!-- <ng-container *ngTemplateOutlet="ngTestTemplate"></ng-container> -->
-          <ng-container *ngTemplateOutlet="ngLayoutSamples"></ng-container>
+          <ng-container *ngTemplateOutlet="ngGridSamples"></ng-container>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel id="layout-2">
+        <ng-template ngbPanelHeader let-opened="opened">
+          <div class="d-flex align-items-center justify-content-start">
+            <button ngbPanelToggle class="btn btn-link container-fluid text-left text-dark pl-0">
+              <h5 class="m-0">
+                <fa-icon [icon]="opened ? 'caret-down' : 'caret-right'" [fixedWidth]="true"></fa-icon>
+                <span [class]="opened ? 'text-dark' : 'text-muted'">Flex Layout</span>
+              </h5>
+            </button>
+          </div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <ng-container *ngTemplateOutlet="ngFlexSamples"></ng-container>
         </ng-template>
       </ngb-panel>
     </ngb-accordion>
   </div>
+
 </div>
 
-
-<ng-template #ngLayoutSamples>
+<ng-template #ngGridSamples>
 
   <div class="container mb-5">
     <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>basic responsive sizing
@@ -38,27 +52,27 @@
     </div>
 
     <div class="bg-secondary row m-1 p-1">
-      <div class="border border-dark bg-light col-sm">col-sm</div>
-      <div class="border border-dark bg-light col-sm">col-sm</div>
-      <div class="border border-dark bg-light col-sm">col-sm</div>
+      <div class="border border-dark bg-light px-1 col-sm">col-sm</div>
+      <div class="border border-dark bg-light px-1 col-sm">col-sm</div>
+      <div class="border border-dark bg-light px-1 col-sm">col-sm</div>
     </div>
 
     <div class="bg-secondary row m-1 p-1">
-      <div class="border border-dark bg-light col-md">col-md</div>
-      <div class="border border-dark bg-light col-md">col-md</div>
-      <div class="border border-dark bg-light col-md">col-md</div>
+      <div class="border border-dark bg-light px-1 col-md">col-md</div>
+      <div class="border border-dark bg-light px-1 col-md">col-md</div>
+      <div class="border border-dark bg-light px-1 col-md">col-md</div>
     </div>
 
     <div class="bg-secondary row m-1 p-1">
-      <div class="border border-dark bg-light col-lg">col-lg</div>
-      <div class="border border-dark bg-light col-lg">col-lg</div>
-      <div class="border border-dark bg-light col-lg">col-lg</div>
+      <div class="border border-dark bg-light px-1 col-lg">col-lg</div>
+      <div class="border border-dark bg-light px-1 col-lg">col-lg</div>
+      <div class="border border-dark bg-light px-1 col-lg">col-lg</div>
     </div>
 
     <div class="bg-secondary row m-1 p-1">
-      <div class="border border-dark bg-light col-xl">col-xl</div>
-      <div class="border border-dark bg-light col-xl">col-xl</div>
-      <div class="border border-dark bg-light col-xl">col-xl</div>
+      <div class="border border-dark bg-light px-1 col-xl">col-xl</div>
+      <div class="border border-dark bg-light px-1 col-xl">col-xl</div>
+      <div class="border border-dark bg-light px-1 col-xl">col-xl</div>
     </div>
   </div>
 
@@ -66,15 +80,15 @@
     <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Some defined minimum 'size' per column [ over 12 columns per row by default set by bootstrap]
 
     <div class="bg-secondary row m-1 p-1">
-      <div class="border border-dark bg-light col">col</div>
-      <div class="border border-dark bg-light col-6">col-6</div>
-      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
+      <div class="border border-dark bg-light px-1 col-6">col-6</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
     </div>
 
     <div class="bg-secondary row m-1 p-1">
-      <div class="border border-dark bg-light col-4">col-4</div>
-      <div class="border border-dark bg-light col-7">col-7</div>
-      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light px-1 col-4">col-4</div>
+      <div class="border border-dark bg-light px-1 col-7">col-7</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
     </div>
   </div>
 
@@ -82,15 +96,15 @@
     <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Some defined responsive minimum 'size' per column
 
     <div class="bg-secondary row m-1 p-1">
-      <div class="border border-dark bg-light col">col</div>
-      <div class="border border-dark bg-light col-md-6">col-md-6</div>
-      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
+      <div class="border border-dark bg-light px-1 col-md-6">col-md-6</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
     </div>
 
     <div class="bg-secondary row m-1 p-1">
-      <div class="border border-dark bg-light col-md-4">col-md-4</div>
-      <div class="border border-dark bg-light col-md-6">col-md-6</div>
-      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light px-1 col-md-4">col-md-4</div>
+      <div class="border border-dark bg-light px-1 col-md-6">col-md-6</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
     </div>
   </div>
 
@@ -98,9 +112,9 @@
     <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Some 'multi' defined responsive minimum 'size' per column
 
     <div class="bg-secondary row m-1 p-1">
-      <div class="border border-dark bg-light col col-lg-2">col col-lg-2</div>
-      <div class="border border-dark bg-light col-md-auto">col-md-auto</div>
-      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light px-1 col col-lg-2">col col-lg-2</div>
+      <div class="border border-dark bg-light px-1 col-md-auto">col-md-auto</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
     </div>
   </div>
 
@@ -109,15 +123,15 @@
 
     <!-- Stack the columns on mobile by making one full-width and the other half-width -->
     <div class="bg-secondary row m-1 p-1">
-      <div class="border border-dark bg-light col-md-8">col-md-8</div>
-      <div class="border border-dark bg-light col-6 col-md-4">col-6 col-md-4</div>
+      <div class="border border-dark bg-light px-1 col-md-8">col-md-8</div>
+      <div class="border border-dark bg-light px-1 col-6 col-md-4">col-6 col-md-4</div>
     </div>
 
     <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
     <div class="bg-secondary row m-1 p-1">
-      <div class="border border-dark bg-light col-6 col-md-4">col-6 col-md-4</div>
-      <div class="border border-dark bg-light col-6 col-md-4">col-6 col-md-4</div>
-      <div class="border border-dark bg-light col-6 col-md-4">col-6 col-md-4</div>
+      <div class="border border-dark bg-light px-1 col-6 col-md-4">col-6 col-md-4</div>
+      <div class="border border-dark bg-light px-1 col-6 col-md-4">col-6 col-md-4</div>
+      <div class="border border-dark bg-light px-1 col-6 col-md-4">col-6 col-md-4</div>
     </div>
   </div>
 
@@ -126,26 +140,26 @@
 
     row row-cols-2
     <div class="bg-secondary row m-1 p-1 row-cols-2">
-      <div class="border border-dark bg-light col">col</div>
-      <div class="border border-dark bg-light col">col</div>
-      <div class="border border-dark bg-light col">col</div>
-      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
     </div>
 
     row row-cols-3
     <div class="bg-secondary row m-1 p-1 row-cols-3">
-      <div class="border border-dark bg-light col">col</div>
-      <div class="border border-dark bg-light col">col</div>
-      <div class="border border-dark bg-light col">col</div>
-      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
     </div>
 
     row row-cols-1 row-cols-sm-2 row-cols-md-4
     <div class="bg-secondary row m-1 p-1 row-cols-1 row-cols-sm-2 row-cols-md-4">
-      <div class="border border-dark bg-light col">col</div>
-      <div class="border border-dark bg-light col">col</div>
-      <div class="border border-dark bg-light col">col</div>
-      <div class="border border-dark bg-light col">col</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
+      <div class="border border-dark bg-light px-1 col">col</div>
     </div>
   </div>
 
@@ -155,20 +169,20 @@
     <div class="row">
       <div class="col">
         <div class="bg-secondary row m-1 p-1 align-items-start" style="height: 90px;">
-          <div class="border border-dark bg-light col">col</div>
-          <div class="border border-dark bg-light col">col</div>
+          <div class="border border-dark bg-light px-1 col">col</div>
+          <div class="border border-dark bg-light px-1 col">col</div>
         </div>
       </div>
       <div class="col">
         <div class="bg-secondary row m-1 p-1 align-items-center" style="height: 90px;">
-          <div class="border border-dark bg-light col">col</div>
-          <div class="border border-dark bg-light col">col</div>
+          <div class="border border-dark bg-light px-1 col">col</div>
+          <div class="border border-dark bg-light px-1 col">col</div>
         </div>
       </div>
       <div class="col">
         <div class="bg-secondary row m-1 p-1 align-items-end" style="height: 90px;">
-          <div class="border border-dark bg-light col">col</div>
-          <div class="border border-dark bg-light col">col</div>
+          <div class="border border-dark bg-light px-1 col">col</div>
+          <div class="border border-dark bg-light px-1 col">col</div>
         </div>
       </div>
     </div>
@@ -178,9 +192,9 @@
     <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Vertical Alignment by column : align-self-[start,center, end] instruction set
 
     <div class="bg-secondary row m-1 p-1" style="height: 90px;">
-      <div class="border border-dark bg-light col align-self-start">col align-self-start</div>
-      <div class="border border-dark bg-light col align-self-center">col align-self-center</div>
-      <div class="border border-dark bg-light col align-self-end">col align-self-end</div>
+      <div class="border border-dark bg-light px-1 col align-self-start">col align-self-start</div>
+      <div class="border border-dark bg-light px-1 col align-self-center">col align-self-center</div>
+      <div class="border border-dark bg-light px-1 col align-self-end">col align-self-end</div>
     </div>
   </div>
 
@@ -188,24 +202,24 @@
     <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Horizontal alignment by column : justify-content-[start,center, end, around, between] instruction set
 
     <div class="bg-secondary row m-1 p-1 justify-content-start">
-      <div class="border border-dark bg-light col-4">col-4</div>
-      <div class="border border-dark bg-light col-4">col-4</div>
+      <div class="border border-dark bg-light px-1 col-4">col-4</div>
+      <div class="border border-dark bg-light px-1 col-4">col-4</div>
     </div>
     <div class="bg-secondary row m-1 p-1 justify-content-center">
-      <div class="border border-dark bg-light col-4">col-4</div>
-      <div class="border border-dark bg-light col-4">col-4</div>
+      <div class="border border-dark bg-light px-1 col-4">col-4</div>
+      <div class="border border-dark bg-light px-1 col-4">col-4</div>
     </div>
     <div class="bg-secondary row m-1 p-1 justify-content-end">
-      <div class="border border-dark bg-light col-4">col-4</div>
-      <div class="border border-dark bg-light col-4">col-4</div>
+      <div class="border border-dark bg-light px-1 col-4">col-4</div>
+      <div class="border border-dark bg-light px-1 col-4">col-4</div>
     </div>
     <div class="bg-secondary row m-1 p-1 justify-content-around">
-      <div class="border border-dark bg-light col-4">col-4</div>
-      <div class="border border-dark bg-light col-4">col-4</div>
+      <div class="border border-dark bg-light px-1 col-4">col-4</div>
+      <div class="border border-dark bg-light px-1 col-4">col-4</div>
     </div>
     <div class="bg-secondary row m-1 p-1 justify-content-between">
-      <div class="border border-dark bg-light col-4">col-4</div>
-      <div class="border border-dark bg-light col-4">col-4</div>
+      <div class="border border-dark bg-light px-1 col-4">col-4</div>
+      <div class="border border-dark bg-light px-1 col-4">col-4</div>
     </div>
   </div>
 
@@ -213,9 +227,9 @@
     <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Reordering : order instruction set
 
     <div class="bg-secondary row m-1 p-1">
-      <div class="border border-dark bg-light col">col without order, <b>no order</b> applied</div>
-      <div class="border border-dark bg-light col order-12">col order-12 but <b>second</b> in DOM</div>
-      <div class="border border-dark bg-light col order-1">col order-1 but <b>third</b> in DOM</div>
+      <div class="border border-dark bg-light px-1 col">col without order, <b>no order</b> applied</div>
+      <div class="border border-dark bg-light px-1 col order-12">col order-12 but <b>second</b> in DOM</div>
+      <div class="border border-dark bg-light px-1 col order-1">col order-1 but <b>third</b> in DOM</div>
     </div>
   </div>
 
@@ -223,16 +237,41 @@
     <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Shifting : offset instruction set
 
     <div class="bg-secondary row m-1 p-1">
-      <div class="border border-dark bg-light col-4 col-lg-4">col-4 col-lg-4</div>
-      <div class="border border-dark bg-light col-6 col-lg-4 offset-lg-4">col-6 col-lg-4 offset-lg-4</div>
+      <div class="border border-dark bg-light px-1 col-4 col-lg-4">col-4 col-lg-4</div>
+      <div class="border border-dark bg-light px-1 col-6 col-lg-4 offset-lg-4">col-6 col-lg-4 offset-lg-4</div>
     </div>
     <div class="bg-secondary row m-1 p-1">
-      <div class="border border-dark bg-light col col-lg-3 offset-lg-3">col col-lg-3 offset-lg-3</div>
-      <div class="border border-dark bg-light col col-lg-3 offset-lg-3">col col-lg-3 offset-lg-3</div>
+      <div class="border border-dark bg-light px-1 col col-lg-3 offset-lg-3">col col-lg-3 offset-lg-3</div>
+      <div class="border border-dark bg-light px-1 col col-lg-3 offset-lg-3">col col-lg-3 offset-lg-3</div>
     </div>
     <div class="bg-secondary row m-1 p-1">
-      <div class="border border-dark bg-light col-lg-6 offset-lg-3">.col-lg-6 .offset-lg-3</div>
+      <div class="border border-dark bg-light px-1 col-lg-6 offset-lg-3">.col-lg-6 .offset-lg-3</div>
     </div>
+  </div>
+
+  <div class="container mb-5">
+    <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Relative justified columns  : mr-auto and ml-auto instruction set
+
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light px-1 col-lg-4">col-lg-4</div>
+      <div class="border border-dark bg-light px-1 col-lg-4 ml-auto">col-lg-4 ml-auto</div>
+    </div>
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light px-1 col-lg-3 ml-lg-auto">col-lg-3 ml-lg-auto</div>
+      <div class="border border-dark bg-light px-1 col-lg-3 ml-lg-auto">col-lg-3 ml-lg-auto</div>
+    </div>
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light px-1 col-auto mr-auto">col-auto mr-auto</div>
+      <div class="border border-dark bg-light px-1 col-auto">col-auto</div>
+    </div>
+    <div class="bg-secondary row m-1 p-1">
+      <div class="border border-dark bg-light px-1 col-lg-3 mr-lg-auto">col-lg-3 mr-lg-auto</div>
+      <div class="border border-dark bg-light px-1 col-lg-3 mr-lg-auto">col-lg-3 mr-lg-auto</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <p><fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Nesting : nesting grid in a grid is allowed</p>
   </div>
 
   <div class="container mb-5">
@@ -250,3 +289,250 @@
   </div>
 
 </ng-template>
+
+<ng-template #ngFlexSamples>
+  <div class="container mb-5">
+    <p><fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Basic flex row responsive positioning</p>
+    d-flex flex-row
+    <div class="d-flex flex-row bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1">Item 1</div>
+      <div class="border border-dark bg-light px-1">Item 2</div>
+      <div class="border border-dark bg-light px-1">Item 3</div>
+    </div>
+    d-flex flex-row-reverse
+    <div class="d-flex flex-row-reverse bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1">Item 1</div>
+      <div class="border border-dark bg-light px-1">Item 2</div>
+      <div class="border border-dark bg-light px-1">Item 3</div>
+    </div>
+    d-flex flex-lg-row-reverse
+    <div class="d-flex flex-lg-row-reverse bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1">Item 1</div>
+      <div class="border border-dark bg-light px-1">Item 2</div>
+      <div class="border border-dark bg-light px-1">Item 3</div>
+    </div>
+    d-flex flex-row-reserve flex-lg-row
+    <div class="d-flex flex-row-reverse flex-lg-row bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1">Item 1</div>
+      <div class="border border-dark bg-light px-1">Item 2</div>
+      <div class="border border-dark bg-light px-1">Item 3</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <p><fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Basic flex column responsive positioning</p>
+    d-flex flex-column
+    <div class="d-flex flex-column bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1">Item 1</div>
+      <div class="border border-dark bg-light px-1">Item 2</div>
+      <div class="border border-dark bg-light px-1">Item 3</div>
+    </div>
+    d-flex flex-column-reverse
+    <div class="d-flex flex-column-reverse bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1">Item 1</div>
+      <div class="border border-dark bg-light px-1">Item 2</div>
+      <div class="border border-dark bg-light px-1">Item 3</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <p><fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Flex responsive horizontal alignment : justify-content-[start,center, end, around, between] instruction set</p>
+    d-flex justify-content-start
+    <div class="d-flex justify-content-start bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1">Item 1</div>
+      <div class="border border-dark bg-light px-1">Item 2</div>
+      <div class="border border-dark bg-light px-1">Item 3</div>
+    </div>
+    d-flex justify-content-center
+    <div class="d-flex justify-content-center bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1">Item 1</div>
+      <div class="border border-dark bg-light px-1">Item 2</div>
+      <div class="border border-dark bg-light px-1">Item 3</div>
+    </div>
+    d-flex justify-content-end
+    <div class="d-flex justify-content-end bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1">Item 1</div>
+      <div class="border border-dark bg-light px-1">Item 2</div>
+      <div class="border border-dark bg-light px-1">Item 3</div>
+    </div>
+    d-flex justify-content-around
+    <div class="d-flex justify-content-around bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1">Item 1</div>
+      <div class="border border-dark bg-light px-1">Item 2</div>
+      <div class="border border-dark bg-light px-1">Item 3</div>
+    </div>
+    d-flex justify-content-between
+    <div class="d-flex justify-content-between bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1">Item 1</div>
+      <div class="border border-dark bg-light px-1">Item 2</div>
+      <div class="border border-dark bg-light px-1">Item 3</div>
+    </div>
+    d-flex justify-content-start justify-content-md-center justify-content-lg-between
+    <div class="d-flex justify-content-start justify-content-md-center justify-content-lg-between bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1">Item 1</div>
+      <div class="border border-dark bg-light px-1">Item 2</div>
+      <div class="border border-dark bg-light px-1">Item 3</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <p><fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Flex global responsive vertical alignment : align-items-[start,center, end, baseline, stretch] instruction se</p>
+    <div class="row row-cols-6">
+      <div class="col">
+        <div class="d-flex align-items-start bg-secondary m-1 p-1" style="height: 90px;">
+          <div class="border border-dark bg-light px-1">start</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex align-items-center bg-secondary m-1 p-1" style="height: 90px;">
+          <div class="border border-dark bg-light px-1">center</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex align-items-end bg-secondary m-1 p-1" style="height: 90px;">
+          <div class="border border-dark bg-light px-1">end</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex align-items-baseline bg-secondary m-1 p-1" style="height: 90px;">
+          <div class="border border-dark bg-light px-1">baseline</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex align-items-stretch bg-secondary m-1 p-1" style="height: 90px;">
+          <div class="border border-dark bg-light px-1">stretch</div>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="d-flex align-items-start align-items-lg-end bg-secondary m-1 p-1" style="height: 90px;">
+          <div class="border border-dark bg-light px-1">start lg-end</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <p><fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Flex responsive vertical alignment per item : align-self-[start,center, end, baseline, stretch] instruction se</p>
+    <div class="d-flex bg-secondary m-1 p-1" style="height: 90px;">
+      <div class="border border-dark bg-light px-1 align-self-start">start</div>
+      <div class="border border-dark bg-light px-1 align-self-center">center</div>
+      <div class="border border-dark bg-light px-1 align-self-end">end</div>
+      <div class="border border-dark bg-light px-1 align-self-baseline">baseline</div>
+      <div class="border border-dark bg-light px-1 align-self-stretch">stretch</div>
+      <div class="border border-dark bg-light px-1 align-self-start  align-self-lg-end">start  lg-end</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <p><fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Flex grow and shrink features : flex[-size]-[grow|shrink]-[0|1]</p>
+    <div class="d-flex bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1 flex-grow-1">grow item</div>
+      <div class="border border-dark bg-light px-1 ">Item</div>
+      <div class="border border-dark bg-light px-1 ">Item</div>
+    </div>
+    <div class="d-flex bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1 ">Item</div>
+      <div class="border border-dark bg-light px-1 ">Item</div>
+      <div class="bg-secondary text-light px-1 flex-grow-1">grow item</div>
+      <div class="border border-dark bg-light px-1 ">Item</div>
+    </div>
+    <div class="d-flex bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1 w-100">w-100 item</div>
+      <div class="border border-dark bg-light px-1 flex-shrink-1">Shrink item</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Flex responsive auto margins
+
+    <div class="d-flex bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1 mr-auto">mr-auto</div>
+      <div class="border border-dark bg-light px-1">Item</div>
+      <div class="border border-dark bg-light px-1">Item</div>
+    </div>
+
+    <div class="d-flex bg-secondary m-1 p-1">
+      <div class="border border-dark bg-light px-1">Item</div>
+      <div class="border border-dark bg-light px-1">Item</div>
+      <div class="border border-dark bg-light px-1 ml-auto">ml-auto</div>
+    </div>
+
+    <div class="d-flex bg-secondary m-1 p-1 flex-column align-items-start" style="height: 100px;">
+      <div class="border border-dark bg-light px-1 mb-auto">mb-auto</div>
+      <div class="border border-dark bg-light px-1">Item</div>
+      <div class="border border-dark bg-light px-1">Item</div>
+    </div>
+
+    <div class="d-flex bg-secondary m-1 p-1 flex-column align-items-end" style="height: 100px;">
+      <div class="border border-dark bg-light px-1">Item</div>
+      <div class="border border-dark bg-light px-1">Item</div>
+      <div class="border border-dark bg-light px-1 mt-auto">mt-auto</div>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <p><fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Flex wrapping</p>
+  </div>
+
+  <div class="container mb-5">
+    <p><fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Flex cell ordering</p>
+  </div>
+
+  <div class="container mb-5">
+    <p><fa-icon icon="caret-right" [fixedWidth]="true"></fa-icon>Flex global responsive vertical alignment : align-content-[start,center, end, between, around, stretch] instruction set in conjuction with flex-wrap</p>
+    <div class="row">
+      <div class="col">
+        <div class="d-flex align-content-start flex-wrap bg-secondary m-1 p-1" style="height: 150px;">
+          <div class="border border-dark bg-light px-1">start</div>
+          <div class="border border-dark bg-light px-1">start</div>
+          <div class="border border-dark bg-light px-1">start</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex align-content-center flex-wrap bg-secondary m-1 p-1" style="height: 150px;">
+          <div class="border border-dark bg-light px-1">center</div>
+          <div class="border border-dark bg-light px-1">center</div>
+          <div class="border border-dark bg-light px-1">center</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex align-content-end flex-wrap bg-secondary m-1 p-1" style="height: 150px;">
+          <div class="border border-dark bg-light px-1">end</div>
+          <div class="border border-dark bg-light px-1">end</div>
+          <div class="border border-dark bg-light px-1">end</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex align-content-between flex-wrap bg-secondary m-1 p-1" style="height: 150px;">
+          <div class="border border-dark bg-light px-1">between</div>
+          <div class="border border-dark bg-light px-1">between</div>
+          <div class="border border-dark bg-light px-1">between</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex align-content-around flex-wrap bg-secondary m-1 p-1" style="height: 150px;">
+          <div class="border border-dark bg-light px-1">around</div>
+          <div class="border border-dark bg-light px-1">around</div>
+          <div class="border border-dark bg-light px-1">around</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex align-content-stretch flex-wrap bg-secondary m-1 p-1" style="height: 150px;">
+          <div class="border border-dark bg-light px-1">stretch</div>
+          <div class="border border-dark bg-light px-1 px-1">stretch</div>
+          <div class="border border-dark bg-light px-1 px-1">stretch</div>
+        </div>
+      </div>
+      <!-- <div class="col">
+      </div> -->
+    </div>
+  </div>
+</ng-template>
+
+<!-- SCROLL UP BOTTOM BUTTON -->
+<!-- <a class="btn btn-sm btn-secondary text-light shadow-lg" routerLink="layout"  fragment="" title="Scroll up"> -->
+  <div class="container fixed-bottom d-flex justify-content-end  mb-5">
+    <a class="btn btn-sm btn-secondary text-light shadow-lg" (click)="navigateToFragment('/layout','')"  title="Scroll up">
+    <fa-icon icon="angle-double-up" size="2x"></fa-icon>
+  </a>
+</div>
