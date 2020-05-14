@@ -42,7 +42,11 @@ export class CodeRendererComponent implements OnInit {
   public pathName: string =".";
   public fileName: string ="file1.txt";
   public filePath: string
+
+  private lastPieceFile: File;
+  private lastPieceFileReader: FileReader = new FileReader();
   public lastPieceOfCode;
+  public lastPieceNumbering: boolean = false;
 
   fileCodecontent: string = "";
   constructor(public router: Router, public route: ActivatedRoute) {
@@ -112,4 +116,28 @@ export class CodeRendererComponent implements OnInit {
   public loadRawUrl() {
     this.codeUrl = this.codeUrlForm;
   }
+
+  public loadUserFile(fileList: FileList): void {
+    let self = this;
+//     let file = fileList[0];
+//     let fileReader: FileReader = new FileReader();
+//       self.lastPieceOfCode = fileReader.result;
+//     }
+//     fileReader.onloadend = function(x) {
+//     fileReader.readAsText(file);
+    this.lastPieceFile = fileList[0];
+    this.lastPieceFileReader.onloadend = function(x) {
+      self.lastPieceOfCode = self.lastPieceFileReader.result;
+    }
+    this.lastPieceFileReader.readAsText(this.lastPieceFile);
+//     console.log(this.lastPieceOfCode);
+   }
+
+   public lineNumberingToggle(): void {
+    this.lastPieceNumbering = ! this.lastPieceNumbering;
+    this.lastPieceOfCode = "";
+    this.lastPieceFileReader.readAsText(this.lastPieceFile);
+//     console.log("lastPieceNumbering:" + this.lastPieceNumbering);
+//     console.log(this.lastPieceOfCode);
+   }
 }
