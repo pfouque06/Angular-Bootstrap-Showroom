@@ -17,6 +17,12 @@
       </ng-template>
     </ng-container>
     <ng-container ngbNavItem>
+      <a ngbNavLink>Fontawesome</a>
+      <ng-template ngbNavContent>
+        <ng-container *ngTemplateOutlet="ngFontawesome"></ng-container>
+      </ng-template>
+    </ng-container>
+    <ng-container ngbNavItem>
       <a ngbNavLink>...</a>
       <ng-template ngbNavContent><p>To be ...</p></ng-template>
     </ng-container>
@@ -445,3 +451,6 @@
   </div>
 </ng-template>
 
+<ng-template #ngFontawesome>
+  <app-fontawesome></app-fontawesome>
+</ng-template>

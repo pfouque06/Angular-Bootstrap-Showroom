@@ -1,0 +1,306 @@
+<!-- <p>fontawesome works!</p> -->
+  <h3>How to use Fontawesome module for nice, highly customisable free icons</h3>
+  <br>
+
+  <div class="row">
+    <!-- NAV -->
+    <div class="col-md-2 pt-3">
+      <nav id="navPills01"  class="navbar sticky-top navbar-light bg-white">
+        <nav ngbNav #nav="ngbNav" class="navbar-nav nav-pills" orientation="vertical">
+          <ng-container ngbNavItem>
+            <a class="nav-link" (click)="navigateToFragment('/howTo','fontawesome-usage')">Basic Usage</a>
+          </ng-container>
+          <ng-container ngbNavItem>
+            <a class="nav-link" (click)="navigateToFragment('/howTo','fontawesome-options')">Options</a>
+          </ng-container>
+          <ng-container ngbNavItem>
+            <a class="nav-link" (click)="navigateToFragment('/howTo','fontawesome-enhancement')">Enhancement</a>
+          </ng-container>
+          <ng-container ngbNavItem>
+            <a class="nav-link" (click)="navigateToFragment('/howTo','fontawesome-lectures')">Lectures</a>
+          </ng-container>
+        </nav>
+      </nav>
+    </div>
+
+    <!-- SECTIONS -->
+    <div class="col-md-10 scrollbox pt-3" style="height: 600px;">
+      <!-- USAGE -->
+      <div id="fontawesome-usage" class= "my-2 p-4">
+
+        <ngb-alert type='secondary' [dismissible]="false">
+          <h3>Usage</h3>
+        </ngb-alert>
+        <!-- -------------------------------------------- -->
+        <!-- PREREQUISITES -->
+        <!-- -------------------------------------------- -->
+        <h3>Prerequisites</h3>
+        <p>Before proceeding to Fontawesome usage, it must be already installed in yout angular project has been created.</p>
+        <p>Please check <strong>"Foundations" HowTo</strong> to do so.</p>
+
+        <!-- -------------------------------------------- -->
+        <!-- USAGE -->
+        <!-- -------------------------------------------- -->
+        <h3>Icon selector :  </h3>
+        <p>Use the <code>fa-icon</code> semantic with <code>[icon]</code> directive to select icons.</p>
+        <div class="fa-2x">
+          <fa-icon icon="hand-peace"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'user']"></fa-icon>&nbsp;
+          <fa-icon [icon]="['far', 'user']"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fab', 'github']"></fa-icon>
+        </div>
+        <pre class="border"><code [highlight]="iconSelector"></code></pre>
+
+        <hr>
+        <h3>Color : </h3>
+        <fa-icon [icon]="['fas', 'camera']" size="2x" class="text-success"></fa-icon>
+        <fa-icon [icon]="['fas', 'camera']" size="2x" class="text-warning"></fa-icon>
+        <fa-icon [icon]="['fas', 'camera']" size="2x" class="text-danger"></fa-icon>
+        <pre class="border"><code [highlight]="coloring"></code></pre>
+
+        <hr>
+        <h3>Sizing directive : </h3>
+        <p>Use the <code>size</code> attribute to define the size of the icone which is <strong>relative</strong> to its parent</p>
+        &lt;fa-icon [icon]='camera' size='<code>[xs,sm,lg,2x,..,10x]</code>'>&lt;/fa-icon> :
+        <br><br>
+        <fa-icon [icon]="['fas', 'camera']" size="xs" class="text-info"></fa-icon>
+        <fa-icon [icon]="['fas', 'camera']" size="sm" class="text-info"></fa-icon>
+        <fa-icon [icon]="['fas', 'camera']" size="lg" class="text-info"></fa-icon>
+        <fa-icon [icon]="['fas', 'camera']" size="2x" class="text-info"></fa-icon>
+        <fa-icon [icon]="['fas', 'camera']" size="3x" class="text-info"></fa-icon>
+        <fa-icon [icon]="['fas', 'camera']" size="5x" class="text-info"></fa-icon>
+        <fa-icon [icon]="['fas', 'camera']" size="7x" class="text-info"></fa-icon>
+        <fa-icon [icon]="['fas', 'camera']" size="10x" class="text-info"></fa-icon>
+        <pre class="border"><code [highlight]="sizing"></code></pre>
+
+
+
+      </div>
+
+      <!-- OPTIONS -->
+      <div id="fontawesome-options" class= "my-2 p-4">
+
+        <ngb-alert type='secondary' [dismissible]="false">
+          <h3>Options</h3>
+        </ngb-alert>
+        <!-- -------------------------------------------- -->
+        <!-- OPTIONS -->
+        <!-- -------------------------------------------- -->
+        <h3>Fixed width directive : </h3>
+        <p>Use the <code>fixedWidth</code> attribute to vertically assign a series of icons, like in a list or a navigation menu.</p>
+        <div style="font-size: 2rem;">
+          <div><fa-icon icon="skating" [fixedWidth]='true' class="text-info"></fa-icon> Skating</div>
+          <div><fa-icon icon="skiing" [fixedWidth]='true' class="text-primary"></fa-icon> Skiing</div>
+          <div><fa-icon icon="skiing-nordic" [fixedWidth]='true' class="text-info"></fa-icon> Nordic Skiing</div>
+          <div><fa-icon icon="snowboarding" [fixedWidth]='true' class="text-primary"></fa-icon> Snowboarding</div>
+          <div><fa-icon icon="hockey-puck" [fixedWidth]='true' class="text-info"></fa-icon> Hockey</div>
+          <div><fa-icon icon="snowman" [fixedWidth]='true' class="text-primary"></fa-icon> Snowman</div>
+        </div>
+        <br>
+        <!-- &lt;fa-icon [icon]='camera' <code>[fixedWidth]='true'</code>>&lt;/fa-icon> : -->
+        <pre class="border"><code [highlight]="fixedWidthCode"></code></pre>
+
+        <hr>
+        <h3>Listed icons directives : </h3>
+        <p>Use the <code>fa-ul</code> and <code>fa-li</code> class directive to replace default bullets in unordered lists; <code>fixedWidth</code> attribute is handled as well.</p>
+        <ul class="fa-ul">
+          <li><span class="fa-li"><fa-icon [icon]="['far', 'check-square']"></fa-icon></span>List item checked</li>
+          <li><span class="fa-li"><fa-icon [icon]="['far', 'square']"></fa-icon></span>List item unchecked</li>
+          <li><span class="fa-li"><fa-icon [icon]="['far', 'check-square']"></fa-icon></span>List icons checked</li>
+        </ul>
+        <pre class="border"><code [highlight]="listedIcons"></code></pre>
+
+        <hr>
+        <h3>Rotate & Flip directives : </h3>
+        <p>Use the <code>rotate</code> and <code>flip</code> directive according to your needs.</p>
+        <div class="fa-4x">
+          <fa-icon icon="snowboarding" ></fa-icon>
+          <fa-icon icon="snowboarding" rotate="90"></fa-icon>
+          <fa-icon icon="snowboarding" rotate="180"></fa-icon>
+          <fa-icon icon="snowboarding" rotate="270"></fa-icon>
+        </div>
+        <br>
+        <div class="fa-4x">
+          <fa-icon icon="snowboarding" ></fa-icon>
+          <fa-icon icon="snowboarding" flip="horizontal"></fa-icon>
+          <fa-icon icon="snowboarding" flip="vertical"></fa-icon>
+          <fa-icon icon="snowboarding" flip="both"></fa-icon>
+        </div>
+        <br>
+        <!-- &lt;fa-icon [icon]='snowboarding' <code>rotate='[90|180|270]'</code>>&lt;/fa-icon> : -->
+        <!-- &lt;fa-icon [icon]='snowboarding' <code>flip='[horizontal|vertical|both]'</code>>&lt;/fa-icon> : -->
+        <pre class="border"><code [highlight]="rotateAndFlip"></code></pre>
+
+        <hr>
+        <h3>Rotated animation directives : </h3>
+        <p>Use the <code>spin</code> (linear) and <code>pulse</code> (punctuated) rotation directives according to your needs.</p>
+        <div class="fa-4x">
+          <fa-icon icon="spinner" [spin]="true" ></fa-icon>
+          <fa-icon icon="circle-notch" [spin]="true"></fa-icon>
+          <fa-icon icon="sync" [spin]="true"></fa-icon>
+          <fa-icon icon="cog" [spin]="true"></fa-icon>
+        </div>
+        <br>
+        <div class="fa-4x">
+          <fa-icon icon="spinner" [pulse]="true" ></fa-icon>
+          <fa-icon icon="circle-notch" [pulse]="true"></fa-icon>
+          <fa-icon icon="sync" [pulse]="true"></fa-icon>
+          <fa-icon icon="cog" [pulse]="true"></fa-icon>
+        </div>
+        <br>
+        <!-- &lt;fa-icon [icon]='spinner' <code>[spin]='true'</code>>&lt;/fa-icon> : -->
+        <!-- &lt;fa-icon [icon]='spinneer' <code>[pulse]='true'</code>>&lt;/fa-icon> : -->
+        <pre class="border"><code [highlight]="animating"></code></pre>
+
+        <hr>
+        <h3>border, Left & right pulling directives : </h3>
+        <p>Use <code>pull='left'</code> or <code>pull='right'</code> class directives in order to pull icons abd wrap text around if needed.</p>
+        <p>Use <code>[border]='true'</code> directive to add a light border around your icon.</p>
+        <fa-icon icon="quote-left" pull='left' size="2x"></fa-icon>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Donec dapibus ligula lectus, nec eleifend est malesuada id. Mauris tristique euismod odio, nec tempor massa aliquam quis.
+        Sed aliquet rutrum consectetur. Phasellus viverra congue lacinia. Integer lacus sem, ullamcorper at tempor luctus, aliquam ac justo.
+        Nulla sed mauris arcu. Duis sagittis lobortis felis, sit amet interdum mauris lobortis ut. Vivamus vitae sapien justo.
+        In hac habitasse platea dictumst. Aliquam luctus augue neque. Morbi maximus facilisis placerat.
+        <br><br>
+        <fa-icon icon="arrow-right" pull='right' [border]='true' size="2x"></fa-icon>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Donec dapibus ligula lectus, nec eleifend est malesuada id. Mauris tristique euismod odio, nec tempor massa aliquam quis.
+        Sed aliquet rutrum consectetur. Phasellus viverra congue lacinia. Integer lacus sem, ullamcorper at tempor luctus, aliquam ac justo.
+        Nulla sed mauris arcu. Duis sagittis lobortis felis, sit amet interdum mauris lobortis ut. Vivamus vitae sapien justo.
+        In hac habitasse platea dictumst. Aliquam luctus augue neque. Morbi maximus facilisis placerat.
+        <br><br>
+        <pre class="border"><code [highlight]="pulling"></code></pre>
+      </div>
+
+      <!-- ENHANCEMENT -->
+      <div id="fontawesome-enhancement" class= "my-2 p-4">
+
+        <ngb-alert type='secondary' [dismissible]="false">
+          <h3>Enhancement</h3>
+        </ngb-alert>
+        <!-- -------------------------------------------- -->
+        <!-- ENHANCEMENT -->
+        <!-- -------------------------------------------- -->
+        <h3>Icon stacking directives : </h3>
+        <p>Use the <code>fa-stack</code> semantic with <code>stackItemSize='1x|2x'</code>(order is important) and <code>inverse</code> directives as needed.</p>
+        <fa-stack size="3x">
+          <fa-icon icon="square" stackItemSize="2x"></fa-icon>
+          <fa-icon icon="terminal" stackItemSize="1x" [inverse]="true"></fa-icon>
+        </fa-stack>
+        <fa-stack size="3x">
+          <fa-icon icon="camera" stackItemSize="1x"></fa-icon>
+          <fa-icon icon="ban" stackItemSize="2x" class="text-danger"></fa-icon>
+        </fa-stack>
+        <pre class="border"><code [highlight]="iconStacking"></code></pre>
+        <br>
+
+        <hr>
+        <h3>Power transforms directives : </h3>
+        <p>You can scale, position, flip, & rotate icons arbitrarily using the <code>data-fa-transform</code> element attribute. You can even combine them for some super-useful effects.</p>
+        <p>Sub directives are :</p>
+        <ul>
+          <li><code>shrink-#</code>&nbsp;<code>grow-#</code></li>
+          <li><code>up-#</code>&nbsp;<code>right-#</code>&nbsp;<code>down-#</code>&nbsp;<code>left-#</code></li>
+          <li><code>rotate-#</code>&nbsp;<code>flip-v</code>&nbsp;<code>flip-h</code></li>
+        </ul>
+        <br>
+        Scaling
+        <br>
+        <div class="fa-4x">
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info" transform="shrink-8"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info" transform="grow-8"></fa-icon>&nbsp;
+        </div>
+        <br>
+        <pre class="border"><code [highlight]="power01"></code></pre>
+        <br>
+        Positioning
+        <br>
+        <div class="fa-4x">
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info" transform="shrink-8"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info" transform="shrink-8 up-6"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info" transform="shrink-8 right-6"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info" transform="shrink-8 down-6"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info" transform="shrink-8 left-6"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info" transform="shrink-8 up-6 left-6"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info" transform="shrink-8 down-6 up-6"></fa-icon>
+        </div>
+        <br>
+        <pre class="border"><code [highlight]="power02"></code></pre>
+        <br>
+        Rotating & flipping
+        <br>
+        <div class="fa-4x">
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info" transform="rotate-30"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info" transform="rotate-45"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info" transform="rotate-60"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info" transform="rotate--45"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info" transform="flip-v"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info" transform="flip-h"></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'seedling']" class="bg-info" transform="flip-v flip-h"></fa-icon>
+        </div>
+        <pre class="border"><code [highlight]="power03"></code></pre>
+
+        <hr>
+        <h3>Masking directives : </h3>
+        <p>Combine two icons create one single-color shape with <code>[mask]</code> directives, as follows :</p>
+        <div class="fa-4x">
+          <fa-icon [icon]="['fas', 'pen']" transform="shrink-10 up-0.5" [mask]="['fas', 'comment']" class="bg-info" ></fa-icon>&nbsp;
+          <fa-icon [icon]="['fab', 'facebook-f']" transform="shrink-3.5 down-1.6 right-1.25" [mask]="['fas', 'circle']" class="bg-info" ></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'headphones']" transform="shrink-6" [mask]="['fas', 'square']" class="bg-info" ></fa-icon>&nbsp;
+          <fa-icon [icon]="['fas', 'mask']" transform="shrink-3 up-1" [mask]="['fas', 'circle']" class="bg-info" ></fa-icon>&nbsp;
+        </div>
+        <pre class="border"><code [highlight]="masking"></code></pre>
+
+        <hr>
+        <h3>Layering, Text & Counter directives : </h3>
+        <p>Enhancement feature from stacking wihch allows to combine multiple icons on top of each other
+          using <code>fa-layers</code>, <code>fa-layers-text</code> and <code>fa-layers-counter</code> semantic, as follows :</p>
+        <div class="fa-4x">
+          <fa-layers [fixedWidth]="true" class="bg-info">
+            <fa-icon [icon]="['fas', 'square']"></fa-icon>
+            <fa-icon [icon]="['fas', 'spinner']" [inverse]="true" transform="shrink-6"></fa-icon>
+          </fa-layers>&nbsp;
+          <fa-layers [fixedWidth]="true" class="bg-info">
+            <fa-icon [icon]="['fas', 'square']"></fa-icon>
+            <fa-layers-text content="Yo" class="text-info" transform="shrink-4"></fa-layers-text>
+          </fa-layers>&nbsp;
+          <fa-layers [fixedWidth]="true" class="bg-info">
+            <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
+            <fa-layers-counter content="99+"></fa-layers-counter>
+          </fa-layers>&nbsp;
+          <fa-layers [fixedWidth]="true" class="bg-info">
+            <fa-icon [icon]="['fas', 'calendar']"></fa-icon>
+            <fa-layers-text content="27" [inverse]="true" class="font-weight-bold" transform="shrink-8 down-3"></fa-layers-text>
+          </fa-layers>&nbsp;
+          <fa-layers [fixedWidth]="true" class="bg-info">
+            <fa-icon [icon]="['fas', 'certificate']"></fa-icon>
+            <fa-layers-text content="NEW" [inverse]="true" class="font-weight-bold" transform="shrink-11.5 rotate--30"></fa-layers-text>
+          </fa-layers>&nbsp;
+          <fa-layers [fixedWidth]="true" class="bg-info">
+            <fa-icon [icon]="['fas', 'play']" transform="rotate--90 grow-2"></fa-icon>
+            <fa-icon [icon]="['fas', 'sun']" class="text-warning" transform="shrink-10 up-2"></fa-icon>
+            <fa-icon [icon]="['fas', 'moon']" [inverse]="true" transform="shrink-11 down-4.2 left-4"></fa-icon>
+            <fa-icon [icon]="['fas', 'star']" class="text-danger" transform="shrink-11 down-4.2 right-4"></fa-icon>
+          </fa-layers>
+        </div>
+        <pre class="border"><code [highlight]="layering"></code></pre>
+      </div>
+
+      <!-- LECTURES -->
+      <div id="fontawesome-lectures" class= "my-2 p-4">
+
+        <ngb-alert type='secondary' [dismissible]="false">
+          <h3>Lectures</h3>
+        </ngb-alert>
+        <!-- -------------------------------------------- -->
+        <!-- LECTURES -->
+        <!-- -------------------------------------------- -->
+        <p>Some lectures and interesting links about this module :</p>
+        <p><a href="https://fontawesome.com" target="_blank">https://fontawesome.com</a></p>
+        <p><a href="https://github.com/FortAwesome/angular-fontawesome/blob/master/docs/usage/features.md" target="_blank">https://github.com/FortAwesome/angular-fontawesome/blob/master/docs/usage/features.md</a></p>
+      </div>
+
+    </div>
+  </div>
+<!-- </ng-template> -->
