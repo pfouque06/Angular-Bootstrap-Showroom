@@ -95,6 +95,15 @@
     <strong>Local file system interaction is <code>forbidden</code> with Angular</strong> ... topic aborted ...
   </ngb-alert>
 
+  <!-- ################################################### -->
+  <h2><span class="badge badge-secondary">code rendering from a raw file you provide</span></h2>
+  <input type="file" (change)="loadUserFile($event.target.files)">
+  <!--  <fa-icon [icon]="lastPieceNumbering ? 'toggle-on' : 'toggle-off'" (click)="lastPieceNumbering = ! lastPieceNumbering" size="2x"></fa-icon>Line numbering-->
+  Line numbering :
+  <fa-icon class="text-muted" [icon]="lastPieceNumbering ? 'toggle-on' : 'toggle-off'" (click)="lineNumberingToggle()" size="2x"></fa-icon>
+  <pre *ngIf="lastPieceOfCode" class="border"><code [highlight]="lastPieceOfCode"  [lineNumbers]="lastPieceNumbering"></code></pre>
+
+
 </ng-template>
 
 <!-- SCROLL UP BOTTOM BUTTON -->

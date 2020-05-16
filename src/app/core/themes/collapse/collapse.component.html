@@ -1,0 +1,109 @@
+<div class="container">
+
+  <p>Some Collapsed boxes ...</p>
+
+  <div class="mb-3">
+    <ngb-accordion [closeOthers]="true" type="light" activeIds="static-4">
+      <ngb-panel id="nav-1">
+
+        <ng-template ngbPanelHeader let-opened="opened">
+          <div class="d-flex align-items-center justify-content-start">
+            <button ngbPanelToggle class="btn btn-link container-fluid text-left text-dark pl-0">
+              <h5 class="m-0">
+                <fa-icon [icon]="opened ? 'caret-down' : 'caret-right'" [fixedWidth]="true"></fa-icon>
+                <span [class]="opened ? 'text-dark' : 'text-muted'">collapse section</span>
+              </h5>
+            </button>
+          </div>
+        </ng-template>
+
+        <ng-template ngbPanelContent>
+          <ng-container *ngTemplateOutlet="ngCollapse"></ng-container>
+        </ng-template>
+      </ngb-panel>
+
+    </ngb-accordion>
+  </div>
+</div>
+
+<ng-template #ngCollapse>
+
+  <ul class="card-header">
+    <li class="list-group-item">
+      ng-Bootstrap Nav includes <code>ngbCollapse</code> component.
+    </li>
+  </ul>
+
+  <div class="card-body">
+
+    <div class="card p-3 mb-3">
+      <h4>Mono toggle</h4>
+      <p>
+        <button type="button" class="btn btn-outline-dark" (click)="isCollapsed = !isCollapsed"
+                [attr.aria-expanded]="!isCollapsed" aria-controls="ngCollapseExample">
+          Toggle
+        </button>
+      </p>
+      
+      <div id="ngCollapseExample" [ngbCollapse]="isCollapsed">
+        <div class="card">
+          <div class="card-body border border-dark bg-light text-dark">
+            You can collapse this card by clicking Toggle
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-3 mb-3">
+      <h4>Multi toggle</h4>
+      <p>
+        <button type="button" class="btn btn-outline-success" (click)="isFirstCollapsed = !isFirstCollapsed"
+                [attr.aria-expanded]="!isFirstCollapsed" aria-controls="ngCollapseFirst">
+          First
+        </button>
+        <button type="button" class="btn btn-outline-danger" (click)="isSecondCollapsed = !isSecondCollapsed"
+                [attr.aria-expanded]="!isSecondCollapsed" aria-controls="ngCollapseSecond">
+          Second
+        </button>
+        <button type="button" class="btn btn-outline-dark" (click)="isFirstCollapsed = !isFirstCollapsed; isSecondCollapsed = !isSecondCollapsed"
+                [attr.aria-expanded]="! (isFirstCollapsed && isSecondCollapsed) " aria-controls="ngCollapseFirst ngCollapseSecond">
+          Both
+        </button>
+      </p>
+
+      <div class="row">
+
+        <div class="col">
+          <div id="ngCollapseFirst" [ngbCollapse]="isFirstCollapsed">
+            <div class="card">
+              <div class="card-body border border-success bg-light text-success">
+                First card
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div id="ngCollapseSecond" [ngbCollapse]="isSecondCollapsed">
+            <div class="card">
+              <div class="card-body border border-danger bg-light text-danger">
+                Second card
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</ng-template>
+
+<!-- SCROLL UP BOTTOM BUTTON -->
+<!-- <a class="btn btn-sm btn-secondary text-light shadow-lg" routerLink="."  fragment="" title="Scroll up"> -->
+<div class="container fixed-bottom d-flex justify-content-end  mb-5">
+  <a class="btn btn-sm btn-secondary text-light shadow-lg" (click)="navigateToFragment('/collapse','')"  title="Scroll up">
+    <fa-icon icon="angle-double-up" size="2x"></fa-icon>
+  </a>
+</div>
