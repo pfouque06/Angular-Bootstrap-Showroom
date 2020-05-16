@@ -7,7 +7,7 @@
   <p>Please contact me if any questions.</p>
   <br>
 
-  <div class="mb-3">
+  <!-- <div class="mb-3">
     <ngb-accordion [closeOthers]="true" type="light" activeIds="static-4">
 
       <ngb-panel id="static-1">
@@ -15,8 +15,6 @@
           <div class="d-flex align-items-center justify-content-start">
             <button ngbPanelToggle class="btn btn-link container-fluid text-left text-dark pl-0">
               <h5 class="m-0">
-                <!-- <fa-icon *ngIf="opened" icon="caret-down"></fa-icon> -->
-                <!-- <fa-icon *ngIf="! opened" icon="caret-right"></fa-icon> -->
                 <fa-icon [icon]="opened ? 'caret-down' : 'caret-right'" [fixedWidth]="true"></fa-icon>
                 <span [class]="opened ? 'text-dark' : 'text-muted'">Angular</span>
               </h5>
@@ -63,7 +61,98 @@
         </ng-template>
       </ngb-panel>
     </ngb-accordion>
+  </div> -->
 
+  <!-- <div class="card p-3 mb-3"> -->
+  <div class="p-3 mb-3">
+    <div class="row mb-3">
+      <div class="col-auto ">
+        <button type="button" class="btn btn-outline-dark" (click)="isFirstCollapsed = !isFirstCollapsed"
+                [attr.aria-expanded]="!isFirstCollapsed" aria-controls="ngCollapseFirst">
+          Angular
+        </button>
+      </div>
+      <div class="col-auto ">
+        <button type="button" class="btn btn-outline-dark" (click)="isSecondCollapsed = !isSecondCollapsed"
+                [attr.aria-expanded]="!isSecondCollapsed" aria-controls="ngCollapseSecond">
+          ng-Bootstrap
+        </button>
+      </div>
+      <div class="col-auto ">
+        <button type="button" class="btn btn-outline-dark" (click)="isThirdCollapsed = !isThirdCollapsed"
+                [attr.aria-expanded]="! isThirdCollapsed" aria-controls="ngCollapseThird">
+          Fontawesome
+        </button>
+      </div>
+      <div class="col-auto ">
+        <button type="button" class="btn btn-dark"
+          (click)="isFirstCollapsed = !isFirstCollapsed; isSecondCollapsed = !isSecondCollapsed; isThirdCollapsed = !isThirdCollapsed"
+          [attr.aria-expanded]="! (isFirstCollapsed && isSecondCollapsed && isThirdCollapsed)"
+          aria-controls="ngCollapseFirst ngCollapseSecond ngCollapseThird">
+          All
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div id="ngCollapseFirst" [ngbCollapse]="isFirstCollapsed">
+          <div class="card">
+            <div class="card-body border bg-light">
+              <code>Angular</code> works just fine !
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div id="ngCollapseSecond" [ngbCollapse]="isSecondCollapsed">
+          <div class="card">
+            <div class="card-body border bg-light">
+              <code>ng-bootstrap</code> seems to be installed and operational as well!!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div id="ngCollapseThird" [ngbCollapse]="isThirdCollapsed">
+          <div class="card">
+            <div class="card-body border bg-light">
+              <code>Fontawesome</code> works also ! <fa-icon icon="check"></fa-icon> ...<fa-icon icon="coffee"></fa-icon>
+              <p>It's awesome !!!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="d-flex flex-row">
+      <div id="ngCollapseFirst" [ngbCollapse]="isFirstCollapsed">
+        <div class="card">
+          <div class="card-body border bg-light">
+            <code>Angular</code> works just fine !
+          </div>
+        </div>
+      </div>
+
+      <div id="ngCollapseSecond" [ngbCollapse]="isSecondCollapsed">
+        <div class="card">
+          <div class="card-body border bg-light">
+            <code>ng-bootstrap</code> seems to be installed and operational as well!!
+          </div>
+        </div>
+      </div>
+
+      <div id="ngCollapseThird" [ngbCollapse]="isThirdCollapsed">
+        <div class="card">
+          <div class="card-body border bg-light">
+            <code>Fontawesome</code> works also ! <fa-icon icon="check"></fa-icon> ...<fa-icon icon="coffee"></fa-icon>
+            <p>It's awesome !!!</p>
+          </div>
+        </div>
+      </div>
+    </div> -->
   </div>
 
 </div>

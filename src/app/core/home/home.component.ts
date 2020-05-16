@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  public isFirstCollapsed = true;
+  public isSecondCollapsed = true;
+  public isThirdCollapsed = true;
+
   constructor() { }
 
   ngOnInit(): void {
