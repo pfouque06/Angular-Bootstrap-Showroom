@@ -17,6 +17,7 @@ import { PersonListComponent, SortableHeader } from './person/person-list/person
 import { PersonFormComponent } from './person/person-form/person-form.component';
 import { YaFormComponent } from './person/ya-form/ya-form.component';
 import { HowToComponent } from './how-to/how-to.component';
+import { FoundationsComponent } from './how-to/foundations/foundations.component';
 import { FontawesomeComponent } from './how-to/fontawesome/fontawesome.component';
 
 
@@ -35,6 +36,7 @@ import { FontawesomeComponent } from './how-to/fontawesome/fontawesome.component
     SortableHeader,
     YaFormComponent,
     HowToComponent,
+    FoundationsComponent,
     FontawesomeComponent,
   ],
   imports: [
