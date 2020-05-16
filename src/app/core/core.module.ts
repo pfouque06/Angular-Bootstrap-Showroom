@@ -19,6 +19,7 @@ import { YaFormComponent } from './person/ya-form/ya-form.component';
 import { HowToComponent } from './how-to/how-to.component';
 import { FoundationsComponent } from './how-to/foundations/foundations.component';
 import { FontawesomeComponent } from './how-to/fontawesome/fontawesome.component';
+import { NgxHighlightjsComponent } from './how-to/ngx-highlightjs/ngx-highlightjs.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { FontawesomeComponent } from './how-to/fontawesome/fontawesome.component
     HowToComponent,
     FoundationsComponent,
     FontawesomeComponent,
+    NgxHighlightjsComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,170 @@
+<h3>How to install and use ngx-highlghtjs module for automatic code block detection and rendering within HTML pages</h3>
+<br>
+
+<div class="row">
+  <!-- NAV -->
+  <div class="col-md-2 pt-3">
+    <!-- <a href="/howTo#page-install">Installation</a> -->
+    <!-- <a href="/howTo#page-imports">Imports</a> -->
+    <!-- <a href="/howTo#page-foundations">Foundations</a> -->
+    <!-- <a href="/howTo#page-starters">Starters</a> -->
+    <!-- <a href="/howTo#page-custom">Custom</a> -->
+    <nav id="navPills01"  class="navbar sticky-top navbar-light bg-white">
+      <nav ngbNav #nav="ngbNav" class="navbar-nav nav-pills" orientation="vertical">
+        <ng-container ngbNavItem>
+          <a class="nav-link"  (click)="navigateToFragment('/howTo','ngxhighlightjs-install')">Installation</a>
+        </ng-container>
+        <ng-container ngbNavItem>
+          <a class="nav-link" (click)="navigateToFragment('/howTo','ngxhighlightjs-usage')">Usage</a>
+        </ng-container>
+        <ng-container ngbNavItem>
+          <a class="nav-link" (click)="navigateToFragment('/howTo','ngxhighlightjs-options')">Options</a>
+        </ng-container>
+        <ng-container ngbNavItem>
+          <a class="nav-link" (click)="navigateToFragment('/howTo','ngxhighlightjs-lecture')">Lectures</a>
+        </ng-container>
+      </nav>
+    </nav>
+  </div>
+
+  <!-- SECTIONS -->
+  <div class="col-md-10 scrollbox pt-3" style="height: 600px;">
+
+    <!-- INSTALLATION -->
+    <div id="ngxhighlightjs-install" class= "my-2 p-4">
+      <ngb-alert type='secondary' [dismissible]="false">
+        <h4>Installation</h4>
+      </ngb-alert>
+      <!-- -------------------------------------------- -->
+      <!-- PREREQUISITES -->
+      <!-- -------------------------------------------- -->
+      <h4>Prerequisites</h4>
+      <p>Before proceeding to ngx-highlightjs installation, please note that nodejs, npm and angular/cli
+      must be already installed on your OS and an angular project has been created.</p>
+      <p>Please check <strong>"Foundations" HowTo</strong> to do so.</p>
+
+
+      <!-- -------------------------------------------- -->
+      <!-- INSTALLATION -->
+      <!-- -------------------------------------------- -->
+      <h4>install ngx-highlightjs module via npm</h4>
+      Use following CLI commands to import the module :
+      <pre class="border"><code [highlight]="ngxHighlightjsCodeMap.get('install_codebloc_01')" [lineNumbers]="true"></code></pre>
+
+      <p>inject in shared/shared.module.ts the new imported module :</p>
+      <pre class="border"><code [highlight]="ngxHighlightjsCodeMap.get('install_codebloc_02')" [lineNumbers]="true"></code></pre>
+
+      <p>For line numbering, add the following codes in shared/shared.module.ts the new imported module :</p>
+      <pre class="border"><code [highlight]="ngxHighlightjsCodeMap.get('install_codebloc_03')" [lineNumbers]="true"></code></pre>
+
+      <p>Import your preferred theme of all css themes (for semantic decoration for instance) from the node_modules directory in angular.json :</p>
+      <pre class="border"><code [highlight]="ngxHighlightjsCodeMap.get('install_codebloc_04')" [lineNumbers]="true"></code></pre>
+
+      <p>Another option is to import your preferred theme in src/styles.css application, like :</p>
+      <pre class="border"><code [highlight]="ngxHighlightjsCodeMap.get('install_codebloc_05')" [lineNumbers]="true"></code></pre>
+
+    </div>
+
+    <hr>
+    <!-- USAGE -->
+    <div id="ngxhighlightjs-usage" class= "my-2 p-2 pt-4">
+      <!-- -------------------------------------------- -->
+      <!-- USAGE -->
+      <!-- -------------------------------------------- -->
+      <ngb-alert type='secondary' [dismissible]="false">
+        <h4>Usage</h4>
+      </ngb-alert>
+      <h4>ngx-highlightjs instructions set</h4>
+      You must use these instruction sets in your html component in order to activate code rendering :
+      <ul>
+        <li>&lt;pre>&lt;code ...semantics...>&lt;/code>&lt;/pre> : html semantic to use</li>
+        <li>[highlight]: (string), Accept code string to highlight, default null</li>
+        <li>[languages]: (string[]), An array of language names and aliases restricting auto detection to only these languages, default: null</li>
+        <li>[lineNumbers]: (boolean), A flag that indicates adding line numbers to highlighted code element</li>
+        <li>(highlighted): Stream that emits HighlightResult object when element is highlighted</li>
+      </ul>
+
+      <h4>Usage example </h4>
+      Add needed variables in your component.ts file for injection in html part :
+      <pre class="border"><code [highlight]="ngxHighlightjsCodeMap.get('usage_codebloc_01')" [lineNumbers]="true"></code></pre>
+
+      Inject in your component.html the ngxhighligt call :
+      <pre class="border"><code [highlight]="ngxHighlightjsCodeMap.get('usage_codebloc_02')" [lineNumbers]="true"></code></pre>
+    </div>
+
+    <!-- OPTIONS -->
+    <div id="ngxhighlightjs-options" class= "my-2 p-4">
+      <ngb-alert type='secondary' [dismissible]="false">
+        <h4>Options</h4>
+      </ngb-alert>
+      <!-- -------------------------------------------- -->
+      <!-- OPTIONS -->
+      <!-- -------------------------------------------- -->
+      <h4>Lazy load only necessary code langages libraries</h4>
+      <p>In order to optimise your web application, you lazy load only neede code references :</p>
+      <pre class="border"><code [highlight]="ngxHighlightjsCodeMap.get('option_codebloc_01')" [lineNumbers]="true"></code></pre>
+
+      <h4>Read json file containing pieces of code</h4>
+      <p>You can make the choice to include your codes in a json file. Then use the following guide to import your json files in
+        you angular web application :</p>
+      <p>add in tsconfig.json, within "compilerOptions" section : </p>
+      <pre class="border"><code [highlight]="ngxHighlightjsCodeMap.get('option_codebloc_06')" [lineNumbers]="true"></code></pre>
+
+      <p>import your json files and use contained data : </p>
+      <pre class="border"><code [highlight]="ngxHighlightjsCodeMap.get('option_codebloc_07')" [lineNumbers]="true"></code></pre>
+
+
+
+      <h4>Plus package</h4>
+      <p>In version >= 4, a new sub-package were added with the following features:</p>
+      <ul>
+        <li>Highlight gists using gists API</li>
+        <li>Highlight code directly from URL</li>
+      </ul>
+
+      <p><strong>Usage : import module in share.module.ts</strong></p>
+      <pre class="border"><code [highlight]="ngxHighlightjsCodeMap.get('option_codebloc_02')" [lineNumbers]="true"></code></pre>
+
+      <p><strong>Highlight a gist file :</strong></p>
+      <p>Use [gist] directive with the gist id to get the response through the output (gistLoaded).</p>
+      <p>Once (gistLoaded) emits, you will get access to the gist response.</p>
+      <p>Use gistContent pipe to extract the file content from gist response using gist file name.</p>
+
+      <p>Example: </p>
+      <pre class="border"><code [highlight]="ngxHighlightjsCodeMap.get('option_codebloc_03')" [lineNumbers]="true"></code></pre>
+
+      <p><strong>Highlight all gist files :</strong></p>
+      <p>To loop over gist?.files, use keyvalue pipe to pass file name into gistContent pipe, like this : </p>
+      <pre class="border"><code [highlight]="ngxHighlightjsCodeMap.get('option_codebloc_04')" [lineNumbers]="true"></code></pre>
+
+      <p><strong>Highlight code from URL directly :</strong></p>
+      <p>Use the pipe codeFromUrl with the async pipe together to get the code text from a raw URL, like this : </p>
+      <pre class="border"><code [highlight]="ngxHighlightjsCodeMap.get('option_codebloc_05')" [lineNumbers]="true"></code></pre>
+
+    </div>
+
+    <hr>
+
+    <!-- LECTURES -->
+    <div id="ngxhighlightjs-lecture" class= "my-2 p-4">
+      <ngb-alert type='secondary' [dismissible]="false">
+        <h4>Lectures</h4>
+      </ngb-alert>
+      <!-- -------------------------------------------- -->
+      <!-- LECTURES -->
+      <!-- -------------------------------------------- -->
+      <h4>Some lectures and interesting links about this module</h4>
+      <p><a href="https://www.npmjs.com/package/ngx-highlightjs" target="_blank">https://www.npmjs.com/package/ngx-highlightjs</a></p>
+      <p><a href="https://github.com/MurhafSousli/ngx-highlightjs" target="_blank">https://github.com/MurhafSousli/ngx-highlightjs</a></p>
+
+      <h4>Stackblitz demo :</h4>
+      <p><a href="https://stackblitz.com/edit/ngx-highlightjs" target="_blank">https://stackblitz.com/edit/ngx-highlightjs</a></p>
+
+      <h4>Demo sites for alternative modules that give an idea of code rendering and themes :</h4>
+      <p><a href="https://nowzoo.github.io/ngx-highlight-js/" target="_blank">https://nowzoo.github.io/ngx-highlight-js/</a></p>
+      <p><a href="https://highlightjs.org/" target="_blank">https://highlightjs.org/</a></p>
+      <p></p>
+    </div>
+
+  </div>
+</div>
