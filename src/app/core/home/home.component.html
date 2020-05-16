@@ -85,11 +85,19 @@
         </button>
       </div>
       <div class="col-auto ">
-        <button type="button" class="btn btn-dark"
+        <!-- [attr.aria-expanded]="(isFirstCollapsed || isSecondCollapsed || isThirdCollapsed)" -->
+        <button type="button" class="btn btn-secondary"
+          (click)="All()"
+          aria-controls="ngCollapseFirst ngCollapseSecond ngCollapseThird">
+          All
+        </button>
+      </div>
+      <div class="col-auto ">
+        <button type="button" class="btn btn-warning"
           (click)="isFirstCollapsed = !isFirstCollapsed; isSecondCollapsed = !isSecondCollapsed; isThirdCollapsed = !isThirdCollapsed"
           [attr.aria-expanded]="! (isFirstCollapsed && isSecondCollapsed && isThirdCollapsed)"
           aria-controls="ngCollapseFirst ngCollapseSecond ngCollapseThird">
-          All
+          X-All
         </button>
       </div>
     </div>

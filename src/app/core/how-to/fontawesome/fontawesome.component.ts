@@ -140,7 +140,7 @@ In hac habitasse platea dictumst. Aliquam luctus augue neque. Morbi maximus faci
 `<div class="fa-4x">
   <fa-layers [fixedWidth]="true" class="bg-info">
     <fa-icon [icon]="['fas', 'square']"></fa-icon>
-    <fa-icon [icon]="['fas', 'spinner']" [inverse]="true" transform="shrink-6"></fa-icon>
+    <fa-icon [icon]="['fas', 'spinner']" [inverse]="true" transform="shrink-6" [spin]="true"></fa-icon>
   </fa-layers>
   <fa-layers [fixedWidth]="true" class="bg-info">
     <fa-icon [icon]="['fas', 'square']"></fa-icon>
