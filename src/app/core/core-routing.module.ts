@@ -7,6 +7,7 @@ import { LayoutComponent } from './themes/layout/layout.component';
 import { NavComponent } from './themes/nav/nav.component';
 import { ModalComponent } from './themes/modal/modal.component';
 import { CodeRendererComponent } from './themes/code-renderer/code-renderer.component';
+import { CollapseComponent } from './themes/collapse/collapse.component';
 import { YaFormComponent } from './person/ya-form/ya-form.component';
 import { PersonListComponent } from './person/person-list/person-list.component';
 import { PersonFormComponent } from './person/person-form/person-form.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'nav', component: NavComponent },
   { path: 'modal', component: ModalComponent },
   { path: 'codeRenderer', component: CodeRendererComponent },
+  { path: 'collapse', component: CollapseComponent },
   { path: 'yaForm', component: YaFormComponent },
   { path: 'personneList', component: PersonListComponent },
   { path: 'personneForm', component: PersonFormComponent },

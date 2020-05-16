@@ -16,6 +16,7 @@ import { YaFormComponent } from './person/ya-form/ya-form.component';
 import { HowToComponent } from './how-to/how-to.component';
 import { HighlightPlusModule } from 'ngx-highlightjs/plus';
 import { CodeRendererComponent } from './themes/code-renderer/code-renderer.component';
+import { CollapseComponent } from './themes/collapse/collapse.component';
 
 
 @NgModule({
@@ -29,9 +30,10 @@ import { CodeRendererComponent } from './themes/code-renderer/code-renderer.comp
     PersonFormComponent,
     SortableHeader,
     HowToComponent,
+    CodeRendererComponent,
+    CollapseComponent,
     LayoutComponent,
     NavComponent,
-    CodeRendererComponent,
   ],
   imports: [
     CommonModule,
