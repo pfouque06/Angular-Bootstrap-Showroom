@@ -1,16 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { AnimateService } from 'src/app/shared/service/animate.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  animations: [
+    AnimateService.TbounceGate,
+    AnimateService.TflipYGate,
+    AnimateService.TflipXGate,
+  ],
 })
 export class HomeComponent implements OnInit {
 
+  // collapsing playground
   public isFirstCollapsed = true;
   public isSecondCollapsed = true;
   public isThirdCollapsed = true;
-  public isAllCollapsed = true;
+  public isAllCollapsed: boolean;
 
   constructor() { }
 

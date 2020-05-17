@@ -1,0 +1,91 @@
+<h3>How to build an Angular startup project boarding ng-Bootstrap and Fontawesome.</h3>
+<br>
+
+<div class="row">
+  <!-- NAV -->
+  <div class="col-md-2 pt-3">
+    <!-- <a href="/howTo#page-install">Installation</a> -->
+    <!-- <a href="/howTo#page-imports">Imports</a> -->
+    <!-- <a href="/howTo#page-foundations">Foundations</a> -->
+    <!-- <a href="/howTo#page-starters">Starters</a> -->
+    <!-- <a href="/howTo#page-custom">Custom</a> -->
+    <nav id="navPills01"  class="navbar sticky-top navbar-light bg-white">
+      <nav ngbNav #nav="ngbNav" class="navbar-nav nav-pills" orientation="vertical">
+        <ng-container ngbNavItem>
+          <a class="nav-link"  (click)="navigateToFragment('/howTo','nganimate-install')">Installation</a>
+        </ng-container>
+        <ng-container ngbNavItem>
+          <a class="nav-link" (click)="navigateToFragment('/howTo','nganimate-usage')">Usage</a>
+        </ng-container>
+        <ng-container ngbNavItem>
+          <a class="nav-link" (click)="navigateToFragment('/howTo','nganimate-lectures')">Lectures</a>
+        </ng-container>
+      </nav>
+    </nav>
+  </div>
+
+  <!-- SECTIONS -->
+  <div class="col-md-10 scrollbox pt-3" style="height: 600px;">
+    <!-- INSTALLATION -->
+    <div id="nganimate-install" class= "my-2 p-4">
+      <ngb-alert type='secondary' [dismissible]="false">
+        <h4>Installation</h4>
+      </ngb-alert>
+      <!-- -------------------------------------------- -->
+      <!-- PREREQUISITES -->
+      <!-- -------------------------------------------- -->
+      <h4>Prerequisites</h4>
+      <p>Before proceeding to ng-animate installation andusage, please note that nodejs, npm and angular/cli
+      must be already installed on your OS and an angular project has been created.</p>
+      <p>Please check <strong>"Foundations" HowTo</strong> to do so.</p>
+
+      <!-- -------------------------------------------- -->
+      <!-- INSTALLATION -->
+      <!-- -------------------------------------------- -->
+      <h4>install ng-animate module via npm</h4>
+      <pre class="border"><code [highlight]="ngAnimateCodeMap.get('name')" [lineNumbers]="true"></code></pre>
+
+      ... to be completed ...
+    </div>
+
+    <!-- USAGE -->
+    <div class="col-md-10 scrollbox pt-3" style="height: 600px;">
+      <!-- INSTALLATION -->
+      <div id="nganimate-usage" class= "my-2 p-4">
+        <ngb-alert type='secondary' [dismissible]="false">
+          <h4>Usage</h4>
+        </ngb-alert>
+        <!-- -------------------------------------------- -->
+        <!-- USAGE -->
+        <!-- -------------------------------------------- -->
+        ... to be completed ...
+        <pre class="border"><code [highlight]="ngAnimateCodeMap.get('name')" [lineNumbers]="true"></code></pre>
+      </div>
+    </div>
+
+    <!-- LECTURES -->
+    <div class="col-md-10 scrollbox pt-3" style="height: 600px;">
+      <!-- INSTALLATION -->
+      <div id="nganimate-lectures" class= "my-2 p-4">
+        <ngb-alert type='secondary' [dismissible]="false">
+          <h4>Lectures</h4>
+        </ngb-alert>
+        <!-- -------------------------------------------- -->
+        <!-- LECTURES -->
+        <!-- -------------------------------------------- -->
+        <p>Some lectures and interesting links about this module :</p>
+        <p><a href="https://github.com/jiayihu/ng-animate" target="_blank">https://github.com/jiayihu/ng-animate</a></p>
+        <p><a href="https://www.npmjs.com/package/ng-animate" target="_blank">https://www.npmjs.com/package/ng-animate</a></p>
+
+        <p>Demo site of ng-animate autors :</p>
+        <p><a href="https://jiayihu.github.io/ng-animate/" target="_blank">https://jiayihu.github.io/ng-animate/</a></p>
+
+        <p>Angular official documentation :</p>
+        <p><a href="https://angular.io/guide/animations" target="_blank">https://angular.io/guide/animations</a></p>
+
+        <p>Original animate tooling :</p>
+        <p><a href="ttps://animate.style/" target="_blank">ttps://animate.style/</a></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,7 @@
   <p>Please contact me if any questions.</p>
   <br>
 
+  <!-- PREVIOUS ACCORDION DECORATION -->
   <!-- <div class="mb-3">
     <ngb-accordion [closeOthers]="true" type="light" activeIds="static-4">
 
@@ -25,44 +26,26 @@
           <code>Angular</code> works just fine !
         </ng-template>
       </ngb-panel>
-
-      <ngb-panel id="static-2">
-        <ng-template ngbPanelHeader let-opened="opened">
-          <div class="d-flex align-items-center justify-content-start">
-            <button ngbPanelToggle class="btn btn-link container-fluid text-left text-dark pl-0">
-              <h5 class="m-0">
-                <fa-icon [icon]="opened ? 'caret-down' : 'caret-right'" [fixedWidth]="true"></fa-icon>
-                <span [class]="opened ? 'text-dark' : 'text-muted'">ng-Bootstrap</span>
-              </h5>
-            </button>
-          </div>
-        </ng-template>
-        <ng-template ngbPanelContent>
-          <ngb-alert type='dark' [dismissible]="false">
-            <code>ng-bootstrap</code> seems to be installed and operational as well!!
-          </ngb-alert>
-        </ng-template>
-      </ngb-panel>
-
-      <ngb-panel id="static-3">
-        <ng-template ngbPanelHeader let-opened="opened">
-          <div class="d-flex align-items-center justify-content-start">
-            <button ngbPanelToggle class="btn btn-link container-fluid text-left text-dark pl-0">
-              <h5 class="m-0">
-                <fa-icon [icon]="opened ? 'caret-down' : 'caret-right'" [fixedWidth]="true"></fa-icon>
-                <span [class]="opened ? 'text-dark' : 'text-muted'">Fontawesome</span>
-              </h5>
-            </button>
-          </div>
-        </ng-template>
-        <ng-template ngbPanelContent>
-          <code>Fontawesome</code> works also ! <fa-icon icon="check"></fa-icon> ...<fa-icon icon="coffee"></fa-icon>
-          <p>It's awesome !!!</p>
-        </ng-template>
-      </ngb-panel>
     </ngb-accordion>
   </div> -->
 
+  <!-- <div class="card p-3">
+    <div class="d-flex">
+      <div [@Tbounce]="bounce"><fa-icon icon="volleyball-ball" size="2x"></fa-icon></div>
+      <div [@Tflash]="flash"><fa-icon icon="heart" size="2x"></fa-icon></div>
+      <div [@Tpulse]="pulse"><fa-icon icon="heart" size="2x"></fa-icon></div>
+      <div [@TrubberBand]="rubberBand"><fa-icon icon="heart" size="2x"></fa-icon></div>
+      <div [@Tshake]="shake"><fa-icon icon="heart" size="2x"></fa-icon></div>
+      <div [@Tswing]="swing"><fa-icon icon="heart" size="2x"></fa-icon></div>
+      <div [@Ttada]="tada"><fa-icon icon="heart" size="2x"></fa-icon></div>
+      <div [@Twobble]="wobble"><fa-icon icon="heart" size="2x"></fa-icon></div>
+      <div [@Tjello]="jello"><fa-icon icon="heart" size="2x"></fa-icon></div>
+      <div [@Tflip]="flip"><fa-icon icon="heart" size="2x"></fa-icon></div>
+      <div [@TjackInTheBox]="jackInTheBox"><fa-icon icon="heart" size="2x"></fa-icon></div>
+    </div>
+  </div> -->
+
+  <!-- COLLAPSED DECORATIONS -->
   <!-- <div class="card p-3 mb-3"> -->
   <div class="p-3 mb-3">
     <div class="row mb-3">
@@ -104,10 +87,13 @@
 
     <div class="row">
       <div class="col">
-        <div id="ngCollapseFirst" [ngbCollapse]="isFirstCollapsed">
-          <div class="card">
-            <div class="card-body border bg-light">
-              <code>Angular</code> works just fine !
+        <div id="ngCollapseFirst" [ngbCollapse]="isFirstCollapsed" >
+          <!-- <div [@TbounceGate]="{ value: isFirstCollapsed, params: { timing: 0.4 } }"> -->
+          <div [@TflipYGate]="isFirstCollapsed ? 'out' : 'in'">
+            <div class="card">
+              <div class="card-body border bg-light">
+                <code>Angular</code> works just fine !
+              </div>
             </div>
           </div>
         </div>
@@ -115,9 +101,11 @@
 
       <div class="col">
         <div id="ngCollapseSecond" [ngbCollapse]="isSecondCollapsed">
-          <div class="card">
-            <div class="card-body border bg-light">
-              <code>ng-bootstrap</code> seems to be installed and operational as well!!
+          <div [@TflipXGate]="isSecondCollapsed ? 'out' : 'in'">
+            <div class="card">
+              <div class="card-body border bg-light">
+                <code>ng-bootstrap</code> seems to be installed and operational as well!!
+              </div>
             </div>
           </div>
         </div>
@@ -125,42 +113,18 @@
 
       <div class="col">
         <div id="ngCollapseThird" [ngbCollapse]="isThirdCollapsed">
-          <div class="card">
-            <div class="card-body border bg-light">
-              <code>Fontawesome</code> works also ! <fa-icon icon="check"></fa-icon> ...<fa-icon icon="coffee"></fa-icon>
-              <p>It's awesome !!!</p>
+          <div [@TflipXGate]="isThirdCollapsed ? 'out' : 'in'">
+            <div class="card">
+              <div class="card-body border bg-light">
+                <code>Fontawesome</code> works also ! <fa-icon icon="check"></fa-icon> ...<fa-icon icon="coffee"></fa-icon>
+                <p>It's awesome !!!</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- <div class="d-flex flex-row">
-      <div id="ngCollapseFirst" [ngbCollapse]="isFirstCollapsed">
-        <div class="card">
-          <div class="card-body border bg-light">
-            <code>Angular</code> works just fine !
-          </div>
-        </div>
-      </div>
-
-      <div id="ngCollapseSecond" [ngbCollapse]="isSecondCollapsed">
-        <div class="card">
-          <div class="card-body border bg-light">
-            <code>ng-bootstrap</code> seems to be installed and operational as well!!
-          </div>
-        </div>
-      </div>
-
-      <div id="ngCollapseThird" [ngbCollapse]="isThirdCollapsed">
-        <div class="card">
-          <div class="card-body border bg-light">
-            <code>Fontawesome</code> works also ! <fa-icon icon="check"></fa-icon> ...<fa-icon icon="coffee"></fa-icon>
-            <p>It's awesome !!!</p>
-          </div>
-        </div>
-      </div>
-    </div> -->
   </div>
 
 </div>

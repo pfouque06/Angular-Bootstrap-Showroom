@@ -17,6 +17,12 @@
       </ng-template>
     </ng-container>
     <ng-container ngbNavItem>
+      <a ngbNavLink>ng-animate</a>
+      <ng-template ngbNavContent>
+        <ng-container *ngTemplateOutlet="ngNgAnimate"></ng-container>
+      </ng-template>
+    </ng-container>
+    <ng-container ngbNavItem>
       <a ngbNavLink>ngx-highlightjs</a>
       <ng-template ngbNavContent>
         <ng-container *ngTemplateOutlet="ngNgxHighlightjs"></ng-container>
@@ -52,12 +58,17 @@
   <app-foundations></app-foundations>
 </ng-template>
 
-<!-- NGX-HIGHTLIGHTJS INSTALL, USAGE AND OPTIONS HOWTO -->
-<ng-template #ngNgxHighlightjs>
-  <app-ngx-highlightjs></app-ngx-highlightjs>
-</ng-template>
-
 <!-- FONTAWESOME HOWTO -->
 <ng-template #ngFontawesome>
   <app-fontawesome></app-fontawesome>
+</ng-template>
+
+<!-- NG-ANIMATE HOWTO -->
+<ng-template #ngNgAnimate>
+  <app-ng-animate></app-ng-animate>
+</ng-template>
+
+<!-- NGX-HIGHTLIGHTJS INSTALL, USAGE AND OPTIONS HOWTO -->
+<ng-template #ngNgxHighlightjs>
+  <app-ngx-highlightjs></app-ngx-highlightjs>
 </ng-template>

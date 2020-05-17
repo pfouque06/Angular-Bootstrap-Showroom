@@ -8,6 +8,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions} from 'ngx-highlightjs';
 import { HighlightPlusModule } from 'ngx-highlightjs/plus';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const SHARED_ENTITIES = []
 
@@ -18,6 +19,7 @@ const SHARED_MODULES = [
   FontAwesomeModule,
   HighlightModule,
   HighlightPlusModule,
+  BrowserAnimationsModule,
 ]
 
 @NgModule({
