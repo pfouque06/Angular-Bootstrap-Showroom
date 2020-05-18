@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { codeBlocks as ngAnimateCodeBlock } from './ng-animate.codes';
+import { AnimateService } from 'src/app/shared/service/animate.service';
 
 @Component({
   selector: 'app-ng-animate',
   templateUrl: './ng-animate.component.html',
-  styleUrls: ['./ng-animate.component.css']
+  styleUrls: ['./ng-animate.component.css'],
+  animations: [
+    AnimateService.TfadeDownGate,
+    AnimateService.TfadeUpGate,
+  ],
 })
 export class NgAnimateComponent implements OnInit {
 

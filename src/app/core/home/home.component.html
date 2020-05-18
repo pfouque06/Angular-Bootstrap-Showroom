@@ -49,35 +49,41 @@
   <!-- <div class="card p-3 mb-3"> -->
   <div class="p-3 mb-3">
     <div class="row mb-3">
-      <div class="col-auto ">
-        <button type="button" class="btn btn-outline-dark" (click)="isFirstCollapsed = !isFirstCollapsed"
-                [attr.aria-expanded]="!isFirstCollapsed" aria-controls="ngCollapseFirst">
+      <div class="col-auto">
+        <!-- <button type="button" class="btn btn-outline-dark" (click)="isFirstCollapsed = !isFirstCollapsed" -->
+        <button type="button" class="btn btn-outline-dark"
+          (click)="isFirstCollapsed = !isFirstCollapsed; firstToggle = !firstToggle" [@TrubberBand01]="firstToggle"
+          [attr.aria-expanded]="!isFirstCollapsed" aria-controls="ngCollapseFirst">
           Angular
         </button>
       </div>
       <div class="col-auto ">
-        <button type="button" class="btn btn-outline-dark" (click)="isSecondCollapsed = !isSecondCollapsed"
-                [attr.aria-expanded]="!isSecondCollapsed" aria-controls="ngCollapseSecond">
+        <!-- <button type="button" class="btn btn-outline-dark" (click)="isSecondCollapsed = !isSecondCollapsed" -->
+        <button type="button" class="btn btn-outline-dark"
+          (click)="isSecondCollapsed = !isSecondCollapsed; secondToggle = !secondToggle" [@TrubberBand01]="secondToggle"
+          [attr.aria-expanded]="!isSecondCollapsed" aria-controls="ngCollapseSecond">
           ng-Bootstrap
         </button>
       </div>
       <div class="col-auto ">
-        <button type="button" class="btn btn-outline-dark" (click)="isThirdCollapsed = !isThirdCollapsed"
-                [attr.aria-expanded]="! isThirdCollapsed" aria-controls="ngCollapseThird">
+        <!-- <button type="button" class="btn btn-outline-dark"(click)="isThirdCollapsed = !isThirdCollapsed" -->
+        <button type="button" class="btn btn-outline-dark"
+          (click)="isThirdCollapsed = !isThirdCollapsed; thirdToggle = !thirdToggle" [@TrubberBand01]="thirdToggle"
+          [attr.aria-expanded]="! isThirdCollapsed" aria-controls="ngCollapseThird">
           Fontawesome
         </button>
       </div>
       <div class="col-auto ">
         <!-- [attr.aria-expanded]="(isFirstCollapsed || isSecondCollapsed || isThirdCollapsed)" -->
         <button type="button" class="btn btn-secondary"
-          (click)="All()"
+          (click)="All(); allToggle = !allToggle" [@TrubberBand01]="allToggle"
           aria-controls="ngCollapseFirst ngCollapseSecond ngCollapseThird">
           All
         </button>
       </div>
       <div class="col-auto ">
         <button type="button" class="btn btn-warning"
-          (click)="isFirstCollapsed = !isFirstCollapsed; isSecondCollapsed = !isSecondCollapsed; isThirdCollapsed = !isThirdCollapsed"
+          (click)="XAll(); xAllToggle = !xAllToggle" [@TrubberBand01]="xAllToggle"
           [attr.aria-expanded]="! (isFirstCollapsed && isSecondCollapsed && isThirdCollapsed)"
           aria-controls="ngCollapseFirst ngCollapseSecond ngCollapseThird">
           X-All
@@ -88,7 +94,7 @@
     <div class="row">
       <div class="col">
         <div id="ngCollapseFirst" [ngbCollapse]="isFirstCollapsed" >
-          <!-- <div [@TbounceGate]="{ value: isFirstCollapsed, params: { timing: 0.4 } }"> -->
+          <!-- <div [@TflipYGate]="{ value: isFirstCollapsed, params: { timing: 0.4 } }"> -->
           <div [@TflipYGate]="isFirstCollapsed ? 'out' : 'in'">
             <div class="card">
               <div class="card-body border bg-light">
