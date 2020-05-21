@@ -42,10 +42,12 @@
       <!-- -------------------------------------------- -->
       <!-- INSTALLATION -->
       <!-- -------------------------------------------- -->
-      <h4>install ng-animate module via npm</h4>
+      <h4>Installation</h4>
+      Install ng-animate module via npm
       <pre class="border"><code [highlight]="ngAnimateCodeMap.get('npm')" [lineNumbers]="true"></code></pre>
-      ... to be completed ...
+      Generate animate service to register your custom animation Triggers and Gates
       <pre class="border"><code [highlight]="ngAnimateCodeMap.get('ng_generate_service')" [lineNumbers]="true"></code></pre>
+      Feed animate.service.ts as follows, for instance :
       <pre class="border"><code [highlight]="ngAnimateCodeMap.get('animate_service')" [lineNumbers]="true"></code></pre>
     </div>
 
@@ -57,8 +59,9 @@
       <!-- -------------------------------------------- -->
       <!-- USAGE -->
       <!-- -------------------------------------------- -->
-      ... to be completed ...
+      Import animeService and add your custom animation Triggers or Gates as required in your component :
       <pre class="border"><code [highlight]="ngAnimateCodeMap.get('usage_ts')" [lineNumbers]="true"></code></pre>
+      Code your animation with the <code>[@animation_name]</code> directives, ie :
       <pre class="border"><code [highlight]="ngAnimateCodeMap.get('usage_html')" [lineNumbers]="true"></code></pre>
     </div>
 
