@@ -10,9 +10,7 @@ export class HeaderComponent implements OnInit {
   @Input() public title: string;
   public isNavbarCollapsed: boolean =true;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

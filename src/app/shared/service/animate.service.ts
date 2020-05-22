@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { flip, bounce, flash, pulse, rubberBand, shake, swing, tada, wobble, jello, jackInTheBox} from 'ng-animate';
 import {
-  fadeIn, fadeOut, fadeInUp, fadeOutDown, fadeInDown, fadeOutUp,
-  zoomIn, zoomOut, flipInX, flipOutX, flipInY, flipOutY,
+  zoomIn, zoomOut, fadeIn, fadeOut, fadeInUp, fadeOutDown, fadeInDown, fadeOutUp,
+  slideInUp, slideOutDown, slideInDown, slideOutUp, flipInX, flipOutX, flipInY, flipOutY,
   bounceIn, bounceOut, rotateIn, rotateOut, rollIn, rollOut } from 'ng-animate';
 
 
@@ -32,42 +32,66 @@ export class AnimateService {
   public static TjackInTheBox = trigger('TjackInTheBox', [transition('* => *', useAnimation(jackInTheBox, { params: { timing: 0.4 }}))]);
 
 
-  // Gate Triggers : 'in' <-> 'out' transition commuting
+  // Gate Triggers : '*' <-> 'void' transition commuting
   public static TzoomGate = trigger('TzoomGate', [
-    transition('out => in', useAnimation(zoomIn, { params: { timing: 0.4 }})),
-    transition('in => out', useAnimation(zoomOut, { params: { timing: 0.4 }})),
+    transition('void => *', useAnimation(zoomIn, { params: { timing: 0.4 }})),
+    transition('* => void', useAnimation(zoomOut, { params: { timing: 0.4 }})),
+  ]);
+  public static TslideUpGate = trigger('TslideUpGate', [
+    transition('void => *', useAnimation(slideInUp, { params: { timing: 0.4 }})),
+    transition('* => void', useAnimation(slideOutDown, { params: { timing: 0.4 }})),
+  ]);
+  public static TslideDownGate = trigger('TslideDownGate', [
+    transition('void => *', useAnimation(slideInDown, { params: { timing: 0.4 }})),
+    transition('* => void', useAnimation(slideOutUp, { params: { timing: 0.4 }})),
+  ]);
+  public static TslideDownGate10 = trigger('TslideDownGate10', [
+    transition('void => *', useAnimation(slideInDown, { params: { timing: 1 }})),
+    transition('* => void', useAnimation(slideOutUp, { params: { timing: 1 }})),
   ]);
   public static TfadeGate = trigger('TfadeGate', [
-    transition('out => in', useAnimation(fadeIn, { params: { timing: 0.4 }})),
-    transition('in => out', useAnimation(fadeOut, { params: { timing: 0.4 }})),
-  ]);
-  public static TfadeDownGate = trigger('TfadeDownGate', [
-    transition('out => in', useAnimation(fadeInUp, { params: { timing: 0.4 }})),
-    transition('in => out', useAnimation(fadeOutDown, { params: { timing: 0.4 }})),
+    transition('void => *', useAnimation(fadeIn, { params: { timing: 0.4 }})),
+    transition('* => void', useAnimation(fadeOut, { params: { timing: 0.4 }})),
   ]);
   public static TfadeUpGate = trigger('TfadeUpGate', [
-    transition('out => in', useAnimation(fadeInDown, { params: { timing: 0.4 }})),
-    transition('in => out', useAnimation(fadeOutUp, { params: { timing: 0.4 }})),
+    transition('void => *', useAnimation(fadeInUp, { params: { timing: 0.4 }})),
+    transition('* => void', useAnimation(fadeOutDown, { params: { timing: 0.4 }})),
+  ]);
+  public static TfadeDownGate = trigger('TfadeDownGate', [
+    transition('void => *', useAnimation(fadeInDown, { params: { timing: 0.4 }})),
+    transition('* => void', useAnimation(fadeOutUp, { params: { timing: 0.4 }})),
+  ]);
+  public static TfadeDownGate10 = trigger('TfadeDownGate10', [
+    transition('void => *', useAnimation(fadeInDown, { params: { timing: 1 }})),
+    transition('* => void', useAnimation(fadeOutUp, { params: { timing: 1 }})),
+  ]);
+  public static TfadeUpGate04 = trigger('TfadeUpGate04', [
+    transition('void => *', useAnimation(fadeInDown, { params: { timing: 0.4 }})),
+    transition('* => void', useAnimation(fadeOutUp, { params: { timing: 0.4 }})),
   ]);
   public static TflipXGate = trigger('TflipXGate', [
-    transition('out => in', useAnimation(flipInX, { params: { timing: 0.4 }})),
-    transition('in => out', useAnimation(flipOutX, { params: { timing: 0.4 }})),
+    transition('void => *', useAnimation(flipInX, { params: { timing: 0.4 }})),
+    transition('* => void', useAnimation(flipOutX, { params: { timing: 0.4 }})),
+  ]);
+  public static TflipXGate10 = trigger('TflipXGate10', [
+    transition('* => void', useAnimation(flipOutX, { params: { timing: 1 }})),
+    transition('void => *', useAnimation(flipInX, { params: { timing: 1 }})),
   ]);
   public static TflipYGate = trigger('TflipYGate', [
-    transition('out => in', useAnimation(flipInY, { params: { timing: 0.4 }})),
-    transition('in => out', useAnimation(flipOutY, { params: { timing: 0.4 }})),
+    transition('void => *', useAnimation(flipInY, { params: { timing: 0.4 }})),
+    transition('* => void', useAnimation(flipOutY, { params: { timing: 0.4 }})),
   ]);
   public static TbounceGate = trigger('TbounceGate', [
-    transition('out => in', useAnimation(bounceIn, { params: { timing: 0.4 }})),
-    transition('in => out', useAnimation(bounceOut, { params: { timing: 0.4 }})),
+    transition('void => *', useAnimation(bounceIn, { params: { timing: 0.4 }})),
+    transition('* => void', useAnimation(bounceOut, { params: { timing: 0.4 }})),
   ]);
   public static TrotateGate = trigger('TrotateGate', [
-    transition('out => in', useAnimation(rotateIn, { params: { timing: 0.4 }})),
-    transition('in => out', useAnimation(rotateOut, { params: { timing: 0.4 }})),
+    transition('void => *', useAnimation(rotateIn, { params: { timing: 0.4 }})),
+    transition('* => void', useAnimation(rotateOut, { params: { timing: 0.4 }})),
   ]);
   public static TrollGate = trigger('TrotateGate', [
-    transition('out => in', useAnimation(rollIn, { params: { timing: 0.4 }})),
-    transition('in => out', useAnimation(rollOut, { params: { timing: 0.4 }})),
+    transition('void => *', useAnimation(rollIn, { params: { timing: 0.4 }})),
+    transition('* => void', useAnimation(rollOut, { params: { timing: 0.4 }})),
   ]);
 
   constructor() { }

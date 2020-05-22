@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { codeBlocks as fontawesomeCodeBlock } from './fontawesome.codes';
+import { NgAnimateScrollService } from 'ng-animate-scroll';
 
 @Component({
   selector: 'app-fontawesome',
@@ -13,7 +14,7 @@ export class FontawesomeComponent implements OnInit {
   public fontawesomeCodeMap;
   public fontawesomeCodeKeys: any[];
 
-  constructor(public router: Router, public activeRoute: ActivatedRoute) {
+  constructor(public router: Router, public activeRoute: ActivatedRoute, private animateScrollService: NgAnimateScrollService) {
 
     // Fontawesome code blocks
     this.fontawesomeCodeMap = new Map(fontawesomeCodeBlock.map(obj => [obj.name, obj.code]));
@@ -31,6 +32,17 @@ export class FontawesomeComponent implements OnInit {
     this.router.navigate([route]).then(()=>{
       window.location.hash=fragment;
     });
+  }
+
+  public scrollToElement(element: any, duration?:number) {
+    console.log("scrollToElement("+element+", "+duration+")");
+    console.log("activeRoute:"+this.activeRoute.toString());
+    console.log("parent:"+this.activeRoute.parent);
+    this.activeRoute.url.subscribe(url => {console.log("before url:"+url);});
+    this.activeRoute.fragment.subscribe(fragment => {console.log("before fragment:"+fragment);});
+    this.animateScrollService.scrollToElement(element, duration);
+    this.activeRoute.url.subscribe(url => {console.log("after url:"+url);});
+    this.activeRoute.fragment.subscribe(fragment => {console.log("after fragment:"+fragment);});
   }
 
 }
