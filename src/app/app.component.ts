@@ -50,7 +50,7 @@ export class AppComponent {
       if (this.toptagTop < -200) { this.isScrollUpVisible = true;}
       else { this.isScrollUpVisible = false;}
     }
-    console.debug("toggleScrollUp("+this.isScrollUpVisible+")");
+    // console.debug("toggleScrollUp("+this.isScrollUpVisible+")");
   }
 
   constructor(private animateScrollService: NgAnimateScrollService) {
@@ -60,6 +60,6 @@ export class AppComponent {
   }
 
   public scrollToElement(element: any, duration?:number) {
-    this.animateScrollService.scrollToElement(element, duration);
+    this.animateScrollService.scrollToElement(element, duration ? duration : 300);
   }
 }

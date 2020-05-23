@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-// import { animation, animateChild, group, animate, style, query } from '@angular/animations';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { flip, bounce, flash, pulse, rubberBand, shake, swing, tada, wobble, jello, jackInTheBox} from 'ng-animate';
 import {
