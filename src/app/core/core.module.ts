@@ -13,12 +13,14 @@ import { CollapseComponent } from './themes/collapse/collapse.component';
 import { LayoutComponent } from './themes/layout/layout.component';
 import { ModalComponent } from './themes/modal/modal.component';
 import { NavComponent } from './themes/nav/nav.component';
+import { SpinnersComponent } from './themes/spinners/spinners.component';
 import { PersonListComponent, SortableHeader } from './person/person-list/person-list.component';
 import { PersonFormComponent } from './person/person-form/person-form.component';
 import { YaFormComponent } from './person/ya-form/ya-form.component';
 import { HowToComponent } from './how-to/how-to.component';
 import { FoundationsComponent } from './how-to/foundations/foundations.component';
 import { FontawesomeComponent } from './how-to/fontawesome/fontawesome.component';
+import { NgAnimateComponent } from './how-to/ng-animate/ng-animate.component';
 import { NgxHighlightjsComponent } from './how-to/ngx-highlightjs/ngx-highlightjs.component';
 
 
@@ -32,6 +34,7 @@ import { NgxHighlightjsComponent } from './how-to/ngx-highlightjs/ngx-highlightj
     LayoutComponent,
     ModalComponent,
     NavComponent,
+    SpinnersComponent,
     PersonListComponent,
     PersonFormComponent,
     SortableHeader,
@@ -39,6 +42,7 @@ import { NgxHighlightjsComponent } from './how-to/ngx-highlightjs/ngx-highlightj
     HowToComponent,
     FoundationsComponent,
     FontawesomeComponent,
+    NgAnimateComponent,
     NgxHighlightjsComponent,
   ],
   imports: [

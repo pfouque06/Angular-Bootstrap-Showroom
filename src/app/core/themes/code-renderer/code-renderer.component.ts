@@ -131,13 +131,13 @@ export class CodeRendererComponent implements OnInit {
     }
     this.lastPieceFileReader.readAsText(this.lastPieceFile);
 //     console.log(this.lastPieceOfCode);
-   }
+  }
 
-   public lineNumberingToggle(): void {
+  public lineNumberingToggle(): void {
     this.lastPieceNumbering = ! this.lastPieceNumbering;
     this.lastPieceOfCode = "";
     this.lastPieceFileReader.readAsText(this.lastPieceFile);
 //     console.log("lastPieceNumbering:" + this.lastPieceNumbering);
 //     console.log(this.lastPieceOfCode);
-   }
+  }
 }

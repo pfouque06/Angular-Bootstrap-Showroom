@@ -1,11 +1,19 @@
-<!-- <app-header></app-header> -->
-<app-header [title]="title"></app-header>
+<div *ngIf="!scrollService.isScrollUpVisible"><app-header [@TslideDownGate]="scrollService.isScrollUpVisible ? 'out' : 'in'" [title]="title"></app-header></div>
+<header #base id="base" style="height: 70px;"></header>
 
-<!-- <div style="margin-top: 300px"> -->
-<!-- <div class="container position-"  style="top: 500px"> -->
-<div class="container my-5 pt-4">
+<div class="container  pt-4">
   <router-outlet></router-outlet>
 </div>
-<!-- </div> -->
 
 <app-footer></app-footer>
+
+<div *ngIf="scrollService.isScrollUpVisible">
+  <div class="container fixed-bottom d-flex justify-content-end mb-5">
+    <div [@TfadeUpGate]="scrollService.isScrollUpVisible ? 'in' : 'out'">
+      <a class="btn btn-sm btn-secondary text-light shadow-lg" (click)="scrollService.scrollUp()"  title="Scroll up">
+        <fa-icon icon="angle-double-up" size="2x"></fa-icon>
+      </a>
+    </div>
+  </div>
+</div>
+

@@ -17,6 +17,12 @@
       </ng-template>
     </ng-container>
     <ng-container ngbNavItem>
+      <a ngbNavLink>ng-animate</a>
+      <ng-template ngbNavContent>
+        <ng-container *ngTemplateOutlet="ngNgAnimate"></ng-container>
+      </ng-template>
+    </ng-container>
+    <ng-container ngbNavItem>
       <a ngbNavLink>ngx-highlightjs</a>
       <ng-template ngbNavContent>
         <ng-container *ngTemplateOutlet="ngNgxHighlightjs"></ng-container>
@@ -28,11 +34,11 @@
     </ng-container>
     <ng-container ngbNavItem>
       <a ngbNavLink>...</a>
-      <ng-template ngbNavContent><p>Or not be ...</p></ng-template>
+      <ng-template ngbNavContent><p>Or not to be ...</p></ng-template>
     </ng-container>
     <ng-container ngbNavItem>
-      <a ngbNavLink>... More ...</a>
-      <ng-template ngbNavContent><p>... to come ...</p></ng-template>
+      <a ngbNavLink>... More to ...</a>
+      <ng-template ngbNavContent><p>... come ...</p></ng-template>
     </ng-container>
   </nav>
   <div class="my-4">
@@ -40,24 +46,22 @@
   </div>
 </div>
 
-<!-- SCROLL UP BOTTOM BUTTON -->
-<div class="container fixed-bottom d-flex justify-content-end  mb-5">
-  <a class="btn btn-sm btn-secondary text-light shadow-lg" (click)="navigateToFragment('/howTo','')"  title="Scroll up">
-    <fa-icon icon="angle-double-up" size="2x"></fa-icon>
-  </a>
-</div>
-
 <!-- FOUNDATION BUILDER HOWTO -->
 <ng-template #ngFoundation>
   <app-foundations></app-foundations>
 </ng-template>
 
-<!-- NGX-HIGHTLIGHTJS INSTALL, USAGE AND OPTIONS HOWTO -->
-<ng-template #ngNgxHighlightjs>
-  <app-ngx-highlightjs></app-ngx-highlightjs>
-</ng-template>
-
 <!-- FONTAWESOME HOWTO -->
 <ng-template #ngFontawesome>
   <app-fontawesome></app-fontawesome>
+</ng-template>
+
+<!-- NG-ANIMATE HOWTO -->
+<ng-template #ngNgAnimate>
+  <app-ng-animate></app-ng-animate>
+</ng-template>
+
+<!-- NGX-HIGHTLIGHTJS INSTALL, USAGE AND OPTIONS HOWTO -->
+<ng-template #ngNgxHighlightjs>
+  <app-ngx-highlightjs></app-ngx-highlightjs>
 </ng-template>
