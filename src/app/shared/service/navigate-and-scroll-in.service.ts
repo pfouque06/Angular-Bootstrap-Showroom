@@ -15,12 +15,11 @@ export class NavigateAndScrollInService {
   public isScrollUpVisible: boolean;
   public VisibilityThreshold: number = -200; // minimum display position threshold to raise ScrollUp visibility - default is -200
   public DisableThreshold: number = 400; // minimum windows size to always disable ScrollUp - default is 400
-  baseTagName: string; // default name of roof's Id element -> next step to transrom in directive !
 
   // Screen height and width
+  // @HostListener('window:resize', ['$event']) => not operational in @injectable()
   displayHeight:any;
   displayWidth:any;
-  // @HostListener('window:resize', ['$event']) => not operational in @injectable()
   getScreenSize(event?) {
     this.displayHeight = window.innerHeight;
     this.displayWidth = window.innerWidth;
@@ -29,10 +28,11 @@ export class NavigateAndScrollInService {
   }
 
   // baseTag Directive relative position
-  baseTagPosition:any;
-  baseTag: ElementRef;
   // @ViewChild('base', {read: ElementRef}) baseTag: ElementRef; => not operational in @injectable()
   // @HostListener('window:scroll', ['$event']) => not operational in @injectable()
+  baseTag: ElementRef;
+  baseTagName: string; // default name of roof's Id element -> next step to transrom in directive !
+  baseTagPosition:any;
   getTopPositionOnScroll(event?) {
     if ( ! this.isBaseDirectivePresent() ) { return; }
     this.baseTagPosition = this.baseTag.nativeElement.getBoundingClientRect();
