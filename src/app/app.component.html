@@ -1,18 +1,16 @@
-<div *ngIf="!isScrollUpVisible"><app-header [@TslideDownGate]="isScrollUpVisible ? 'out' : 'in'" [title]="title"></app-header></div>
-<header #toptag id="toptagid" style="height: 70px;"></header>
+<div *ngIf="!scrollService.isScrollUpVisible"><app-header [@TslideDownGate]="scrollService.isScrollUpVisible ? 'out' : 'in'" [title]="title"></app-header></div>
+<header #base id="base" style="height: 70px;"></header>
 
-<!-- <div class="container my-5 pt-4"> -->
 <div class="container  pt-4">
   <router-outlet></router-outlet>
 </div>
-<!-- </div> -->
 
 <app-footer></app-footer>
 
-<div *ngIf="isScrollUpVisible">
+<div *ngIf="scrollService.isScrollUpVisible">
   <div class="container fixed-bottom d-flex justify-content-end mb-5">
-    <div [@TfadeUpGate]="isScrollUpVisible ? 'in' : 'out'">
-      <a class="btn btn-sm btn-secondary text-light shadow-lg" (click)="scrollToElement('toptagid')"  title="Scroll up">
+    <div [@TfadeUpGate]="scrollService.isScrollUpVisible ? 'in' : 'out'">
+      <a class="btn btn-sm btn-secondary text-light shadow-lg" (click)="scrollService.scrollUp()"  title="Scroll up">
         <fa-icon icon="angle-double-up" size="2x"></fa-icon>
       </a>
     </div>
