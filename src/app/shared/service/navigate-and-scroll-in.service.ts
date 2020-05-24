@@ -31,12 +31,12 @@ export class NavigateAndScrollInService {
   // @ViewChild('base', {read: ElementRef}) baseTag: ElementRef; => not operational in @injectable()
   // @HostListener('window:scroll', ['$event']) => not operational in @injectable()
   baseTag: ElementRef;
-  baseTagName: string; // default name of roof's Id element -> next step to transrom in directive !
+  baseTagID: string; // default name of roof's Id element -> next step to transrom in directive !
   baseTagPosition:any;
   getTopPositionOnScroll(event?) {
     if ( ! this.isBaseDirectivePresent() ) { return; }
     this.baseTagPosition = this.baseTag.nativeElement.getBoundingClientRect();
-    console.log("["+this.baseTagName+"].getTopPositionOnScroll(): " + this.baseTagPosition.top);
+    console.log("["+this.baseTagID+"].getTopPositionOnScroll(): " + this.baseTagPosition.top);
     this.toggleScrollUp();
   }
 
@@ -62,10 +62,10 @@ export class NavigateAndScrollInService {
     });
   }
 
-  // get name and @viewchild('base'): ElementRef basetag from component
-  public setbaseTag(name: string, elementRef: ElementRef) {
-    this.baseTag = elementRef;
-    this.baseTagName = name;
+  // get ID name and @viewchild('base'): ElementRef basetag from component
+  public setbaseTag(tagID: string, tagElementRef: ElementRef) {
+    this.baseTag = tagElementRef;
+    this.baseTagID = tagID;
   }
 
   // Scroll'In to provided Element
@@ -78,7 +78,7 @@ export class NavigateAndScrollInService {
   public scrollUp(duration?:number) {
     console.log("scrollUp.scrollUp()");
     if ( ! this.isBaseDirectivePresent() ) { return; }
-    this.animateScrollService.scrollToElement(this.baseTagName, duration ? duration : 300);
+    this.animateScrollService.scrollToElement(this.baseTagID, duration ? duration : 300);
   }
 
   // navigat'In
@@ -98,7 +98,7 @@ export class NavigateAndScrollInService {
   }
 
   baseDirectiveNotFoundError() {
-    console.log("ScrollUp ERROR : <div "+this.baseTagName+"></div> directive is not present yet on DOM.");
+    console.log("ScrollUp ERROR : <div #"+this.baseTagID+" id=\""+this.baseTagID+"\"></div> directive is not present yet on DOM.");
   }
 }
 
