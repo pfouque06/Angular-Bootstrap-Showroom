@@ -1,98 +1,96 @@
-<h3>How to use ng-animate module for great, efficient, reliable and customisable animations.</h3>
-<br>
+<div [@TfadeUpGate]="{ value: 'in', params: { timing: 2 }}">
 
-<div class="row">
-  <!-- NAV -->
-  <div class="col-md-2 pt-3">
-    <!-- <a href="/howTo#page-install">Installation</a> -->
-    <!-- <a href="/howTo#page-imports">Imports</a> -->
-    <!-- <a href="/howTo#page-foundations">Foundations</a> -->
-    <!-- <a href="/howTo#page-starters">Starters</a> -->
-    <!-- <a href="/howTo#page-custom">Custom</a> -->
-    <nav id="navPills01"  class="navbar sticky-top navbar-light bg-white">
-      <nav ngbNav #nav="ngbNav" class="navbar-nav nav-pills" orientation="vertical">
-        <ng-container ngbNavItem>
-          <a class="nav-link"  (click)="navigateToFragment('/howTo','nganimate-install')">Installation</a>
-        </ng-container>
-        <ng-container ngbNavItem>
-          <a class="nav-link" (click)="navigateToFragment('/howTo','nganimate-usage')">Usage</a>
-        </ng-container>
-        <ng-container ngbNavItem>
-          <a class="nav-link" (click)="navigateToFragment('/howTo','nganimate-lectures')">Lectures</a>
-        </ng-container>
+  <h3>How to use ng-animate module for great, efficient, reliable and customisable animations.</h3>
+  <br>
+
+  <div class="row">
+    <!-- NAV -->
+    <div class="col-md-2 pt-3">
+      <nav id="navPills01"  class="navbar sticky-top navbar-light bg-white">
+        <nav ngbNav #nav="ngbNav" class="navbar-nav nav-pills" orientation="vertical">
+          <ng-container ngbNavItem>
+            <a class="nav-link"  (click)="navigateToFragment('/howTo','nganimate-install')">Installation</a>
+          </ng-container>
+          <ng-container ngbNavItem>
+            <a class="nav-link" (click)="navigateToFragment('/howTo','nganimate-usage')">Usage</a>
+          </ng-container>
+          <ng-container ngbNavItem>
+            <a class="nav-link" (click)="navigateToFragment('/howTo','nganimate-lectures')">Lectures</a>
+          </ng-container>
+        </nav>
       </nav>
-    </nav>
-  </div>
+    </div>
 
-  <!-- SECTIONS -->
-  <div class="col-md-10 scrollbox pt-3" style="height: 600px;" [@TfadeDownGate]="{ value: 'in', params: { timing: 2 }}">
-    <!-- INSTALLATION -->
-    <div id="nganimate-install" class= "my-2 p-4" [@TfadeDownGate]="{ value: 'in', params: { timing: 2 }}">
-      <ngb-alert type='secondary' [dismissible]="false">
-        <h4>Installation</h4>
-      </ngb-alert>
-      <!-- -------------------------------------------- -->
-      <!-- PREREQUISITES -->
-      <!-- -------------------------------------------- -->
-      <h4>Prerequisites</h4>
-      <p>Before proceeding to ng-animate installation andusage, please note that nodejs, npm and angular/cli
-      must be already installed on your OS and an angular project has been created.</p>
-      <p>Please check <strong>"Foundations" HowTo</strong> to do so.</p>
-
-      <!-- -------------------------------------------- -->
+    <!-- SECTIONS -->
+    <div class="col-md-10 scrollbox pt-3" style="height: 600px;" [@TfadeUpGate]="{ value: 'in', params: { timing: 2 }}">
       <!-- INSTALLATION -->
-      <!-- -------------------------------------------- -->
-      <h4>Installation</h4>
-      Install ng-animate module via npm
-      <pre class="border"><code [highlight]="ngAnimateCodeMap.get('npm')" [lineNumbers]="true"></code></pre>
-      Generate animate service to register your custom animation Triggers and Gates
-      <pre class="border"><code [highlight]="ngAnimateCodeMap.get('ng_generate_service')" [lineNumbers]="true"></code></pre>
-      Feed animate.service.ts as follows, for instance :
-      <pre class="border"><code [highlight]="ngAnimateCodeMap.get('animate_service')" [lineNumbers]="true"></code></pre>
-    </div>
+      <div id="nganimate-install" class= "my-2 p-4" [@TfadeUpGate]="{ value: 'in', params: { timing: 2 }}">
+        <ngb-alert type='secondary' [dismissible]="false">
+          <h4>Installation</h4>
+        </ngb-alert>
+        <!-- -------------------------------------------- -->
+        <!-- PREREQUISITES -->
+        <!-- -------------------------------------------- -->
+        <h4>Prerequisites</h4>
+        <p>Before proceeding to ng-animate installation andusage, please note that nodejs, npm and angular/cli
+        must be already installed on your OS and an angular project has been created.</p>
+        <p>Please check <strong>"Foundations" HowTo</strong> to do so.</p>
 
-    <!-- USAGE -->
-    <div id="nganimate-usage" class= "my-2 p-4" [@TfadeDownGate]="{ value: 'in', params: { timing: 2 }}">
-      <ngb-alert type='secondary' [dismissible]="false">
-        <h4>Usage</h4>
-      </ngb-alert>
-      <!-- -------------------------------------------- -->
+        <!-- -------------------------------------------- -->
+        <!-- INSTALLATION -->
+        <!-- -------------------------------------------- -->
+        <h4>Installation</h4>
+        Install ng-animate module via npm
+        <pre class="border"><code [highlight]="ngAnimateCodeMap.get('npm')" [lineNumbers]="true"></code></pre>
+        Generate animate service to register your custom animation Triggers and Gates
+        <pre class="border"><code [highlight]="ngAnimateCodeMap.get('ng_generate_service')" [lineNumbers]="true"></code></pre>
+        Feed animate.service.ts as follows, for instance :
+        <pre class="border"><code [highlight]="ngAnimateCodeMap.get('animate_service')" [lineNumbers]="true"></code></pre>
+      </div>
+
       <!-- USAGE -->
-      <!-- -------------------------------------------- -->
-      Import animeService and add your custom animation Triggers or Gates as required in your component :
-      <pre class="border"><code [highlight]="ngAnimateCodeMap.get('usage_ts')" [lineNumbers]="true"></code></pre>
-      Code your animation with the <code>[@animation_name]</code> directives, ie :
-      <pre class="border"><code [highlight]="ngAnimateCodeMap.get('usage_html')" [lineNumbers]="true"></code></pre>
-    </div>
+      <div id="nganimate-usage" class= "my-2 p-4" [@TfadeUpGate]="{ value: 'in', params: { timing: 2 }}">
+        <ngb-alert type='secondary' [dismissible]="false">
+          <h4>Usage</h4>
+        </ngb-alert>
+        <!-- -------------------------------------------- -->
+        <!-- USAGE -->
+        <!-- -------------------------------------------- -->
+        Import animeService and add your custom animation Triggers or Gates as required in your component :
+        <pre class="border"><code [highlight]="ngAnimateCodeMap.get('usage_ts')" [lineNumbers]="true"></code></pre>
+        Code your animation with the <code>[@animation_name]</code> directives, ie :
+        <pre class="border"><code [highlight]="ngAnimateCodeMap.get('usage_html')" [lineNumbers]="true"></code></pre>
+      </div>
 
-    <!-- LECTURES -->
-    <div id="nganimate-lectures" class= "my-2 p-4" [@TfadeDownGate]="{ value: 'in', params: { timing: 2 }}">
-      <ngb-alert type='secondary' [dismissible]="false">
-        <h4>Lectures</h4>
-      </ngb-alert>
-      <!-- -------------------------------------------- -->
       <!-- LECTURES -->
-      <!-- -------------------------------------------- -->
-      <p>Some interesting lectures about this module :</p>
-      <ul>
-        <li><a href="https://github.com/jiayihu/ng-animate" target="_blank">https://github.com/jiayihu/ng-animate</a></li>
-        <li><a href="https://www.npmjs.com/package/ng-animate" target="_blank">https://www.npmjs.com/package/ng-animate</a></li>
-      </ul>
+      <div id="nganimate-lectures" class= "my-2 p-4" [@TfadeUpGate]="{ value: 'in', params: { timing: 2 }}">
+        <ngb-alert type='secondary' [dismissible]="false">
+          <h4>Lectures</h4>
+        </ngb-alert>
+        <!-- -------------------------------------------- -->
+        <!-- LECTURES -->
+        <!-- -------------------------------------------- -->
+        <p>Some interesting lectures about this module :</p>
+        <ul>
+          <li><a href="https://github.com/jiayihu/ng-animate" target="_blank">https://github.com/jiayihu/ng-animate</a></li>
+          <li><a href="https://www.npmjs.com/package/ng-animate" target="_blank">https://www.npmjs.com/package/ng-animate</a></li>
+        </ul>
 
-      <p>Official demo site of ng-animate autors :</p>
-      <ul>
-        <li><a href="https://jiayihu.github.io/ng-animate/" target="_blank">https://jiayihu.github.io/ng-animate/</a></li>
-      </ul>
+        <p>Official demo site of ng-animate autors :</p>
+        <ul>
+          <li><a href="https://jiayihu.github.io/ng-animate/" target="_blank">https://jiayihu.github.io/ng-animate/</a></li>
+        </ul>
 
-      <p>Official Angular documentation :</p>
-      <ul>
-        <li><a href="https://angular.io/guide/animations" target="_blank">https://angular.io/guide/animations</a></li>
-      </ul>
+        <p>Official Angular documentation :</p>
+        <ul>
+          <li><a href="https://angular.io/guide/animations" target="_blank">https://angular.io/guide/animations</a></li>
+        </ul>
 
-      <p>Original animate tooling from Daniel Eden:</p>
-      <ul>
-        <li><a href="https://animate.style/" target="_blank">https://animate.style/</a></li>
-      </ul>
+        <p>Original animate tooling from Daniel Eden:</p>
+        <ul>
+          <li><a href="https://animate.style/" target="_blank">https://animate.style/</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

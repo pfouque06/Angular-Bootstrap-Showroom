@@ -231,7 +231,7 @@ code:
 `  <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white">
     <div class="container border-bottom">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">{{ title }}</a>
+        <a class="navbar-brand" routerLink="">{{ title }}</a>
       </div>
       <button class="navbar-toggler" type="button"
         data-toggle="collapse" data-target="#thisNavbar" (click)="isNavbarCollapsed = !isNavbarCollapsed"
@@ -248,7 +248,7 @@ code:
             <a routerLink="home" class="nav-link" routerLinkActive="active"  (click)="isNavbarCollapsed = true">Home</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link" routerLinkActive="active"  (click)="isNavbarCollapsed = true">Contact</a>
+            <a routerLink="" class="nav-link" routerLinkActive="active"  (click)="isNavbarCollapsed = true">Contact</a>
           </li>
         </ul>
       </div>
