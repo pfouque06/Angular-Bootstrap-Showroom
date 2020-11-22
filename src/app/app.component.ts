@@ -1,5 +1,4 @@
-import { Component, HostListener, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { NgAnimateScrollService } from 'ng-animate-scroll';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { AnimateService } from 'src/app/shared/service/animate.service';
 import { NavigateAndScrollInService } from './shared/service/navigate-and-scroll-in.service';
 
